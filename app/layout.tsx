@@ -52,9 +52,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
+          {/* <Nav /> */}
           <Main>{children}</Main>
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
         <Analytics />
       </body>
@@ -82,16 +82,16 @@ const Nav = ({ className, children, id }: NavProps) => {
           href="/"
         >
           <h2 className="sr-only">next-wp starter</h2>
-          <Image
+          {/* <Image
             src={Logo}
             alt="Logo"
             className="dark:invert"
             width={84}
             height={30.54}
-          ></Image>
+          ></Image> */}
         </Link>
         {children}
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <div className="mx-2 hidden md:flex">
             {Object.entries(mainMenu).map(([key, href]) => (
               <Button key={href} asChild variant="ghost" size="sm">
@@ -105,7 +105,7 @@ const Nav = ({ className, children, id }: NavProps) => {
             <Link href="https://github.com/9d8dev/next-wp">Get Started</Link>
           </Button>
           <MobileNav />
-        </div>
+        </div> */}
       </div>
     </nav>
   );
