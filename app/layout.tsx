@@ -19,6 +19,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import NavBar from "@/components/Navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -52,9 +53,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
+          {/* <Nav /> */}
           <Main>{children}</Main>
-          <Footer />
+          {/* <Footer /> */}
+          <NavBar/>
         </ThemeProvider>
         <Analytics />
       </body>

@@ -18,9 +18,9 @@ import {
 const baseUrl = process.env.WORDPRESS_URL;
 
 function getUrl(path: string, query?: Record<string, any>) {
-    const params = query ? querystring.stringify(query) : null
-  
-    return `${baseUrl}${path}${params ? `?${params}` : ""}`
+  const params = query ? querystring.stringify(query) : null
+
+  return `${baseUrl}${path}${params ? `?${params}` : ""}`
 }
 
 // WordPress Functions
@@ -29,10 +29,11 @@ export async function getAllPosts(filterParams?: {
   author?: string;
   tag?: string;
   category?: string;
-}): Promise<Post[]> {  
+}): Promise<Post[]> {
   const url = getUrl("/wp-json/wp/v2/posts", { author: filterParams?.author, tags: filterParams?.tag, categories: filterParams?.category });
   const response = await fetch(url);
   const posts: Post[] = await response.json();
+  console.log(posts, "post**")
   return posts;
 }
 
@@ -72,21 +73,21 @@ export async function getCategoryBySlug(slug: string): Promise<Category> {
 }
 
 export async function getPostsByCategory(categoryId: number): Promise<Post[]> {
-  const url = getUrl("/wp-json/wp/v2/posts", { categories:  categoryId });
+  const url = getUrl("/wp-json/wp/v2/posts", { categories: categoryId });
   const response = await fetch(url);
   const posts: Post[] = await response.json();
   return posts;
 }
 
 export async function getPostsByTag(tagId: number): Promise<Post[]> {
-  const url = getUrl("/wp-json/wp/v2/posts", { tags:  tagId });
+  const url = getUrl("/wp-json/wp/v2/posts", { tags: tagId });
   const response = await fetch(url);
   const posts: Post[] = await response.json();
   return posts;
 }
 
 export async function getTagsByPost(postId: number): Promise<Tag[]> {
-  const url = getUrl("/wp-json/wp/v2/tags", { post:  postId });
+  const url = getUrl("/wp-json/wp/v2/tags", { post: postId });
   const response = await fetch(url);
   const tags: Tag[] = await response.json();
   return tags;

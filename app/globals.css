@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@layer base {
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -64,9 +61,9 @@
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
   }
-}
+} */
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
@@ -74,36 +71,36 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
-@layer prose-m-none {
+/* @layer prose-m-none {
   * {
     @apply prose-headings:m-0;
   }
-}
+} */
 
-@layer utilities {
+/* @layer utilities {
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
+  Hide scrollbar for Chrome, Safari and Opera
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 
-  /* Hide scrollbar for IE, Edge and Firefox */
+  Hide scrollbar for IE, Edge and Firefox
   .no-scrollbar {
     -ms-overflow-style: none;
-    /* IE and Edge */
+    IE and Edge
     scrollbar-width: none;
-    /* Firefox */
+    Firefox
   }
-}
+} */
 
-.fade-in {
+/* .fade-in {
   -webkit-animation: fade-in 500ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   animation: fade-in 500ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-}
+} */
 
-@-webkit-keyframes fade-in {
+/* @-webkit-keyframes fade-in {
   0% {
     -webkit-filter: blur(12px);
     filter: blur(12px);
@@ -115,9 +112,9 @@
     filter: blur(0px);
     opacity: 1;
   }
-}
+} */
 
-@keyframes fade-in {
+/* @keyframes fade-in {
   0% {
     -webkit-filter: blur(12px);
     filter: blur(12px);
@@ -128,5 +125,80 @@
     -webkit-filter: blur(0px);
     filter: blur(0px);
     opacity: 1;
+  }
+} */
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 100% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 87, 71%, 52%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0rem;
+  }
+
+  .dark {
+    --background: 260 80% 5%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 87, 71%, 52%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--primary));
+}
+
+.container-height {
+  @media (max-width: 1024px) {
+    height: 100% !important;
+  }
+}
+
+.shadow-top-xl {
+  @media (min-width: 1023px) {
+    boxshadow: "rgba(0, 0, 0, 0.25) 0px -20px 50px 0px";
   }
 }
