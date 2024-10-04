@@ -136,16 +136,20 @@ import Layout from "../components/Layout";
 import ScreenAnimation from "../components/ui/ThreeDMenu";
 import Topbar from "../components/Layout/Topbar";
 import NavBar from "../components/Navbar";
+import { getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
+const Home = async() => {
+  const PageContent= await getPageBySlug('home')
+  const logoLink=await getFeaturedMediaById(PageContent?.acf?.logo)
+  const pageContents={logo:logoLink?.source_url}
 
-const Home = () => {
   return (
     <Layout>
       <div
         id="content-id"
         className="bg-background dark:bg-slate-950 relative h-screen overflow-hidden"
       >
-        <Topbar />
-        <HeroSection />
+        <Topbar props={pageContents}/>
+        <HeroSection props={PageContent?.acf}/>
         <ScreenAnimation />
         <NavBar />
 

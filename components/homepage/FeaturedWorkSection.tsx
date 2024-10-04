@@ -5,33 +5,28 @@ import Image from "next/image";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import SIMPLY5 from "../../image/images/Simply5.png";
-import ICK from "../../image/images/ick.png";
-import ProtaxCanada from "../../image/images/protax canada.png";
 import gsap from "gsap";
 
-const ProjectArray = [
-  {
-    title: "Simply5",
-    products: "Web App | Mobile App | Electron App",
-    image: SIMPLY5,
-    url: "https://www.simply5.io",
-  },
-  {
-    title: "India Car Kharido",
-    products: "Web App | Admin Panel",
-    image: ICK,
-    url: "https://www.indiacarkharido.com",
-  },
-  {
-    title: "Protax Canada",
-    products: "Web App | Mobile App",
-    image: ProtaxCanada,
-    url: "https://www.protaxcanada.ca/",
-  },
-];
-
-const FeaturedWorkSection = () => {
+interface ImagePropsType {
+  post_title: any,
+  post_image: any,
+  post_description: any
+  url:any
+}
+interface PageContent {
+  header_title?: string,
+  header_description?: string,
+  animated_title?: string,
+  number_of_clients?: number,
+  world_wide_clients?: string,
+  number_of_company?: number,
+  trusted_company?: string
+}
+interface FeaturedWorkSectionProps {
+  props: ImagePropsType[],
+  pageContent: PageContent
+}
+const FeaturedWorkSection:React.FC<FeaturedWorkSectionProps> = ({props,pageContent}) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
   const timeline = gsap.timeline({
@@ -99,7 +94,7 @@ const FeaturedWorkSection = () => {
         className={`lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full`}
       >
         <div className="w-full pt-8 pb-4 lg:absolute lg:bottom-0 lg:left-[8%] lg:-rotate-90 origin-bottom-left">
-          <Marquee title="FEATURED WORK" />
+          <Marquee title={pageContent?.animated_title||""} />
         </div>
         <div />
         <div className="flex w-full flex-col justify-center lg:justify-between gap-12 h-[85%] col-span-11 mb-full pb-32">
@@ -108,19 +103,19 @@ const FeaturedWorkSection = () => {
             className="w-full md:w-7/12 p-4 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center"
           >
             <h3 className="uppercase text-2xl font-bold text-primary w-10/12 lg:w-6/12">
-              Dive into brilliance with our featured work
+              {pageContent?.header_title}
             </h3>
-            <div className="w-12 border-b border-foreground hidden lg:block" />
-            <p className="text-foreground/80">
-              where innovation takes shape, and creativity knows no bounds
-            </p>
+            {pageContent?.header_description && <div className="w-12 border-b border-foreground hidden lg:block" />}
+            {pageContent?.header_description && <p className="text-foreground/80">
+              {pageContent?.header_description}
+            </p>}
           </div>
           <div
             ref={ServiceCardsRef}
-            className="px-4 md:px-20 lg:px-12 w-full flex flex-col lg:flex-row gap-6 lg:gap-16 h-full"
+            className="px-4 md:px-20 lg:px-12 w-full lg:h-[600px] flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "
           >
-            {ProjectArray.map((value, index) => (
-              <ImageCard card={value} key={`${value.title}-${index}`} />
+            {props.map((value, index) => (
+              <ImageCard card={value} key={`${value.post_title}-${index}`} />
             ))}
           </div>
         </div>
@@ -132,48 +127,45 @@ const FeaturedWorkSection = () => {
 export default FeaturedWorkSection;
 
 type ImageCardPropType = {
-  card: {
-    title: string;
-    image: any;
-    products: string;
-    url: string;
-  };
+  card: ImagePropsType
 };
 
 const ImageCard = ({ card }: ImageCardPropType) => {
-  const { title, image, products, url } = card;
+  const { post_title,post_description,post_image, url } = card;
   const [isHovered, setHovered] = useState(false);
 
   return (
     <motion.div
-      className="h-[80dvh] md:h-[60dvh] w-full p-4"
+      className="h-[80dvh] md:h-[50dvh] w-full p-4 "
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="group bg-white rounded-xl h-full relative bottom-0 left-0 flex justify-end flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all p-4 hover:scale-105 duration-500 border">
-        <div className="absolute top-0 left-0 scale-100 group-hover:scale-100 transition-all duration-700 object-cover hover:object-contain h-full">
+      <div className="group w-[400px] bg-white rounded-xl h-3/4 md:h-full relative bottom-0 left-0 flex justify-end flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all p-4 hover:scale-105 duration-500 border">
+        <div className="absolute top-0 left-0 scale-100 group-hover:scale-100 transition-all duration-700 object-fill hover:object-contain h-full">
           <Image
             alt=""
-            src={image}
-            className="h-full w-full z-0 object-cover scale-125 group-hover:scale-100 transition-all duration-700"
+            src={post_image}
+            width={500}
+            height={500}
+            className=" z-0 object-fit scale-125 group-hover:scale-100 transition-all duration-700 h-full"
           />
         </div>
         <motion.div
-          className="flex flex-col justify-between items-center z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
+          className="flex flex-col h-[25%]  md:h-1/3 lg:h-[40%]  justify-between items-center z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
           initial={false}
           animate={{ y: isHovered ? 0 : 90 }}
         >
-          <div className="text-white flex justify-between w-full">
-            <div className="text-xl font-semibold">{title}</div>
-            <Link
-              href={url}
+          <div className="text-white flex justify-between h-1/2">
+            <div className="text-xl font-semibold">{post_title}</div>
+            {url&&<Link
+              href={url||""}
               target="_blank"
-              className="w-fit h-fit p-2 transform duration-500 rounded-full border border-white hover:bg-white text-white hover:text-black cursor-pointer"
+              className="w-fit h-fit p-2 transform duration-500 rounded-full border border-white hover:bg-white hover:text-slate-950 cursor-pointer"
             >
-              <ArrowTopRightIcon />
-            </Link>
+              <ArrowTopRightIcon className="text-white hover:text-slate-950"/>
+            </Link>}
           </div>
-          <div className="text-xs text-white w-full pb-2">{products}</div>
+          <div className="text-xs text-white w-full pb-2">{post_description}</div>
         </motion.div>
       </div>
     </motion.div>

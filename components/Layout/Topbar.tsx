@@ -6,8 +6,9 @@ import { ModeToggle } from "../../components/ui/ThemeToggler";
 import { QueryForm } from "../QueryForms";
 import NugenLogoBlack from "../icons/png/nugen-logo-black.png";
 import NugenLogoWhite from "../icons/png/nugen-logo-white.png";
-
-const Topbar = () => {
+import { PageProps } from "../homepage/HeroSection";
+const Topbar :React.FC<any>= ({props}) => {
+  const {logo}=props
   const { resolvedTheme } = useTheme();
 
   return (
@@ -21,10 +22,10 @@ const Topbar = () => {
           className="origin-top-left fixed bottom-0 left-0 w-[102%] bg-primary h-2"
         />
       </div>
-      <div className="flex justify-between py-4 px-4 md:px-32">
+      <div className="flex justify-between py-2 px-4 md:px-32">
         <div className="w-6/12">
           <Image
-            src={resolvedTheme === "dark" ? NugenLogoWhite : NugenLogoBlack}
+            src={resolvedTheme === "dark" ? logo : logo}
             alt=""
             height={80}
             width={200}

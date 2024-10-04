@@ -7,7 +7,25 @@ import { QueryForm } from "../QueryForms";
 import Footer from "../Layout/Footer";
 import gsap from "gsap";
 
-const SubscribeSection = () => {
+interface ContactUsType {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  contact_title: string,
+  contact_description: string,
+  contact_location_title: string,
+  contact_location: string,
+  contact_us_title: string,
+  mobile_number: string,
+  email_title: string,
+  email_id: string,
+  map_view: any
+}
+interface ContactUsPropsType {
+  props: ContactUsType
+}
+const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
+  const { header_title, header_description, animated_title, contact_location_title, contact_location, mobile_number, email_id, email_title,contact_us_title } = props
   const followHeadingRef = useRef(null);
   const sectionBody = useRef(null);
   let matchMediaToggler = gsap.matchMedia();
@@ -42,7 +60,7 @@ const SubscribeSection = () => {
         >
           <div>
             <div className="w-full lg:absolute lg:bottom-0 lg:left-[7%] lg:-rotate-90 origin-bottom-left">
-              <Marquee title="contact us" />
+              <Marquee title={animated_title} />
             </div>
           </div>
           <div className="flex w-full flex-col justify-start items-start h-[85%] lg:col-span-11 gap-0 lg:gap-12 p-4">
@@ -51,11 +69,11 @@ const SubscribeSection = () => {
               ref={followHeadingRef}
             >
               <h3 className="uppercase text-2xl font-bold text-primary w-fit whitespace-nowrap">
-                Get in Touch with Us Today
+                {header_title}
               </h3>
               <div className="w-full lg:w-12 border-b border-foreground hidden lg:block" />
               <p className="w-auto flex-wrap text-foreground/80">
-                Reach Out for Inquiries, Support, or Collaborations
+                {header_description}
               </p>
             </div>
             <div className="w-full lg:w-[90%] h-full" ref={sectionBody}>
@@ -65,24 +83,23 @@ const SubscribeSection = () => {
                     <div className="basis-7/12">
                       <div className="h-auto mb-6">
                         <div>
-                          <div className="text-2xl font-bold">Location</div>
+                          <div className="text-2xl font-bold">{contact_location_title}</div>
                           <p className="text-foreground/80 mt-2">
-                            C-196/A, Times Square Building Ground Floor, Sector
-                            74, SAS Nagar, Mohali, Punjab, 160071
+                            {contact_location}
                           </p>
                         </div>
                       </div>
                       <div className="flex">
                         <div className="basis-1/2">
-                          <div className="text-2xl font-bold">Contact</div>
+                          <div className="text-2xl font-bold">{contact_us_title}</div>
                           <p className="text-foreground/80 mt-2 ">
-                            +91 78148 52571
+                            {mobile_number}
                           </p>
                         </div>
                         <div className="basis-1/2">
-                          <div className="text-2xl font-bold">Email Id</div>
+                          <div className="text-2xl font-bold">{email_title}</div>
                           <p className="text-foreground/80 mt-2">
-                            info@nugeninfo.com
+                            {email_id}
                           </p>
                         </div>
                       </div>

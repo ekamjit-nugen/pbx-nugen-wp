@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+'use client'
+import React, { useLayoutEffect, useRef, useState } from "react";
 import HeroImageSVG from "../../components/svgContainer/HeroImageSVG";
 import HeroImageSVGRight from "../../components/svgContainer/HeroImageSVGRight";
 import { Button } from "../../components/ui";
@@ -12,11 +12,22 @@ import HashIcon from "../../components/icons/png/hash-icon.png";
 import MobileIcon from "../../components/icons/png/mobile-icon.png";
 import ToolIcon from "../../components/icons/png/tool-icon.png";
 import Image from "next/image";
-import {useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import useSize from "../windowSize";
-
-const HeroSection = () => {
+interface PageContent {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  url: string,
+  logo: any,
+  url_text: string,
+}
+export interface PageProps {
+  props: PageContent
+}
+const HeroSection: React.FC<PageProps> = ({ props }) => {
+  const { header_title,header_description,url,url_text,logo } = props
   const breakpoint = useBreakpoint();
   const router = useRouter();
   let matchMediaToggler = gsap.matchMedia();
@@ -106,11 +117,11 @@ const HeroSection = () => {
     movedAnimation1.play();
 
     setSvgWidth(window.innerWidth - 0.4);
-    
+
   }, []);
 
   function handleContactUs() {
-    
+
     gsap.fromTo(
       ".item",
       {
@@ -123,7 +134,7 @@ const HeroSection = () => {
     );
 
     setTimeout(() => {
-      router.push("/subscribe-section")
+      router.push(url)
     }, 1500);
 
   }
@@ -132,7 +143,7 @@ const HeroSection = () => {
   // console.log("window",window.innerWidth)
 
   return (
-    <div className="relative lg:h-screen bg-background">
+    <div className="relative lg:h-screen bg-background -my-20">
       <section
         className="h-screen lg:h-screen flex justify-center items-center w-screen hero-section-ref relative lg:fixed z-0"
         id="hero-section-ref"
@@ -226,14 +237,14 @@ const HeroSection = () => {
           </div>
         </div> */}
 
-        <div className="w-full mt-0 px-4 md:px-32 flex flex-col lg:flex-row">
+        <div className="w-full -mt-20 px-4 md:px-32 flex flex-col lg:flex-row">
           <div className="flex w-full  lg:w-1/2 items-center relative top-[45rem] bottom-[43rem] lg:top-24 left-12">
             <div className="w-[90%] sm:w-1/2 md:w-full lg:w-4/6 ">
               {/* section 1 */}
               {/* contact us comp */}
               <div className=" lg:w-auto h-auto col-span-3 relative top-60 right-6 pl-8 md:pl-20 pt-12 lg:pt-4 z-50">
                 <div className="text-xl md:text-2xl xl:text-4xl font-extrabold current-heading flex flex-wrap gap-x-1 lg:gap-x-3">
-                  {"INNOVATIVE-SOLUTIONS-FOR-A-DIGITAL-WORLD"
+                  {header_title
                     .split("-")
                     .map((letter, index) => (
                       <AnimatedHeading
@@ -245,7 +256,7 @@ const HeroSection = () => {
                     ))}
                 </div>
                 <p ref={splitTextLines}>
-                  Your one-stop-shop for all your web services needs.
+                  {header_description}
                 </p>
                 <div
                   className="mt-4 md:mt-6 lg:mt-10  z-[1000]"
@@ -255,7 +266,7 @@ const HeroSection = () => {
                     variant="default"
                     onClick={() => handleContactUs()}
                   >
-                    Contact Us
+                    {url_text}
                     <ArrowTopRightIcon />
                   </Button>
                 </div>
@@ -269,11 +280,11 @@ const HeroSection = () => {
             {/* background ring */}
             <div className="w-[350px] md:w-[600px] lg:w-[540px] relative right-[23rem] md:right-[43rem] lg:right-[70%] bottom-16 lg:bottom-20 ">
               {/* 350 540 */}
-              <HeroImageSVG width={size && size < 800 ? "350" : "450"}/>
+              <HeroImageSVG width={size && size < 800 ? "350" : "450"} />
             </div>
           </div>
 
-          <div className={`w-[70%] sm:w-[55%] md:w-[60%] lg:w-1/2 relative flex items-center left-16  ${size&&size < 769 && size > 425 ? "left-48" : "left-[20%]"} lg:left-52 bottom-[43rem] lg:contents`}>
+          <div className={`w-[70%] sm:w-[55%] md:w-[60%] lg:w-1/2 relative flex items-center left-16  ${size && size < 769 && size > 425 ? "left-48" : "left-[20%]"} lg:left-52 bottom-[43rem] lg:contents`}>
             <HeroImageSVGRight />
           </div>
         </div>

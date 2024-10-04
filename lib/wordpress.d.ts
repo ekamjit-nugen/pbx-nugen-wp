@@ -42,6 +42,7 @@ export type Post = {
   meta: any[];
   categories: number[];
   tags: number[];
+  acf:any
 };
 
 export type Category = {
@@ -99,6 +100,7 @@ export type Page = {
   ping_status: "open" | "closed";
   template: string;
   meta: any[];
+  acf:any
 };
 
 export type Author = {
@@ -146,6 +148,7 @@ export type BlockType = {
   script: string;
   editor_style: string;
   style: string;
+  acf:any
 };
 
 export type EditorBlock = {
