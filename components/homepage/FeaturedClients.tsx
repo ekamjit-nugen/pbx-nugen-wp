@@ -98,21 +98,21 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({ className, props,page
   return (
     <section
       id="section-featured-ref"
-      className="trigger w-[100%] lg:h-screen h-full section-featured-ref lg:overflow-hidden lg:p-8 relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background pb-12"
+      className="trigger w-[100%] lg:h-screen h-full section-featured-ref lg:overflow-hidden relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background pb-12"
     >
       <div
         className={`lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full ${className}`}
       >
-        <div className="pt-8 pb-4 w-full relative lg:absolute lg:bottom-0 lg:left-[7%] lg:-rotate-90 origin-bottom-left">
+        <div className="pt-8 pb-4 w-full relative lg:absolute lg:bottom-0 lg:left-[8%] lg:-rotate-90 origin-bottom-left">
           <Marquee title={pageContent?.animated_title||""} />
         </div>
         <div />
         <div className="relaitve grid grid-cols-1 h-[85%] lg:col-span-11">
           <div
             ref={followHeadingRef}
-            className="w-full md:w-7/12 px-10 lg:p-4 pt-8 pb-0 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center"
+            className="w-full md:w-3/4 px-10  pb-0 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center"
           >
-            <h3 className="uppercase text-lg lg:text-2xl font-bold text-primary w-10/12 lg:w-6/12">
+            <h3 className="uppercase text-lg lg:text-2xl font-bold text-primary">
               {pageContent?.header_title}
             </h3>
             <div className="w-12 border-b border-foreground hidden lg:block" />
@@ -120,7 +120,7 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({ className, props,page
               {pageContent?.header_description}
             </p>
           </div>
-          <div className="h-auto relative parent lg:my-6 py-6">
+          <div className="h-auto relative parent lg:my-2 py-2">
             <div
               ref={ServiceCardsRef}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:justify-center lg:justify-between card gap-12 items-center px-10 lg:px-4 md:px-10"
@@ -193,11 +193,11 @@ const LogoCard: React.FC<LogoCardType> = ({ props }) => {
         <>
           <div key={index}>
             <div
-              className="flex flex-col justify-start relative cards gap-4 w-full"
+              className="flex flex-col justify-start relative cards  w-full"
               key={index}
               id={`card-${index}`}
             >
-              <div className="flex flex-col gap-4 min-h-fit h-full lg:h-[240px]">
+              <div className="flex flex-col min-h-fit h-full lg:h-[240px]">
                 <div className="w-1/2 lg:w-10/12 h-full md:h-32 lg:w-[200px] min-h-[145px] lg:h-fit">
                   {card?.post_image && (
                     <Image

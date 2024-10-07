@@ -63,21 +63,21 @@ const ServiceCard = (props: any) => {
                 <ArrowIcon />
               </div>
               <div
-                className="md:text-9xl text-7xl font-extrabold uppercase w-full flex items-start justify-end grayscale group-hover:grayscale-0 mr-4"
+                className="md:text-9xl text-7xl font-extrabold uppercase w-full flex items-center justify-center grayscale group-hover:grayscale-0 mx-[auto]"
                 ref={iconRef}
               >
-                <Image src={props.icon} alt="" height={200} width={200} />
+                <Image src={props.post_image} alt="" height={200} width={200} />
               </div>
             </div>
             <div className="flex flex-col justify-end gap-3 p-4">
               <h2 className="md:text-lg text-md font-bold uppercase text-foreground/80 text-left ">
-                {props.title}
+                {props.top_title}
               </h2>
               <p className=" text-left text-foreground md:text-3xl text-2xl font-extrabold uppercase group-hover:underline group-hover:underline-offset-8">
-                {props.subTitle}
+                {props.post_title}
               </p>
               <p className="text-foreground/30 line-clamp-3 text-left ">
-                {props.desc}
+                {props.post_description}
               </p>
             </div>
           </div>
@@ -87,18 +87,19 @@ const ServiceCard = (props: any) => {
       <SheetContent>
         <SheetDescription>
           <div className="relative overflow-y-scroll md:overflow-y-visible h-[85vh]">
-            <div className="w-auto h-fit md:absolute -top-32 -left-20">
+            <div className="w-auto h-fit md:absolute -top-10 -left-20">
               <Image
-                src={props.icon}
+                src={props.post_image}
                 className="object-cover w-28 mx-auto md:w-[200px]"
                 alt="image"
                 width={200}
+                height={200}
               />
             </div>
-            <div className="flex flex-col pt-8 lg:pt-16 px-0 items-start md:my-3 gap-4">
-              {props.innerContent.map(
+            <div className="flex flex-col pt-8 lg:pt-40  px-0 items-start md:my-3 gap-4">
+               {props.innerContent.map(
                 (
-                  modal: { title: string; subTitle: string; desc: string },
+                  modal: { title: string; subTitle: string; description: string },
                   index: number
                 ) => (
                   <div key={index} className="flex flex-col gap-y-2">
@@ -109,14 +110,14 @@ const ServiceCard = (props: any) => {
                       {modal.subTitle}
                     </h3>
                     <div className="text-[10px] text-foreground/50 text-start leading-6">
-                      {modal.desc}
+                      {modal?.description}
                     </div>
                   </div>
                 )
-              )}
+              )} 
             </div>
             <div className="grid grid-cols-3 gap-4 items-center justify-start mt-5 h-12">
-              {props?.icons?.map((val: any, i: number) => (
+              {/* {props?.icons?.map((val: any, i: number) => (
                 <div
                   key={i}
                   className={cn(
@@ -125,7 +126,7 @@ const ServiceCard = (props: any) => {
                 >
                   {val}
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         </SheetDescription>

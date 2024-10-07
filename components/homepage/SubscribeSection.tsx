@@ -6,7 +6,6 @@ import Marquee from "../ui/Marquee";
 import { QueryForm } from "../QueryForms";
 import Footer from "../Layout/Footer";
 import gsap from "gsap";
-
 interface ContactUsType {
   header_title: string,
   header_description: string,
@@ -19,13 +18,23 @@ interface ContactUsType {
   mobile_number: string,
   email_title: string,
   email_id: string,
-  map_view: any
+  map_view: any,
+  contact_image: string,
+  footer_logo: string,
+  footer_description: string,
+  follow_us: string,
+  'facebook-url': string,
+  'instagram-url': string,
+  'linkedin-url': string,
+  twitter_url: string,
+  email_url: string,
+  upwork_url: string
 }
 interface ContactUsPropsType {
   props: ContactUsType
 }
 const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
-  const { header_title, header_description, animated_title, contact_location_title, contact_location, mobile_number, email_id, email_title,contact_us_title } = props
+  const { header_title, header_description, animated_title, contact_location_title, contact_location, mobile_number, email_id, email_title, contact_us_title } = props
   const followHeadingRef = useRef(null);
   const sectionBody = useRef(null);
   let matchMediaToggler = gsap.matchMedia();
@@ -33,6 +42,20 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
     delay: 1.2,
   });
 
+  const footerProps = {
+    logo: props?.footer_logo,
+    socialMedia: {
+      facebook: props["facebook-url"],
+      instagram: props["instagram-url"],
+      twitter: props?.twitter_url,
+      linkedin: props["linkedin-url"],
+      email: props?.email_id,
+      upwork: props?.upwork_url,
+      phone: props?.mobile_number
+    },
+    description: props?.footer_description,
+    mediaTitle: props?.follow_us
+  }
   useLayoutEffect(() => {
     matchMediaToggler.add("(min-width: 1040px)", () => {
       timeline.fromTo(
@@ -53,7 +76,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
     <>
       <section
         id="subscribe-section-ref"
-        className="trigger w-screen lg:h-screen h-full section-featured-ref overflow-hidden pt-5 lg:p-8 relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background lg:shadow-2xl xl:overflow-auto"
+        className="trigger w-screen lg:h-screen h-full section-featured-ref overflow-hidden  relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background lg:shadow-2xl xl:overflow-auto"
       >
         <div
           className={`grid grid-cols-1 lg:grid-cols-12 relative items-start w-full h-[90%] lg:h-screen xl:h-full`}
@@ -63,7 +86,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
               <Marquee title={animated_title} />
             </div>
           </div>
-          <div className="flex w-full flex-col justify-start items-start h-[85%] lg:col-span-11 gap-0 lg:gap-12 p-4">
+          <div className="flex w-full flex-col justify-start items-start h-[85%] lg:col-span-11 gap-0  p-4">
             <div
               className="w-full lg:w-7/12 py-4 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center p-4"
               ref={followHeadingRef}
@@ -130,7 +153,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer props={footerProps} />
       </section>
     </>
   );

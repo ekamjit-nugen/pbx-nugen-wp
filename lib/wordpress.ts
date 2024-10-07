@@ -33,7 +33,7 @@ export async function getAllPosts(filterParams?: {
   const url = getUrl("/wp-json/wp/v2/posts", { author: filterParams?.author, tags: filterParams?.tag, categories: filterParams?.category });
   const response = await fetch(url);
   const posts: Post[] = await response.json();
-  console.log(posts, "post**")
+  // console.log(posts, "post**")
   return posts;
 }
 

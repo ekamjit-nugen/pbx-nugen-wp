@@ -25,8 +25,9 @@ interface PageContent {
 }
 export interface PageProps {
   props: PageContent
+  svg:any
 }
-const HeroSection: React.FC<PageProps> = ({ props }) => {
+const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
   const { header_title,header_description,url,url_text,logo } = props
   const breakpoint = useBreakpoint();
   const router = useRouter();
@@ -285,7 +286,7 @@ const HeroSection: React.FC<PageProps> = ({ props }) => {
           </div>
 
           <div className={`w-[70%] sm:w-[55%] md:w-[60%] lg:w-1/2 relative flex items-center left-16  ${size && size < 769 && size > 425 ? "left-48" : "left-[20%]"} lg:left-52 bottom-[43rem] lg:contents`}>
-            <HeroImageSVGRight />
+            <HeroImageSVGRight svg={svg}/>
           </div>
         </div>
       </section>

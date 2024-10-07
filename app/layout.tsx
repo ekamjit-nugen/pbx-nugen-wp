@@ -20,6 +20,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/Navbar";
+import { getAllCategories, getAllPosts } from "@/lib/wordpress";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -36,11 +37,15 @@ export const metadata: Metadata = {
 // Revalidate content every hour
 export const revalidate = 3600;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const categories = await getAllCategories()
+  const navBarCategory = categories.find((cat) => cat.name === "nav-bar") || { id: "1" };
+  const posts = await getAllPosts({ category: navBarCategory?.id.toString() });
+  const data = posts.map((data) => { return data.acf })
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -56,7 +61,7 @@ export default function RootLayout({
           {/* <Nav /> */}
           <Main>{children}</Main>
           {/* <Footer /> */}
-          <NavBar/>
+          <NavBar menu={data}/>
         </ThemeProvider>
         <Analytics />
       </body>

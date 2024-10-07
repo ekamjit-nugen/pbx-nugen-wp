@@ -19,8 +19,20 @@ import useBreakpoint from "../hooks/useBreakpoint";
 
 import { usePathname, useRouter } from "next/navigation";
 // gsap.registerPlugin(ScrollToPlugin, ScrollSmoother);
-
-const NavBar = () => {
+interface NavBarProps {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  post_title: string,
+  post_image: string,
+  post_description: string,
+  title: string,
+  url: string
+}
+interface NavBarPropsType {
+  menu: NavBarProps[]
+}
+const NavBar: React.FC<NavBarPropsType> = ({ menu }) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -63,6 +75,7 @@ const NavBar = () => {
             id="nav"
           >
             <NavbarItems
+              menu={menu}
               btnStatus={btnStatus}
               onClick={(e) => handleNavigation(e)}
             />
@@ -93,6 +106,7 @@ const NavBar = () => {
               </DrawerHeader>
               <div className="flex flex-col gap-4 px-4 pb-8">
                 <NavbarItems
+                  menu={menu}
                   btnStatus={btnStatus}
                   onClick={(e) => handleNavigation(e)}
                 />
@@ -109,14 +123,30 @@ export default NavBar;
 
 const NavbarItems = ({
   btnStatus,
-  onClick
+  onClick,
+  menu
 }: {
   btnStatus: boolean;
   onClick: (e: string) => void;
+  menu: any
 }) => {
   return (
     <>
-      <Button
+      {
+        menu?.map((items:any) => {
+          return <>
+            <Button
+              className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
+              variant="ghost"
+              onClick={() => onClick(`${items?.url}`)}
+              disabled={btnStatus}
+            >
+              {items?.title}
+            </Button>
+          </>
+        })
+      }
+      {/* <Button
         className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
         variant="ghost"
         onClick={() => onClick("/")}
@@ -171,7 +201,7 @@ const NavbarItems = ({
         disabled={btnStatus}
       >
         Contact Us
-      </Button>
+      </Button> */}
     </>
   );
 };

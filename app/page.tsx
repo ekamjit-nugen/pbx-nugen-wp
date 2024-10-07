@@ -136,12 +136,17 @@ import Layout from "../components/Layout";
 import ScreenAnimation from "../components/ui/ThreeDMenu";
 import Topbar from "../components/Layout/Topbar";
 import NavBar from "../components/Navbar";
-import { getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
+import { getAllCategories, getAllPosts, getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
+import { imageLink } from "./featured-client/page";
 const Home = async() => {
   const PageContent= await getPageBySlug('home')
   const logoLink=await getFeaturedMediaById(PageContent?.acf?.logo)
   const pageContents={logo:logoLink?.source_url}
-
+  const categories = await getAllCategories()
+  const navBarCategory = categories.find((cat) => cat.name === "nav-bar") || { id: "1" };
+  const posts = await getAllPosts({ category: navBarCategory?.id.toString() });
+  const data = posts.map((data) => { return data.acf })
+  const svgValue=await imageLink(PageContent?.acf?.svg)
   return (
     <Layout>
       <div
@@ -149,9 +154,9 @@ const Home = async() => {
         className="bg-background dark:bg-slate-950 relative h-screen overflow-hidden"
       >
         <Topbar props={pageContents}/>
-        <HeroSection props={PageContent?.acf}/>
+        <HeroSection props={PageContent?.acf} svg={svgValue}/>
         <ScreenAnimation />
-        <NavBar />
+        <NavBar menu={data}/>
 
       </div>
     </Layout>
