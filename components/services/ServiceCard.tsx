@@ -8,6 +8,7 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const ServiceCard = (props: any) => {
   const iconRef = useRef(null);
@@ -66,7 +67,13 @@ const ServiceCard = (props: any) => {
                 className="md:text-9xl text-7xl font-extrabold uppercase w-full flex items-center justify-center grayscale group-hover:grayscale-0 mx-[auto]"
                 ref={iconRef}
               >
+                {props?.url ?
+                <Link href={props?.url}>
                 <Image src={props.post_image} alt="" height={200} width={200} />
+                </Link>
+                :
+                <Image src={props.post_image} alt="" height={200} width={200} />
+                }
               </div>
             </div>
             <div className="flex flex-col justify-end gap-3 p-4">
