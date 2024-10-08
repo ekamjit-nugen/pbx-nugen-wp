@@ -7,19 +7,11 @@ import {
   SheetDescription,
   SheetTrigger,
 } from "../ui/sheet";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 const ServiceCard = (props: any) => {
   const iconRef = useRef(null);
   const movedAnimation = gsap.timeline().pause();
-
-  // function calculateOpposite(number: number): number {
-  //   if (number >= 0 && number <= 10) {
-  //     return 10 - number;
-  //   } else return 0;
-  // }
-
   useLayoutEffect(() => {
     movedAnimation.fromTo(
       iconRef.current,

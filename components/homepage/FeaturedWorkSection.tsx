@@ -1,17 +1,18 @@
 'use client'
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Marquee from "../ui/Marquee";
 import Image from "next/image";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import gsap from "gsap";
+import { Button } from "../ui";
 
-interface ImagePropsType {
+interface ImageContentType {
   post_title: any,
   post_image: any,
   post_description: any
-  url:any
+  url: any
 }
 interface PageContent {
   header_title?: string,
@@ -23,16 +24,31 @@ interface PageContent {
   trusted_company?: string
 }
 interface FeaturedWorkSectionProps {
-  props: ImagePropsType[],
-  pageContent: PageContent
+  pbxContent: ImageContentType[],
+  nugenData: PageContent
+  pbxData: PageContent
+  nugenContent: ImageContentType[]
 }
-const FeaturedWorkSection:React.FC<FeaturedWorkSectionProps> = ({props,pageContent}) => {
+const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, nugenContent, nugenData,pbxData }) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
   const timeline = gsap.timeline({
     delay: 1.2,
   });
   let matchMediaToggler = gsap.matchMedia();
+  const [select, setSelect] = useState(true)  
+  const [Data, setData] = useState<any>([])
+  const [pageContent,setPageContent]=useState<any>({})
+
+  useEffect(() => {
+    if (select) {
+      setData(pbxContent)
+      setPageContent(pbxData)
+    } else {
+      setData(nugenContent)
+      setPageContent(nugenData)
+    }
+  }, [select])
 
   useLayoutEffect(() => {
     matchMediaToggler.add("(max-width: 1023px)", () => {
@@ -91,18 +107,18 @@ const FeaturedWorkSection:React.FC<FeaturedWorkSectionProps> = ({props,pageConte
       className="trigger w-screen lg:h-screen h-full section-featured-ref overflow-hidden lg:p-8 relative lg:fixed top-0 left-0 z-10 bg-background shadow-2xl"
     >
       <div
-        className={`lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full`}
+        className={` flex flex-col justify-center p-2 lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full`}
       >
         <div className="w-full pt-8 pb-4 lg:absolute lg:bottom-0 lg:left-[8%] lg:-rotate-90 origin-bottom-left">
-          <Marquee title={pageContent?.animated_title||""} />
+          <Marquee title={pageContent?.animated_title || ""} />
         </div>
         <div />
         <div className="flex w-full flex-col justify-center lg:justify-between gap-12 h-[85%] col-span-11 mb-full pb-32">
           <div
             ref={followHeadingRef}
-            className="w-full md:w-7/12 p-4 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center"
+            className="w-full md:w-4/5 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center lg:-ml-16"
           >
-            <h3 className="uppercase text-2xl font-bold text-primary w-10/12 lg:w-6/12">
+            <h3 className="uppercase text-2xl font-bold text-primary w-10/12 lg:w-6/12 ">
               {pageContent?.header_title}
             </h3>
             {pageContent?.header_description && <div className="w-12 border-b border-foreground hidden lg:block" />}
@@ -110,11 +126,27 @@ const FeaturedWorkSection:React.FC<FeaturedWorkSectionProps> = ({props,pageConte
               {pageContent?.header_description}
             </p>}
           </div>
+          <div className="flex gap-4 justify-center">
+            <Button
+              variant="default"
+              onClick={() => { setSelect(true) }}
+              className="w-fit"
+            >
+              Wireless Technologies
+            </Button>
+            <Button
+              variant="default"
+              onClick={() => { setSelect(false) }}
+              className="w-fit"
+            >
+              IT Services
+            </Button>
+          </div>
           <div
             ref={ServiceCardsRef}
             className="px-4 md:px-20 lg:px-12 w-full lg:h-[600px] flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "
           >
-            {props.map((value, index) => (
+            {Data.map((value: any, index: any) => (
               <ImageCard card={value} key={`${value.post_title}-${index}`} />
             ))}
           </div>
@@ -127,11 +159,11 @@ const FeaturedWorkSection:React.FC<FeaturedWorkSectionProps> = ({props,pageConte
 export default FeaturedWorkSection;
 
 type ImageCardPropType = {
-  card: ImagePropsType
+  card: ImageContentType
 };
 
 const ImageCard = ({ card }: ImageCardPropType) => {
-  const { post_title,post_description,post_image, url } = card;
+  const { post_title, post_description, post_image, url } = card;
   const [isHovered, setHovered] = useState(false);
 
   return (
@@ -151,18 +183,18 @@ const ImageCard = ({ card }: ImageCardPropType) => {
           />
         </div>
         <motion.div
-          className="flex flex-col h-[25%]  md:h-1/3 lg:h-[40%]  justify-between items-center z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
+          className="flex flex-col h-[25%]  md:h-1/3 lg:h-[40%] z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
           initial={false}
           animate={{ y: isHovered ? 0 : 90 }}
         >
-          <div className="text-white flex justify-between h-1/2">
-            <div className="text-xl font-semibold">{post_title}</div>
-            {url&&<Link
-              href={url||""}
+          <div className="text-white flex justify-between h-1/2 w-full">
+            <div className="text-xl font-semibold ">{post_title}</div>
+            {url && <Link
+              href={url || ""}
               target="_blank"
               className="w-fit h-fit p-2 transform duration-500 rounded-full border border-white hover:bg-white hover:text-slate-950 cursor-pointer"
             >
-              <ArrowTopRightIcon className="text-white hover:text-slate-950"/>
+              <ArrowTopRightIcon className="text-white hover:text-slate-950" />
             </Link>}
           </div>
           <div className="text-xs text-white w-full pb-2">{post_description}</div>
