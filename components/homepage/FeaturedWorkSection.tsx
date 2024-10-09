@@ -28,20 +28,21 @@ interface FeaturedWorkSectionProps {
   nugenData: PageContent
   pbxData: PageContent
   nugenContent: ImageContentType[]
+  buttonData: any
 }
-const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, nugenContent, nugenData,pbxData }) => {
+const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, nugenContent, nugenData, pbxData, buttonData }) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
   const timeline = gsap.timeline({
     delay: 1.2,
   });
   let matchMediaToggler = gsap.matchMedia();
-  const [select, setSelect] = useState(true)  
+  const [select, setSelect] = useState(buttonData?.length >= 2 ? "pbx" : "it")
   const [Data, setData] = useState<any>([])
-  const [pageContent,setPageContent]=useState<any>({})
+  const [pageContent, setPageContent] = useState<any>({})
 
   useEffect(() => {
-    if (select) {
+    if (select === "pbx") {
       setData(pbxContent)
       setPageContent(pbxData)
     } else {
@@ -126,22 +127,19 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
               {pageContent?.header_description}
             </p>}
           </div>
-          <div className="flex gap-4 justify-center">
-            <Button
-              variant="default"
-              onClick={() => { setSelect(true) }}
-              className="w-fit"
-            >
-              Wireless Technologies
-            </Button>
-            <Button
-              variant="default"
-              onClick={() => { setSelect(false) }}
-              className="w-fit"
-            >
-              IT Services
-            </Button>
-          </div>
+          {buttonData?.length >= 2 && <div className="flex gap-4 justify-center">
+            {buttonData?.map((value: any) => {
+              return <>
+                <Button
+                  variant="default"
+                  onClick={() => { setSelect(value?.button_value) }}
+                  className="w-fit"
+                >
+                  {value?.button_title}
+                </Button>
+              </>
+            })}
+          </div>}
           <div
             ref={ServiceCardsRef}
             className="px-4 md:px-20 lg:px-12 w-full lg:h-[600px] flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "

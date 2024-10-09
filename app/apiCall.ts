@@ -28,3 +28,10 @@ export const ServicesData = async (category:string) => {
     return imagessss;
 }
 
+export const ButtonData = async (category:string) => {
+    const workSection = await getAllCategories()
+    const clientCategory = workSection.find((cat) => cat.name === category) || { id: "1" };
+    const posts = await getAllPosts({ category: clientCategory?.id.toString() });
+    const data = posts.map((data) => { return data.acf })
+    return data
+}

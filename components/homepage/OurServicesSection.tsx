@@ -25,19 +25,20 @@ interface ServiceClientsProps {
   pbxContent: pageContentType,
   nugenData: ServicePropsType[],
   nugenContent: pageContentType,
+  buttonData: any
 }
-const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData, pbxContent, nugenContent, nugenData }) => {
+const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData, pbxContent, nugenContent, nugenData, buttonData }) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
   const timeline = gsap.timeline({
     delay: 1.2,
   });
   let matchMediaToggler = gsap.matchMedia();
-  const [select, setSelect] = useState(true)
+  const [select, setSelect] = useState(buttonData?.length >= 2 ? "pbx" : "it")
   const [data, setData] = useState<any>([])
   const [pageContent, setPageContent] = useState<any>({})
   useEffect(() => {
-    if (select) {
+    if (select === "pbx") {
       setData(pbxData)
       setPageContent(pbxContent)
     } else {
@@ -121,22 +122,19 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
               {pageContent?.header_description}
             </p>
           </div>
-          <div className="flex gap-4 justify-center pt-4">
-            <Button
-              variant="default"
-              onClick={() => { setSelect(true) }}
-              className="w-fit"
-            >
-              Wireless Technologies
-            </Button>
-            <Button
-              variant="default"
-              onClick={() => { setSelect(false) }}
-              className="w-fit"
-            >
-              IT Services
-            </Button>
-          </div>
+          {buttonData?.length >= 2 && <div className="flex gap-4 justify-center">
+            {buttonData?.map((value: any) => {
+              return <>
+                <Button
+                  variant="default"
+                  onClick={() => { setSelect(value?.button_value) }}
+                  className="w-fit"
+                >
+                  {value?.button_title}
+                </Button>
+              </>
+            })}
+          </div>}
         </div>
         <div className="lg:absolute lg:top-[15%] lg:left-1/2 w-[90%] lg:ml-10">
           <div
