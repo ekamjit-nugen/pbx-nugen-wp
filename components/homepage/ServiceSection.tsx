@@ -6,11 +6,19 @@ import Marquee from "../ui/Marquee";
 import Image from "next/image";
 import MacGirl from "../../image/macgirl.png";
 import Contact from "../../image/contact.png";
-
+import image from '../../image/telecom-1.2621f6fcf0b917cc2ac3.jpg'
+interface ServiceContentType{
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  button_value: string,
+  hr_email: string
+}
 interface ServiceClientsProps {
   className?: string;
+  pageContent:ServiceContentType
 }
-const InterestedSection: React.FC<ServiceClientsProps> = ({ className }) => {
+const InterestedSection: React.FC<ServiceClientsProps> = ({ className,pageContent }) => {
   const handleClick = () => {
     const emailAddress = "hr@nugeninfo.com";
     const emailSubject = "Interested to Work with us";
@@ -35,134 +43,134 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({ className }) => {
 
   let matchMediaToggler = gsap.matchMedia();
 
-  useLayoutEffect(() => {
-    matchMediaToggler.add("(max-width: 1023px)", () => {
-      timeline
-        .fromTo(
-          "#first",
-          {
-            x: -100,
-          },
-          {
-            x: 0,
-            stagger: 0.2,
-            ease: "easeInOut",
-            scrollTrigger: {
-              scrub: 1,
-              start: "center 600px",
-              end: "end 300px",
-              trigger: "#triggerTitle-service-small",
-            },
-          }
-        )
-        .fromTo(
-          "#second",
-          {
-            x: 450,
-          },
-          {
-            x: -10,
-            ease: "easeInOut",
-            scrollTrigger: {
-              scrub: 0.2,
-              start: "center 600px",
-              end: "end 300px",
-              trigger: "#triggerTitle-service-small",
-            },
-          }
-        )
-        .fromTo(
-          "#third",
-          {
-            x: -300,
-          },
-          {
-            x: -5,
-            ease: "easeInOut",
-            scrollTrigger: {
-              scrub: 0.2,
-              start: "center 600px",
-              end: "end 300px",
-              trigger: "#triggerTitle-service-small",
-            },
-          }
-        )
-        .fromTo(
-          "#fourth",
-          {
-            x: 100,
-          },
-          {
-            x: 0,
-            scrollTrigger: {
-              scrub: 0.2,
-              start: "center 600px",
-              end: "end 300px",
-              trigger: "#triggerTitle-service-small",
-            },
-            ease: "easeInOut",
-          }
-        );
-    });
-    matchMediaToggler.add("(min-width: 1040px)", () => {
-      timeline
-        .fromTo(
-          "#first",
-          {
-            x: "0%",
-          },
-          {
-            x: "20%",
-            stagger: 0.2,
-            ease: "easeInOut",
-          }
-        )
-        .fromTo(
-          "#second",
-          {
-            x: "50%",
-          },
-          {
-            x: "30%",
-            delay: 0.2,
-            ease: "easeInOut",
-          }
-        )
-        .fromTo(
-          "#third",
-          {
-            x: "0%",
-          },
-          {
-            x: "20%",
-            stagger: 0.2,
-            ease: "easeInOut",
-          }
-        )
-        .fromTo(
-          "#fourth",
-          {
-            x: "50%",
-          },
-          {
-            x: "40%",
-            stagger: 0.2,
-            ease: "easeInOut",
-          }
-        );
-      gsap.fromTo(
-        "#contact",
-        { rotation: 0 },
-        {
-          rotate: 360,
-          duration: 10,
-          repeat: Infinity,
-          ease: "none",
-          transformOrigin: "center center",
-        }
-      );
-    });
-  }, []);
+  // useLayoutEffect(() => {
+  //   matchMediaToggler.add("(max-width: 1023px)", () => {
+  //     timeline
+  //       .fromTo(
+  //         "#first",
+  //         {
+  //           x: -100,
+  //         },
+  //         {
+  //           x: 0,
+  //           stagger: 0.2,
+  //           ease: "easeInOut",
+  //           scrollTrigger: {
+  //             scrub: 1,
+  //             start: "center 600px",
+  //             end: "end 300px",
+  //             trigger: "#triggerTitle-service-small",
+  //           },
+  //         }
+  //       )
+  //       .fromTo(
+  //         "#second",
+  //         {
+  //           x: 450,
+  //         },
+  //         {
+  //           x: -10,
+  //           ease: "easeInOut",
+  //           scrollTrigger: {
+  //             scrub: 0.2,
+  //             start: "center 600px",
+  //             end: "end 300px",
+  //             trigger: "#triggerTitle-service-small",
+  //           },
+  //         }
+  //       )
+  //       .fromTo(
+  //         "#third",
+  //         {
+  //           x: -300,
+  //         },
+  //         {
+  //           x: -5,
+  //           ease: "easeInOut",
+  //           scrollTrigger: {
+  //             scrub: 0.2,
+  //             start: "center 600px",
+  //             end: "end 300px",
+  //             trigger: "#triggerTitle-service-small",
+  //           },
+  //         }
+  //       )
+  //       .fromTo(
+  //         "#fourth",
+  //         {
+  //           x: 100,
+  //         },
+  //         {
+  //           x: 0,
+  //           scrollTrigger: {
+  //             scrub: 0.2,
+  //             start: "center 600px",
+  //             end: "end 300px",
+  //             trigger: "#triggerTitle-service-small",
+  //           },
+  //           ease: "easeInOut",
+  //         }
+  //       );
+  //   });
+  //   matchMediaToggler.add("(min-width: 1040px)", () => {
+  //     timeline
+  //       .fromTo(
+  //         "#first",
+  //         {
+  //           x: "0%",
+  //         },
+  //         {
+  //           x: "20%",
+  //           stagger: 0.2,
+  //           ease: "easeInOut",
+  //         }
+  //       )
+  //       .fromTo(
+  //         "#second",
+  //         {
+  //           x: "50%",
+  //         },
+  //         {
+  //           x: "30%",
+  //           delay: 0.2,
+  //           ease: "easeInOut",
+  //         }
+  //       )
+  //       .fromTo(
+  //         "#third",
+  //         {
+  //           x: "0%",
+  //         },
+  //         {
+  //           x: "20%",
+  //           stagger: 0.2,
+  //           ease: "easeInOut",
+  //         }
+  //       )
+  //       .fromTo(
+  //         "#fourth",
+  //         {
+  //           x: "50%",
+  //         },
+  //         {
+  //           x: "40%",
+  //           stagger: 0.2,
+  //           ease: "easeInOut",
+  //         }
+  //       );
+  //     gsap.fromTo(
+  //       "#contact",
+  //       { rotation: 0 },
+  //       {
+  //         rotate: 360,
+  //         duration: 10,
+  //         repeat: Infinity,
+  //         ease: "none",
+  //         transformOrigin: "center center",
+  //       }
+  //     );
+  //   });
+  // }, []);
 
   return (
     <>
@@ -175,53 +183,28 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({ className }) => {
         >
           <div className="py-4">
             <div className="w-full lg:absolute lg:bottom-0 lg:left-[7%] lg:-rotate-90 origin-bottom-left">
-              <Marquee title="career in nugen" />
+              <Marquee title={pageContent?.animated_title} />
             </div>
           </div>
-          <div className="text-4xl md:text-7xl xl:text-[118px] flex flex-col justify-center items-center lg:block font-extrabold col-span-11 h-full tracking-widest uppercase md:pb-52 md:py-52 pt-52 xl:pt-22 xl:w-[85%]">
-            <h2 id="first">Interested to</h2>
-            <h2 id="second" className="relative">
-              <span>w</span>
-              <span className="relative">
-                o
-                <div className="bg-black flex justify-center items-center rounded-full absolute xl:w-[100px] xl:h-[100px] w-[160px] h-[160px] md:w-[80px] md:h-[80px] -top-[230px] md:-translate-x-[36%] lg:w-[52px] lg:h-[52px] lg:-translate-x-3 xl:translate-x-4 2xl:-translate-x-8 md:left-[15px] md:top-[13px] lg:left-[25px] lg:top-[30px]">
-                  <Image
-                    height={60}
-                    width={60}
-                    alt="pic"
-                    src={MacGirl}
-                    className="absolute xl:h-[70px] xl:w-[70px] h-[100px] w-[100px] md:h-[50px] md:w-[50px] lg:w-[30px] lg:h-[30px]"
-                  />
-                  <Image
-                    height={100}
-                    width={100}
-                    alt="pic"
-                    src={Contact}
-                    className="xl:h-[90px] xl:w-[90px] h-[150px] w-[150px] md:h-[75px] md:w-[73px] lg:w-[50px] lg:h-[50px]"
-                    id="contact"
-                  />
-                </div>
-              </span>
-              <span>rk</span>
-            </h2>
-            <h2 id="third"> with us ?</h2>
-            <div className="" id="fourth">
-              <Button
-                onClick={handleClick}
-                variant="outline"
-                className="transform duration-500 lg:mt-20 my-20 p-6"
-              >
-                hr@nugeninfo.com
-              </Button>
+          <div className="w-screen p-8 pt-32 flex flex-col md:flex-row">
+            <div className="w-full">
+              <div className="text-primary text-3xl lg:text-5xl">
+                {pageContent?.header_title}</div>
+              <div className="pt-8 w-[60%]">{pageContent?.header_description}</div>
+              <div className="flex justify-start" id="">
+                <Button
+                  onClick={handleClick}
+                  variant="outline"
+                  className="transform duration-500 lg:mt-20 my-20 p-6"
+                >
+                  {pageContent?.hr_email}
+                </Button>
+              </div></div>
+            <div className="h-full w-full flex justify-start md:-mt-8 md:-ml-32 md:pr-32 items-center p-2">
+              <Image src={image} alt="image"/>
             </div>
           </div>
-          <div className="absolute top-[620%]" id="trigger-service-section" />
-          <div className="absolute top-[350%]" id="triggerTitle-service" />
         </div>
-        <div
-          className="absolute top-[26%] lg:top-[8%]"
-          id="triggerTitle-service-small"
-        />
       </section>
     </>
   );
