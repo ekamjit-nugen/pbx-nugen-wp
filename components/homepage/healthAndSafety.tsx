@@ -1,28 +1,13 @@
-"use client";
-import React, { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import Marquee from "../../components/ui/Marquee";
+'use client'
+import React, { useEffect } from "react";
+import WorkArrow from "../../image/images/work-arrow.png";
+import circle from "../../image/images/shape-circle.png";
+import square from "../../image/images/shape-square.png";
+import tri from "../../image/images/shape-triangle.png";
+import { motion } from "framer-motion";
 import Image from "next/image";
-interface ImagePropsType {
-  post_title: any;
-  post_image: any;
-  post_description: any;
-}
-interface PageContent {
-  header_title?: string;
-  header_description?: string;
-  animated_title?: string;
-  number_of_clients?: number;
-  world_wide_clients?: string;
-  number_of_company?: number;
-  trusted_company?: string;
-}
-interface FeaturedClientsProps {
-  className?: string;
-  props: ImagePropsType[];
-  pageContent: PageContent;
-}
-export const workData = [
+import hse from '../../image/images/hse.png'
+const workData = [
   {
     color: "#FF366B",
     title: "Management commitment",
@@ -48,27 +33,6 @@ export const workData = [
       </svg>
     ),
   },
-  /*  {
-    color: "#FF366B",
-    title: "Measurement",
-    content:
-      "Random safety audits to sample field compliance and measure safety-related performance ",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="50px"
-        width="42px"
-        enable-background="new 0 0 64 64"
-        viewBox="0 0 64 64"
-        id="measurement-tools">
-        <path
-          d="M40.57,64h-3.92C19.07,64,4.77,49.7,4.77,32.13c0-17.57,14.3-31.87,31.87-31.87h3.92c0.54,0,0.97,0.43,0.97,0.97v61.8
-    C41.54,63.57,41.1,64,40.57,64z M36.64,2.2c-16.5,0-29.93,13.43-29.93,29.93c0,16.5,13.43,29.93,29.93,29.93h2.95V2.2H36.64z"></path>
-        <path d="M33.22 50.64h-2.23c-10.21 0-18.51-8.3-18.51-18.51s8.3-18.51 18.51-18.51h2.23c.54 0 .97.43.97.97v35.08C34.19 50.2 33.75 50.64 33.22 50.64zM30.99 15.56c-9.14 0-16.57 7.43-16.57 16.57 0 9.14 7.43 16.57 16.57 16.57h1.26V15.56H30.99zM58.26 63.77H46.09c-.54 0-.97-.43-.97-.97V.97c0-.54.43-.97.97-.97h12.17c.54 0 .97.43.97.97V62.8C59.23 63.33 58.79 63.77 58.26 63.77zM47.06 61.83h10.23V1.94H47.06V61.83z"></path>
-        <path d="M58.26 7.18h-6.39c-.54 0-.97-.43-.97-.97 0-.54.43-.97.97-.97h6.39c.54 0 .97.43.97.97C59.23 6.74 58.79 7.18 58.26 7.18zM58.26 13.52h-8.33c-.54 0-.97-.43-.97-.97 0-.54.43-.97.97-.97h8.33c.54 0 .97.43.97.97C59.23 13.08 58.79 13.52 58.26 13.52zM58.26 19.85H53.8c-.54 0-.97-.43-.97-.97 0-.54.43-.97.97-.97h4.45c.54 0 .97.43.97.97C59.23 19.42 58.79 19.85 58.26 19.85zM58.26 26.19h-7.36c-.54 0-.97-.43-.97-.97s.43-.97.97-.97h7.36c.54 0 .97.43.97.97S58.79 26.19 58.26 26.19zM58.26 32.53h-8.33c-.54 0-.97-.43-.97-.97 0-.54.43-.97.97-.97h8.33c.54 0 .97.43.97.97C59.23 32.1 58.79 32.53 58.26 32.53zM58.26 38.87h-6.39c-.54 0-.97-.43-.97-.97s.43-.97.97-.97h6.39c.54 0 .97.43.97.97S58.79 38.87 58.26 38.87zM58.26 45.21H53.8c-.54 0-.97-.43-.97-.97s.43-.97.97-.97h4.45c.54 0 .97.43.97.97S58.79 45.21 58.26 45.21zM58.26 51.55h-7.36c-.54 0-.97-.43-.97-.97 0-.54.43-.97.97-.97h7.36c.54 0 .97.43.97.97C59.23 51.11 58.79 51.55 58.26 51.55zM58.26 57.89h-6.39c-.54 0-.97-.43-.97-.97 0-.54.43-.97.97-.97h6.39c.54 0 .97.43.97.97C59.23 57.45 58.79 57.89 58.26 57.89z"></path>
-      </svg>
-    ),
-  }, */
   {
     color: "#FF366B",
     title: "Clear Policies & Expectations",
@@ -230,217 +194,228 @@ export const workData = [
     ),
   },
 ];
-const HealthSafety: React.FC<FeaturedClientsProps> = ({
-  className,
-  props,
-  pageContent,
-}) => {
-  const followHeadingRef = useRef(null);
-  const ServiceCardsRef = useRef(null);
-  const bottomCounterSectionRef = useRef(null);
-  const timeline = gsap.timeline({
-    delay: 1.2,
-  });
-  let matchMediaToggler = gsap.matchMedia({});
-
-  useLayoutEffect(() => {
-    matchMediaToggler.add("(max-width: 1023px)", () => {
-      timeline.fromTo(
-        followHeadingRef.current,
-        {
-          x: "-20%",
-        },
-        {
-          x: "0%",
-          stagger: 0.2,
-          ease: "easeInOut",
-        }
-      );
-      gsap.fromTo(
-        ServiceCardsRef.current,
-        {
-          x: "-12%",
-        },
-        {
-          x: "0%",
-          ease: "easeInOut",
-        }
-      );
-    });
-
-    matchMediaToggler.add("(min-width: 1040px)", () => {
-      timeline
-        .fromTo(
-          followHeadingRef.current,
-          {
-            x: "50%",
-          },
-          {
-            x: "0%",
-            duration: 0.5,
-            ease: "easeInOut",
-          }
-        )
-        .fromTo(
-          ServiceCardsRef.current,
-          {
-            x: "40%",
-          },
-          {
-            x: "0%",
-            duration: 1.5,
-            ease: "easeInOut",
-          }
-        )
-        .fromTo(
-          bottomCounterSectionRef.current,
-          {
-            x: "40%",
-          },
-          {
-            x: "0%",
-            duration: 0.5,
-            ease: "easeInOut",
-          }
-        );
-    });
-  });
-
-  return (
-    <section
-      id="section-featured-ref"
-      className="trigger w-[100%] lg:h-screen h-full section-featured-ref lg:overflow-hidden overflow-auto relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background pb-12"
-    >
-      <div
-        className={`lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full ${className}`}
-      >
-        <div className="pt-8 pb-4 w-full relative lg:absolute lg:bottom-0 lg:left-[8%] lg:-rotate-90 origin-bottom-left">
-          <Marquee title={"HEALTH AND SAFETY"} />
-        </div>
-        <div />
-        <div className="relative grid grid-cols-1 h-[85%] lg:col-span-11 overflow-y-scroll">
-          {/* Enable vertical scroll */}
-          <div
-            ref={followHeadingRef}
-            className="w-full md:w-3/4 px-10 pb-0 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center"
-          >
-            <h3 className="uppercase text-lg lg:text-2xl font-bold text-primary">
-              {"Safety Is Non-Negotiable"}
-            </h3>
-            <div className="w-12 border-b border-foreground hidden lg:block" />
-            <p className="text-foreground/80">
-              {
-                "At PBX, we are committed to the Health and Safety of our Employees, Subcontractors, Clients and the Public"
-              }
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 justify-center items-start w-2/3 ">
-            {workData?.map((value, ind) => (
-              <div
-                className="relative text-center flex flex-col justify-center items-center mt-16 py-6"
-                key={value.title + ind}
-              >
-                <div className="relative">
-                  <div
-                    className={`w-[70px] h-[70px] rounded-full bg-[#FF366B] mb-[35px] circleAnim`}
-                  >
-                    <div className="absolute top-[10%] left-[14%]">
-                      {value.icon}
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h1
-                    ref={followHeadingRef}
-                    className="xl:text-xl lg:text-lg text-lg font-medium mb-[20px] mt-16 py-10"
-                  >
-                    {value.title}
-                  </h1>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div
-            ref={ServiceCardsRef}
-            className="absolute top-10 right-4 hidden md:block"
-          >
-            <img
-              src={
-                "https://www.pbxtechnologies.com/static/media/hse.07a9d6d4b4337b1a15c6.png"
-              }
-              className="md:h-80 h-48"
-              alt="Safety Image"
-            />
-          </div>
-          <h2 className="text-2xl font-bold text-center underline">
-            Our Affiliations
-          </h2>
-          <div className="h-auto relative parent lg:my-2">
-            <div
-              ref={ServiceCardsRef}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:justify-center lg:justify-between card items-center "
-            >
-              <LogoCard props={props} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default HealthSafety;
-
-interface LogoCardType {
-  props: ImagePropsType[];
+interface AffilationType {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  post_title: string,
+  post_image: string,
+  post_description: string,
 }
+interface pageContentType {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  button_value: string,
+  our_affiliations: string,
+  health_img: number
+}
+interface HealthAndSafetyType {
+  pageContent: pageContentType,
+  affilations: AffilationType[]
+}
+const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilations }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [HealthSafetyHome]);
 
-const LogoCard: React.FC<LogoCardType> = ({ props }) => {
-  const cardRef = useRef(null);
-  useLayoutEffect(() => {
-    gsap.fromTo(
-      cardRef.current,
-      {
-        y: -30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power3.out",
-        snap: { textContent: 1 },
-        stagger: 1,
-        scrollTrigger: {
-          start: "center 550px",
-          end: "end",
-          trigger: "#triggerFollowHeading",
-        },
-      }
-    );
-  }, []);
   return (
     <>
-      {props.map((card: ImagePropsType, index) => {
-        return (
+      <section
+        className={`bg-[#080c3c] md:px-12  relative`}>
+        <motion.div
+          className="absolute"
+          style={{
+            position: "absolute",
+            top: "0%",
+            left: "0%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 5,
+          }}
+          initial={{ y: 300 }}
+          animate={{ x: 100, opacity: 1 }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+        >
+          <Image src={circle} alt="image" />
+        </motion.div>
+
+        <motion.div
+          className="absolute"
+          style={{
+            position: "absolute",
+            top: "40%",
+            left: "20%",
+
+            transform: "translate(-50%, -50%)",
+            zIndex: 5,
+          }}
+          animate={{ x: "50%" }}
+          initial={{ x: "-100%", y: "-100%" }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+        ><Image src={square} alt="image" />
+        </motion.div>
+        <motion.div
+          className="absolute"
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "30%",
+
+            transform: "translate(-50%, -50%)",
+            zIndex: 5,
+          }}
+          animate={{ x: "150%" }}
+          initial={{ x: "-150%", y: "-100%" }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+        ><Image src={tri} alt="image" />
+        </motion.div>
+
+        <motion.div
+          className="absolute"
+          style={{
+            position: "absolute",
+            top: "0%",
+            left: "70%",
+            right: "0%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 5,
+          }}
+          initial={{ y: 200, x: -100 }}
+          animate={{ y: 140, opacity: 1 }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+        ><Image src={circle} alt="image" />
+        </motion.div>
+
+        <motion.div
+          className="absolute"
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "70%",
+            right: "0%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 5,
+          }}
+          animate={{ y: "150%" }}
+          initial={{ x: "-150%", y: "-150%" }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+        ><Image src={tri} alt="image" />
+        </motion.div>
+
+        <motion.div
+          className="absolute"
+          style={{
+            position: "absolute",
+            top: "40%",
+            left: "70%",
+            right: "0%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 5,
+          }}
+          animate={{ x: "50%" }}
+          initial={{ x: "-100%", y: "-100%" }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+        ><Image src={square} alt="image" />
+        </motion.div>
+        <div className="flex flex-col lg:flex-row justify-center items-center">
           <div
-            className="flex flex-col justify-start relative cards  w-full"
-            key={card.post_title + index}
-          >
-            <div className="flex flex-col min-h-fit h-full lg:h-[240px]">
-              <div className="w-1/2 lg:w-10/12 h-full md:h-32 min-h-[145px] lg:h-fit">
-                <Image
-                  src={`${card?.post_image}`}
-                  className="object-scale-down w-full h-full "
-                  alt="image"
-                  width={500}
-                  height={500}
-                />
+            className={` text-black relative `}>
+
+            <div className={`mx-auto flex flex-col justify-center max-lg:text-center py-10 rounded-2xl `}>
+              <div className="">
+                <div
+                  className={`text-[22px] md:text-[26px] lg:text-3xl xl:text-[35px]`}>
+                  <div className={`block`}>
+                    <h1 className="xl:text-xl lg:text-lg text-lg py-4 text-white">
+                      {pageContent?.animated_title}
+                    </h1>
+                    <div className="font-serif text-[#ff366b] text-5xl">{pageContent?.header_title}</div>
+                  </div>
+                  <p
+                    className={`block xl:text-xl lg:text-lg text-lg py-4 text-white lg:w-[70%]`}>
+                    {pageContent?.header_description}
+                  </p>
+                  <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start my-10">
+                    {workData?.map((value, ind) => (
+                      <div
+                        className="relative text-center flex flex-col justify-center items-center "
+                        key={ind}>
+                        {workData?.length - 1 === ind ? null : (
+                          <div className="hidden lg:block absolute -top-[30px] left-[100%] -translate-x-1/2 h-[30px] w-[60px]">
+                            <Image src={WorkArrow} alt="arrow work" />
+                          </div>
+                        )}
+                        <div className="relative">
+                          <div
+                            className={`w-[70px] h-[70px] rounded-full  bg-[#FF366B] mb-[35px] circleAnim`}>
+                            <div className="absolute top-[10%] left-[14%]">
+                              {value.icon}
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h1 className="xl:text-xl lg:text-lg text-lg font-medium mb-[20px] text-white">
+                            {value.title}
+                          </h1>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
-        );
-      })}
+          <div className="py-10">
+            <Image src={hse} alt="image"></Image>
+          </div>
+        </div>
+      </section>
+      <div className="py-12">
+        <div className="font-serif text-red-600 text-5xl text-bold p-2 flex justify-center ">{pageContent?.our_affiliations}</div>
+        <div className="flex flex-wrap gap-16 justify-center">
+          {affilations.map((value) => {
+            return (
+              <>
+                <Image src={value?.post_image} alt="image" width={180} height={180} className="object-scale-down" />
+              </>
+            )
+          })
+          }
+        </div>
+      </div>
     </>
   );
 };
+
+export default HealthSafetyHome;
