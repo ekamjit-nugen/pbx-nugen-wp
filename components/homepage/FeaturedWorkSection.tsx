@@ -114,7 +114,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
           <Marquee title={pageContent?.animated_title || ""} />
         </div>
         <div />
-        <div className="flex w-full flex-col justify-center lg:justify-between gap-12 h-[85%] col-span-11 mb-full pb-32">
+        <div className="flex w-full flex-col justify-center lg:justify-between  h-[85%] col-span-11 mb-full pb-32">
           <div
             ref={followHeadingRef}
             className="w-full md:w-4/5 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center lg:-ml-16"
@@ -127,19 +127,13 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
               {pageContent?.header_description}
             </p>}
           </div>
-          {buttonData?.length >= 2 && <div className="flex gap-4 justify-center">
+          {/* {buttonData?.length >= 2 && <div className="flex gap-4 justify-center">
             {buttonData?.map((value: any) => {
               return <>
-                <Button
-                  variant="default"
-                  onClick={() => { setSelect(value?.button_value) }}
-                  className="w-fit"
-                >
-                  {value?.button_title}
-                </Button>
+                <Image src={value?.button_title} alt="image" height={80} width={80} className="object-scale-down" onClick={() => { setSelect(value?.button_value) }}/>
               </>
             })}
-          </div>}
+          </div>} */}
           <div
             ref={ServiceCardsRef}
             className="px-4 md:px-20 lg:px-12 w-full lg:h-[600px] flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "

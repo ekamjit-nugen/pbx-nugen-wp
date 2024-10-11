@@ -33,5 +33,9 @@ export const ButtonData = async (category:string) => {
     const clientCategory = workSection.find((cat) => cat.name === category) || { id: "1" };
     const posts = await getAllPosts({ category: clientCategory?.id.toString() });
     const data = posts.map((data) => { return data.acf })
-    return data
+    const imagessss = await Promise.all(data.map(async (item) => {
+        const value = await imageLink(item?.button_image);
+        return { ...item, button_image: value };
+    }));
+    return imagessss; 
 }
