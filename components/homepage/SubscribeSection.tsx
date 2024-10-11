@@ -86,7 +86,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
               <Marquee title={animated_title} />
             </div>
           </div>
-          <div className="flex w-full flex-col justify-start items-start h-[85%] lg:col-span-11 gap-0  p-4">
+          <div className="flex w-full flex-col justify-start items-start h-fit lg:col-span-11 gap-0  p-4 ">
             <div
               className="w-full lg:w-7/12 py-4 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center p-4"
               ref={followHeadingRef}
@@ -140,7 +140,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-25 w-full lg:w-4/12 flex justify-center">
+                <div className="mt-25 w-full lg:w-1/3 flex justify-center lg:-mt-32">
                   <Image
                     height={400}
                     width={400}
