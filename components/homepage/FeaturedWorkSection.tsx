@@ -28,28 +28,34 @@ interface FeaturedWorkSectionProps {
   nugenData: PageContent
   pbxData: PageContent
   nugenContent: ImageContentType[]
-  buttonData: any
 }
-const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, nugenContent, nugenData, pbxData, buttonData }) => {
+const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, nugenContent, nugenData, pbxData }) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
   const timeline = gsap.timeline({
     delay: 1.2,
   });
+
+
+  // IT Services Button
   let matchMediaToggler = gsap.matchMedia();
-  const [select, setSelect] = useState(buttonData?.length >= 2 ? "pbx" : "it")
+  // const [select, setSelect] = useState(buttonData?.length >= 2 ? "pbx" : "it")
+
   const [Data, setData] = useState<any>([])
   const [pageContent, setPageContent] = useState<any>({})
-
+  const params = new URLSearchParams(window.location.search);
+  const value = params.get('data')?.trim();
+  
   useEffect(() => {
-    if (select === "pbx") {
-      setData(pbxContent)
-      setPageContent(pbxData)
+    if (value===`"pbx"`) {
+      setData(pbxContent);
+      setPageContent(pbxData);
     } else {
-      setData(nugenContent)
-      setPageContent(nugenData)
+      setData(nugenContent);
+      setPageContent(nugenData);
     }
-  }, [select])
+  }, [value]);
+
 
   useLayoutEffect(() => {
     matchMediaToggler.add("(max-width: 1023px)", () => {
@@ -105,35 +111,28 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
   return (
     <section
       id="featured-work-section"
-      className="trigger w-screen lg:h-screen h-full section-featured-ref overflow-hidden lg:p-8 relative lg:fixed top-0 left-0 z-10 bg-background shadow-2xl"
+      className="trigger w-screen h-full section-featured-ref overflow-auto  relative top-0 left-0 z-10 bg-background shadow-2xl"
     >
       <div
-        className={` flex flex-col justify-center p-2 lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full`}
+        className={` flex flex-col justify-center p-2 relative items-start w-full h-full`}
       >
-        <div className="w-full pt-8 pb-4 lg:absolute lg:bottom-0 lg:left-[8%] lg:-rotate-90 origin-bottom-left">
+        <div className="w-full pt-8 pb-4">
           <Marquee title={pageContent?.animated_title || ""} />
         </div>
         <div />
-        <div className="flex w-full flex-col justify-center lg:justify-between  h-[85%] col-span-11 mb-full pb-32">
+        <div className="flex w-full flex-col justify-center   h-[85%] col-span-11 mb-full pb-32">
           <div
             ref={followHeadingRef}
-            className="w-full md:w-4/5 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center lg:-ml-16"
+            className="w-full md:w-4/5 flex flex-col  gap-2 items-start "
           >
-            <h3 className="uppercase text-2xl font-bold text-primary w-10/12 lg:w-6/12 ">
+            <h3 className="uppercase text-2xl font-bold text-primary w-10/12  ">
               {pageContent?.header_title}
             </h3>
-            {pageContent?.header_description && <div className="w-12 border-b border-foreground hidden lg:block" />}
+            {pageContent?.header_description && <div className="w-12 border-b border-foreground hidden " />}
             {pageContent?.header_description && <p className="text-foreground/80">
               {pageContent?.header_description}
             </p>}
           </div>
-          {/* {buttonData?.length >= 2 && <div className="flex gap-4 justify-center">
-            {buttonData?.map((value: any) => {
-              return <>
-                <Image src={value?.button_title} alt="image" height={80} width={80} className="object-scale-down" onClick={() => { setSelect(value?.button_value) }}/>
-              </>
-            })}
-          </div>} */}
           <div
             ref={ServiceCardsRef}
             className="px-4 md:px-20 lg:px-12 w-full lg:h-[600px] flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "
@@ -175,7 +174,7 @@ const ImageCard = ({ card }: ImageCardPropType) => {
           />
         </div>
         <motion.div
-          className="flex flex-col h-[25%]  md:h-1/3 lg:h-[40%] z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
+          className="flex flex-col h-[25%]  md:h-1/3 z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
           initial={false}
           animate={{ y: isHovered ? 0 : 90 }}
         >

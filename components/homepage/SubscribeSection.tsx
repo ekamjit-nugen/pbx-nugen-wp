@@ -82,7 +82,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
           className={`grid grid-cols-1 lg:grid-cols-12 relative items-start w-full h-[90%] lg:h-screen xl:h-full`}
         >
           <div>
-            <div className="w-full lg:absolute lg:bottom-0 lg:left-[7%] lg:-rotate-90 origin-bottom-left">
+            <div className="w-full lg:absolute lg:bottom-0 lg:left-[7%] lg:-rotate-90 origin-bottom-left md:text-2xl">
               <Marquee title={animated_title} />
             </div>
           </div>
@@ -91,7 +91,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
               className="w-full lg:w-7/12 py-4 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center p-4"
               ref={followHeadingRef}
             >
-              <h3 className="uppercase text-2xl font-bold text-primary w-fit whitespace-nowrap">
+              <h3 className="uppercase text-xl font-bold text-primary w-fit whitespace-nowrap">
                 {header_title}
               </h3>
               <div className="w-full lg:w-12 border-b border-foreground hidden lg:block" />

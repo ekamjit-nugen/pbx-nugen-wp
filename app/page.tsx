@@ -138,25 +138,30 @@ import Topbar from "../components/Layout/Topbar";
 import NavBar from "../components/Navbar";
 import { getAllCategories, getAllPosts, getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
 import { imageLink } from "./featured-client/page";
-const Home = async() => {
-  const PageContent= await getPageBySlug('home')
-  const logoLink=await getFeaturedMediaById(PageContent?.acf?.logo)
-  const pageContents={logo:logoLink?.source_url}
+import HealthSafetyHome from "@/components/homepage/healthAndSafety";
+import { PagesData } from "./apiCall";
+const Home = async () => {
+  const PageContent = await getPageBySlug('home')
+  const logoLink = await getFeaturedMediaById(PageContent?.acf?.logo)
+  const pageContents = { logo: logoLink?.source_url }
   const categories = await getAllCategories()
   const navBarCategory = categories.find((cat) => cat.name === "nav-bar") || { id: "1" };
   const posts = await getAllPosts({ category: navBarCategory?.id.toString() });
   const data = posts.map((data) => { return data.acf })
-  const svgValue=await imageLink(PageContent?.acf?.svg)
+  const svgValue = await imageLink(PageContent?.acf?.svg)
+  const pageContent = await getPageBySlug("health-safety")
+  const Affilations = await PagesData("our-affilations")
   return (
     <Layout>
       <div
         id="content-id"
-        className="bg-background dark:bg-slate-950 relative h-screen overflow-hidden"
+        className="bg-background dark:bg-slate-950 relative h-full overflow-auto"
       >
-        <Topbar props={pageContents}/>
-        <HeroSection props={PageContent?.acf} svg={svgValue}/>
+        <Topbar props={pageContents} />
+        <HeroSection props={PageContent?.acf} svg={svgValue} />
         <ScreenAnimation />
-        <NavBar menu={data}/>
+        <HealthSafetyHome pageContent={pageContent?.acf} affilations={Affilations} />
+        <NavBar menu={data} />
 
       </div>
     </Layout>

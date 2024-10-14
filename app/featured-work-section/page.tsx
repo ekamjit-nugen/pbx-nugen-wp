@@ -8,12 +8,11 @@ const FeaturedWorkSectionPage = async() => {
   const pbxContent=await  getPageBySlug("work-section")
   const nugenData=await PagesData("work-section-it")
   const nugenContent=await  getPageBySlug("work-section-it")
-  const buttonData=await ButtonData("buttons")
 
-  return (
+  return (  
     <>
       <ScreenAnimation />
-      <FeaturedWorkSection pbxContent={imagessss} nugenContent={nugenData} nugenData={nugenContent?.acf} pbxData={pbxContent?.acf} buttonData={buttonData}/>
+      <FeaturedWorkSection pbxContent={imagessss} nugenContent={nugenData} nugenData={nugenContent?.acf} pbxData={pbxContent?.acf}/>
     </>
   );
 };

@@ -9,11 +9,10 @@ const OurServicesSectionPage = async () => {
   const pbxContent = await getPageBySlug("services-section")
   const nugenData=await ServicesData('services-section-it')
   const nugenContent=await getPageBySlug('services-section-it')
-  const buttonData=await ButtonData("buttons")
   return (
     <>
       <ScreenAnimation />
-      <OurServicesSection pbxData={pbxData} pbxContent={nugenContent?.acf} nugenContent={nugenContent?.acf} nugenData={nugenData} buttonData={buttonData}/>
+      <OurServicesSection pbxData={pbxData} pbxContent={nugenContent?.acf} nugenContent={nugenContent?.acf} nugenData={nugenData}/>
     </>
   );
 };

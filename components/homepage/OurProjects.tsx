@@ -25,7 +25,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                         <div className="flex gap-4 justify-center items-center flex flex-col lg:flex-row">  
                             {buttonData?.map((value: any) => {
                                 return <>
-                                    <Link href={{ pathname: "/featured-work-section", query: { data: JSON.stringify(value?.button_title)} }} >
+                                    <Link href={{ pathname: "/work-service-section", query: { data: JSON.stringify(value?.button_value)} }} >
                                         <div className="flex flex-col justify-center items-center">
                                             <Image src={value?.button_image} alt="image" height={500} width={500} className="object-fit" />
                                             <Button>{value?.button_title}</Button>
