@@ -140,6 +140,7 @@ import { getAllCategories, getAllPosts, getFeaturedMediaById, getPageBySlug } fr
 import { imageLink } from "./featured-client/page";
 import HealthSafetyHome from "@/components/homepage/healthAndSafety";
 import { PagesData } from "./apiCall";
+import InterestedSection from "@/components/homepage/ServiceSection";
 const Home = async () => {
   const PageContent = await getPageBySlug('home')
   const logoLink = await getFeaturedMediaById(PageContent?.acf?.logo)
@@ -151,16 +152,20 @@ const Home = async () => {
   const svgValue = await imageLink(PageContent?.acf?.svg)
   const pageContent = await getPageBySlug("health-safety")
   const Affilations = await PagesData("our-affilations")
+
+  const pageCont = await getPageBySlug("work-with-us")
+  const images=await imageLink(pageCont?.acf?.image)
+  const ServicepageContent={...pageCont?.acf,image:images}
   return (
     <Layout>
       <div
         id="content-id"
-        className="bg-background dark:bg-slate-950 relative h-full overflow-auto"
+        className="bg-background dark:bg-slate-950 relative h-full w-screen"
       >
         <Topbar props={pageContents} />
         <HeroSection props={PageContent?.acf} svg={svgValue} />
-        <ScreenAnimation />
         <HealthSafetyHome pageContent={pageContent?.acf} affilations={Affilations} />
+        <InterestedSection pageContent={ServicepageContent}/>
         <NavBar menu={data} />
 
       </div>

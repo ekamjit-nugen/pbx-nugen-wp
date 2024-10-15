@@ -8,7 +8,7 @@ const FeaturedClientPage = async () => {
   const Affilations=await PagesData("our-affilations")
   return (
     <div>
-      <ScreenAnimation />
+      {/* <ScreenAnimation /> */}
       <HealthSafety  pageContent={pageContent?.acf} affilations={Affilations}/>
     </div>
   );

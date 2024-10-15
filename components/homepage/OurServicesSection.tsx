@@ -46,58 +46,6 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
       setPageContent(nugenContent)
     }
   }, [value])
-
-  // useLayoutEffect(() => {
-  //   matchMediaToggler.add("(max-width: 1023px)", () => {
-  //     timeline.fromTo(
-  //       followHeadingRef.current,
-  //       {
-  //         x: "-20%",
-  //       },
-  //       {
-  //         x: "0%",
-  //         stagger: 0.2,
-  //         ease: "easeInOut",
-  //       }
-  //     );
-  //     gsap.fromTo(
-  //       ServiceCardsRef.current,
-  //       {
-  //         x: "-12%",
-  //       },
-  //       {
-  //         x: "0%",
-  //         ease: "easeInOut",
-  //       }
-  //     );
-  //   });
-  //   matchMediaToggler.add("(min-width: 1040px)", () => {
-  //     timeline
-  //       .fromTo(
-  //         followHeadingRef.current,
-  //         {
-  //           x: "50%",
-  //         },
-  //         {
-  //           x: "20%",
-  //           stagger: 0.2,
-  //           ease: "easeInOut",
-  //         }
-  //       )
-  //       .fromTo(
-  //         ServiceCardsRef.current,
-  //         {
-  //           x: "0%",
-  //         },
-  //         {
-  //           x: "-40%",
-  //           stagger: 0.2,
-  //           duration: 1.5,
-  //           ease: "easeInOut",
-  //         }
-  //       );
-  //   });
-  // }, []);
   return (
     <section
       id=""
@@ -106,15 +54,16 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
       <div
         className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
       >
-        <div className="pt-8 pb-4 w-full">
-          <CustomMarquee title={pageContent?.animated_title} />
+        <div className="w-full pt-8 pb-4 text-primary text-7xl font-serif flex uppercase justify-center font-bold">
+          {/* <CustomMarquee title={pageContent?.animated_title} /> */}
+          <p>{pageContent?.animated_title}</p>
         </div>
-        <div className="flex w-full flex-col gap-2 h-full col-span-11">
+        <div className="flex w-full flex-col gap-2 h-full col-span-11 lg:pl-32">
           <div
-            className=" flex flex-col gap-2  items-center"
+            className=" flex flex-col gap-2"
             ref={followHeadingRef}
           >
-            <h3 className="uppercase text-2xl font-bold text-primary w-full">
+            <h3 className="uppercase text-2xl font-bold text-primary w-10/12">
               {pageContent?.header_title}
             </h3>
             <div className=" border-b border-foreground hidden" />

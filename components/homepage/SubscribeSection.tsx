@@ -75,80 +75,74 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
   return (
     <>
       <section
-        id="subscribe-section-ref"
-        className="trigger w-screen lg:h-screen h-full section-featured-ref overflow-hidden  relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background lg:shadow-2xl xl:overflow-auto"
+        id=""
+        className="w-full h-full"
       >
         <div
-          className={`grid grid-cols-1 lg:grid-cols-12 relative items-start w-full h-[90%] lg:h-screen xl:h-full`}
+          className={``}
         >
-          <div>
-            <div className="w-full lg:absolute lg:bottom-0 lg:left-[7%] lg:-rotate-90 origin-bottom-left md:text-2xl">
-              <Marquee title={animated_title} />
-            </div>
+          <div className="w-full py-4 text-primary text-6xl uppercase font-serif flex justify-center font-bold">
+            <p>{animated_title}</p>
           </div>
-          <div className="flex w-full flex-col justify-start items-start h-fit lg:col-span-11 gap-0  p-4 ">
+          <div className="">
             <div
-              className="w-full lg:w-7/12 py-4 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center p-4"
-              ref={followHeadingRef}
+              className="flex w-full items-center gap-4 px-8  py-4 "
             >
-              <h3 className="uppercase text-xl font-bold text-primary w-fit whitespace-nowrap">
+              <p className="text-2xl lg:text-4xl text-primary font-bold">
                 {header_title}
-              </h3>
-              <div className="w-full lg:w-12 border-b border-foreground hidden lg:block" />
-              <p className="w-auto flex-wrap text-foreground/80">
+              </p>
+              <div className="w-10 border-2 border-black"></div>
+              <p className="pl-8">
                 {header_description}
               </p>
             </div>
-            <div className="w-full lg:w-[90%] h-full" ref={sectionBody}>
-              <div className="w-full flex flex-col md:flex-row gap-32 justify-start">
-                <div className=" flex-col items-start lg:flex-row sm:text-left gap-12 w-auto  p-4 lg:w-8/12">
-                  <div className="w-full h-auto flex flex-col md:flex-row mt-2  gap-4 basis-6/12">
-                    <div className="basis-7/12">
-                      <div className="h-auto mb-6">
-                        <div>
-                          <div className="text-2xl font-bold">{contact_location_title}</div>
-                          <p className="text-foreground/80 mt-2">
-                            {contact_location}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex">
-                        <div className="basis-1/2">
-                          <div className="text-2xl font-bold">{contact_us_title}</div>
-                          <p className="text-foreground/80 mt-2 ">
-                            {mobile_number}
-                          </p>
-                        </div>
-                        <div className="basis-1/2">
-                          <div className="text-2xl font-bold">{email_title}</div>
-                          <p className="text-foreground/80 mt-2">
-                            {email_id}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="my-12">
-                        <QueryForm buttonTitle="Send Query" />
-                      </div>
+
+
+            <div className="px-4 flex flex-col lg:flex-row pb-2">
+              <div className="flex flex-col lg:flex-row w-full px-8 ">
+                <div className="w-full">
+                  <div className="pt-4">
+                    <div className="text-primary text-2xl font-semibold">{contact_location_title}</div>
+                    <p className="font-medium">
+                      {contact_location}
+                    </p>
+                  </div>
+                  <div className="flex gap-8 pt-4">
+                    <div className="flex flex-col">
+                      <div className="text-primary text-2xl font-semibold">{contact_us_title}</div>
+                      <p className="font-medium">
+                        {mobile_number}
+                      </p>
                     </div>
-                    <div className="basis-5/12 mt-1 ">
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13721.617732154162!2d76.6870944!3d30.7070288!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5a5dbe6c39f7%3A0x631f8a56ded3b61d!2sNugen%20I.T.%20Services!5e0!3m2!1sen!2sin!4v1700118553232!5m2!1sen!2sin"
-                        style={{ border: "0", height: "330px", width: "100%" }}
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      ></iframe>
+                    <div className="">
+                      <div className="text-primary text-2xl font-semibold">{email_title}</div>
+                      <p className="font-medium">
+                        {email_id}
+                      </p>
                     </div>
                   </div>
+                  <div className="my-12">
+                    <QueryForm buttonTitle="Send Query" />
+                  </div>
                 </div>
-                <div className="mt-25 w-full lg:w-1/3 flex justify-center lg:-mt-32">
-                  <Image
-                    height={400}
-                    width={400}
-                    src={HeroImage3}
-                    alt="bg image hero section"
-                    quality={100}
-                  />
+                <div className=" w-full">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5405304634405!2d-79.64870652392167!3d43.65772697110182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b38d3b8f6b079%3A0x9e8e053772c38d13!2s1585%20Britannia%20Rd%20E%2C%20Mississauga%2C%20ON%20L4W%202M4%2C%20Canada!5e0!3m2!1sen!2sin!4v1689567123621!5m2!1sen!2sin"
+                    style={{ border: "0", height: "300px", width: "100%" }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
+              </div>
+              <div className=" w-[40%] hidden lg:flex lg:visible ">
+                <Image
+                  height={400}
+                  width={400}
+                  src={HeroImage3}
+                  alt="bg image hero section"
+                  quality={100}
+                  className="lg:-mt-16"
+                />
               </div>
             </div>
           </div>

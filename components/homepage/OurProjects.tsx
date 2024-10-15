@@ -28,7 +28,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                                     <Link href={{ pathname: "/work-service-section", query: { data: JSON.stringify(value?.button_value)} }} >
                                         <div className="flex flex-col justify-center items-center">
                                             <Image src={value?.button_image} alt="image" height={500} width={500} className="object-fit" />
-                                            <Button>{value?.button_title}</Button>
+                                            {/* <Button>{value?.button_title}</Button> */}
                                         </div>
                                     </Link>
                                 </>
