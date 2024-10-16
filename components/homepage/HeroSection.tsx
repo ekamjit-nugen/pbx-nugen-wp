@@ -25,10 +25,10 @@ interface PageContent {
 }
 export interface PageProps {
   props: PageContent
-  svg:any
+  svg: any
 }
-const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
-  const { header_title,header_description,url,url_text,logo } = props
+const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
+  const { header_title, header_description, url, url_text, logo } = props
   const breakpoint = useBreakpoint();
   const router = useRouter();
   let matchMediaToggler = gsap.matchMedia();
@@ -140,16 +140,13 @@ const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
 
   }
 
-
-  // console.log("window",window.innerWidth)
-
   return (
-    <div className="relative lg:h-screen bg-background -my-20">
+    <div className="relative bg-background">
       <section
-        className="h-screen lg:h-screen flex justify-center items-center w-screen hero-section-ref relative z-0"
+        className="flex justify-center items-center hero-section-ref relative z-0"
         id="hero-section-ref"
       >
-        <div className="absolute top-[10%] left-[2%]">
+        <div className="absolute -top-[5%] left-[2%]">
           <Image
             src={ComputerIcon}
             alt="computer"
@@ -159,7 +156,7 @@ const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[75%] left-[2%] md:top-[62%]">
+        <div className="absolute top-[55%] left-[2%] md:top-[62%]">
           <Image
             src={HashIcon}
             alt="hash"
@@ -169,7 +166,7 @@ const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[16%] left-[62%] md:left-[78%] md:top-[8%] 2xl:top-[16%] 2xl:left-[33%]">
+        <div className="absolute top-[0%] left-[62%] md:left-[78%] md:top-[4%] lg:left-[45%] ">
           <Image
             src={MobileIcon}
             alt="mobile"
@@ -179,7 +176,7 @@ const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute bottom-[6%] left-[65%] md:bottom-[20%] 2xl:left-[35%]">
+        <div className="absolute top-[55%] left-[65%] md:bottom-[16%] lg:left-[45%]">
           <Image
             src={ToolIcon}
             alt="tool"
@@ -189,59 +186,51 @@ const HeroSection: React.FC<PageProps> = ({ props,svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="w-full -mt-20 px-4 md:px-32 flex flex-col lg:flex-row">
-          <div className="flex w-full  lg:w-1/2 items-center relative top-[45rem] bottom-[43rem] lg:top-24 left-12">
-            <div className="w-[90%] sm:w-1/2 md:w-full lg:w-4/6 ">
-              {/* section 1 */}
-              {/* contact us comp */}
-              <div className=" lg:w-auto h-auto col-span-3 relative top-60 right-6 pl-8 md:pl-20 pt-12 lg:pt-4 z-50">
-                <div className="text-xl md:text-2xl xl:text-4xl font-extrabold current-heading flex flex-wrap gap-x-1 lg:gap-x-3">
-                  {header_title
-                    .split("-")
-                    .map((letter, index) => (
-                      <AnimatedHeading
-                        key={`${letter}-${index}`}
-                        index={index + 1}
-                      >
-                        {letter}
-                      </AnimatedHeading>
-                    ))}
-                </div>
-                <p ref={splitTextLines}>
-                  {header_description}
-                </p>
-                <div
-                  className="mt-4 md:mt-6 lg:mt-10  z-[1000]"
-                  ref={getStartedButton}
-                >
-                  <Button
-                    variant="default"
-                    onClick={() => handleContactUs()}
-                  >
-                    {url_text}
-                    <ArrowTopRightIcon />
-                  </Button>
-                </div>
+        <div className="w-full px-4 md:px-32 flex flex-col lg:flex-row ">
+          <div className="w-full relative h-[600px]">
+            <div className="absolute top-32 w-[50%] lg:w-3/4 z-50 ml-12">
+              <div className="text-xl md:text-2xl xl:text-4xl font-extrabold current-heading flex flex-wrap">
+                {header_title
+                  .split("-")
+                  .map((letter, index) => (
+                    <AnimatedHeading
+                      key={`${letter}-${index}`}
+                      index={index + 1}
+                    >
+                      {letter}
+                    </AnimatedHeading>
+                  ))}
               </div>
-
-              <div className="relative bottom-32 lg:bottom-40 right-32 lg:right-20 ">
-                {/* background checkbord */}
-                <BackgroundSVG />
+              <p ref={splitTextLines}>
+                {header_description}
+              </p>
+              <div
+                className="mt-4 md:mt-6 lg:mt-10  z-[1000]"
+                ref={getStartedButton}
+              >
+                <Button
+                  variant="default"
+                  onClick={() => handleContactUs()}
+                >
+                  {url_text}
+                  <ArrowTopRightIcon />
+                </Button>
               </div>
             </div>
-            {/* background ring */}
-            <div className="w-[350px] md:w-[600px] lg:w-[540px] relative right-[23rem] md:right-[43rem] lg:right-[70%] bottom-16 lg:bottom-20 ">
-              {/* 350 540 */}
-              <HeroImageSVG width={size && size < 800 ? "350" : "450"} />
+
+            <div className="absolute top-90">
+              <BackgroundSVG />
+            </div>
+            <div className="absolute -top-44">
+              <HeroImageSVG width={size && size < 800 ? "370" : "450"} />
             </div>
           </div>
 
-          <div className={`w-[70%] sm:w-[55%] md:w-[60%] lg:w-1/2 relative flex items-center left-16  ${size && size < 769 && size > 425 ? "left-48" : "left-[20%]"} lg:left-52 bottom-[43rem] lg:contents`}>
-            <HeroImageSVGRight svg={svg}/>
+          <div className="w-full h-full flex justify-center items-center py-8 lg:pt-44">
+            <HeroImageSVGRight svg={svg} width={size && size < 1024 ? "390" : "520"}/>
           </div>
         </div>
       </section>
-      <div id="hero-section-trigger" className="absolute bottom-[0%]" />
     </div>
   );
 };
@@ -272,8 +261,8 @@ const AnimatedHeading = ({ index, children }: any) => {
 
 const BackgroundSVG = () => (
   <svg
-    width="729"
-    height="637"
+    width="auto"
+    height="300"
     viewBox="0 0 729 637"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

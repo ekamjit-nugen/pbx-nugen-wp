@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useLayoutEffect } from "react";
 import Icon from '../../icons/icon'
-const HeroImageSVGRight = ({ svg }: any) => {
+const HeroImageSVGRight = ({ svg ,width}: any) => {
   const duration = 1;
   useLayoutEffect(() => {
 
@@ -106,7 +106,8 @@ const HeroImageSVGRight = ({ svg }: any) => {
   }, [])
   return (
     <>
-      <svg width="1891" height="732" viewBox="0 0 1891 732" fill="none">
+    <div className="w-min">
+      <svg width={width} height="auto" viewBox="0 0 1891 732" fill="none">
         <path id="path1" d="M150 586H87C61.5949 586 41 565.405 41 540V480.5C41 455.095 61.5949 434.5 87 434.5H121.5C146.905 434.5 167.5 413.905 167.5 388.5V317" stroke="black" strokeWidth="4" />
         <path id="path2" d="M209 293H376C401.405 293 422 272.405 422 247V147" stroke="black" strokeWidth="4" />
         <path id="path3" d="M212 294H368.038C392.642 294 412.89 313.361 413.991 337.94L420 472" stroke="black" strokeWidth="4" />
@@ -123,6 +124,7 @@ const HeroImageSVGRight = ({ svg }: any) => {
         <path id="path14" d="M1658.5 286V335C1658.5 359.853 1678.65 380 1703.5 380H1743.5C1768.35 380 1788.5 400.147 1788.5 425V558" stroke="black" strokeWidth="4" />
       <Icon/>
       </svg>
+      </div>
     </>
   );
 };

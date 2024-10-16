@@ -18,6 +18,7 @@ import {
 import useBreakpoint from "../hooks/useBreakpoint";
 
 import { usePathname, useRouter } from "next/navigation";
+import useSize from "./windowSize";
 // gsap.registerPlugin(ScrollToPlugin, ScrollSmoother);
 interface NavBarProps {
   header_title: string,
@@ -130,14 +131,15 @@ const NavbarItems = ({
   onClick: (e: string) => void;
   menu: any
 }) => {
+  const size=useSize()
   return (
     <>
       {
         menu?.map((items:any) => {
           return <>
             <Button
-              className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-              variant="ghost"
+              className="px-4 md:px-8 uppercase hover:text-white active:text-white border-0 "
+              variant={size && size>1039?"ghost":"outline"}
               onClick={() => onClick(`${items?.url}`)}
               disabled={btnStatus}
             >
@@ -146,62 +148,6 @@ const NavbarItems = ({
           </>
         })
       }
-      {/* <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/")}
-        disabled={btnStatus}
-      >
-        Home
-      </Button>
-      <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/featured-client")}
-        disabled={btnStatus}
-      >
-        Clients
-      </Button>
-      <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/featured-work-section")}
-        disabled={btnStatus}
-      >
-        Work
-      </Button>
-      <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/our-services-section")}
-        disabled={btnStatus}
-      >
-        Services
-      </Button>
-      <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/testimonial-section")}
-        disabled={btnStatus}
-      >
-        TESTIMONIALS
-      </Button>
-      <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/service-section")}
-        disabled={btnStatus}
-      >
-        Work with US
-      </Button>
-      <Button
-        className="px-4 md:px-8 uppercase max-md:text-black hover:text-white active:text-white"
-        variant="ghost"
-        onClick={() => onClick("/subscribe-section")}
-        disabled={btnStatus}
-      >
-        Contact Us
-      </Button> */}
     </>
   );
 };

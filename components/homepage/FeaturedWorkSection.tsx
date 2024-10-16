@@ -157,7 +157,7 @@ const ImageCard = ({ card }: ImageCardPropType) => {
 
   return (
     <motion.div
-      className="h-[60dvh] md:h-[50dvh] w-full p-4 flex justify-center"
+      className="h-[60dvh] md:h-[30dvh] lg:h-[50dvh] w-full p-4 flex justify-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
