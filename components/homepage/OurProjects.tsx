@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Marquee from "@/components/ui/Marquee";
-import { Button } from "../ui";
 interface OurProjectsType {
     buttonData: any
 }
@@ -22,13 +21,12 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                 <div />
                 <div className=" w-full h-full flex flex-col justify-center items-center lg:-mt-32 ">
                     {buttonData?.length >= 2 &&
-                        <div className="flex gap-4 justify-center items-center flex flex-col lg:flex-row">  
+                        <div className="flex gap-8 justify-center items-center flex flex-col lg:flex-row">  
                             {buttonData?.map((value: any) => {
                                 return <>
                                     <Link href={{ pathname: "/work-service-section", query: { data: JSON.stringify(value?.button_value)} }} >
-                                        <div className="flex flex-col justify-center items-center">
-                                            <Image src={value?.button_image} alt="image" height={500} width={500} className="object-fit" />
-                                            {/* <Button>{value?.button_title}</Button> */}
+                                        <div className="flex flex-col justify-center items-center drop-shadow-2xl transition duration-400 ease-in-out hover:scale-110">
+                                            <Image src={value?.button_image} alt="image" height={430} width={430} className="object-fit" />
                                         </div>
                                     </Link>
                                 </>

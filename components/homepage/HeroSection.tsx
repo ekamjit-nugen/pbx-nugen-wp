@@ -29,7 +29,6 @@ export interface PageProps {
 }
 const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
   const { header_title, header_description, url, url_text, logo } = props
-  const breakpoint = useBreakpoint();
   const router = useRouter();
   let matchMediaToggler = gsap.matchMedia();
   let splitTextLines = useRef(null);
@@ -156,7 +155,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[55%] left-[2%] md:top-[62%]">
+        <div className="absolute top-[65%] left-[2%] md:top-[56%]">
           <Image
             src={HashIcon}
             alt="hash"
@@ -166,7 +165,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[0%] left-[62%] md:left-[78%] md:top-[4%] lg:left-[45%] ">
+        <div className="absolute top-[0%] left-[65%] md:left-[57%] md:top-[0%] lg:left-[40%] ">
           <Image
             src={MobileIcon}
             alt="mobile"
@@ -176,7 +175,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[55%] left-[65%] md:bottom-[16%] lg:left-[45%]">
+        <div className="absolute top-[65%] left-[57%] md:top-[57%] lg:left-[40%]">
           <Image
             src={ToolIcon}
             alt="tool"
@@ -187,9 +186,9 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
           />
         </div>
         <div className="w-full px-4 md:px-32 flex flex-col lg:flex-row ">
-          <div className="w-full relative h-[600px]">
-            <div className="absolute top-32 w-[50%] lg:w-3/4 z-50 ml-12">
-              <div className="text-xl md:text-2xl xl:text-4xl font-extrabold current-heading flex flex-wrap">
+          <div className="w-full relative h-[600px] ">
+            <div className="absolute top-32 w-[75%] md:w-[60%] lg:w-3/4 z-50 ml-12">
+              <div className="text-2xl md:text-3xl lg:text-4xl xl:5xl font-serif font-black current-heading flex flex-wrap">
                 {header_title
                   .split("-")
                   .map((letter, index) => (
@@ -226,8 +225,8 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             </div>
           </div>
 
-          <div className="w-full h-full flex justify-center items-center py-8 lg:pt-44">
-            <HeroImageSVGRight svg={svg} width={size && size < 1024 ? "390" : "520"}/>
+          <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-40 lg:flex hidden lg:visible">
+            <HeroImageSVGRight width={size && size < 1024 ? "380" : "520"}/>
           </div>
         </div>
       </section>

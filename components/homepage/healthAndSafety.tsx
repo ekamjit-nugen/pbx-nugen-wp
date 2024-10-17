@@ -7,6 +7,7 @@ import tri from "../../image/images/shape-triangle.png";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import hse from '../../image/images/hse.png'
+import useSize from "../windowSize";
 const workData = [
   {
     color: "#FF366B",
@@ -219,10 +220,11 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
     window.scrollTo(0, 0);
   }, [HealthSafetyHome]);
 
+  const size=useSize()
   return (
     <>
       <section
-        className={`bg-[#080c3c] md:px-12  relative`}>
+        className={`bg-[#080c3c] md:px-12  relative overflow-x-hidden`}>
         <motion.div
           className="absolute"
           style={{
@@ -359,10 +361,10 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
                     <h1 className="xl:text-xl lg:text-lg text-lg py-4 text-white">
                       {pageContent?.animated_title}
                     </h1>
-                    <div className="font-serif text-[#ff366b] text-5xl">{pageContent?.header_title}</div>
+                    <div className="font-serif text-[#ff366b] text-3xl lg:text-5xl">{pageContent?.header_title}</div>
                   </div>
                   <p
-                    className={`block xl:text-xl lg:text-lg text-lg py-4 text-white lg:w-[70%]`}>
+                    className={`block xl:text-xl lg:text-lg text-sm px-2 py-4 text-white lg:w-[70%]`}>
                     {pageContent?.header_description}
                   </p>
                   <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start my-10">
@@ -384,7 +386,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
                           </div>
                         </div>
                         <div>
-                          <h1 className="xl:text-xl lg:text-lg text-lg font-medium mb-[20px] text-white">
+                          <h1 className="xl:text-xl lg:text-lg text-sm font-medium mb-[20px] text-white">
                             {value.title}
                           </h1>
                         </div>
@@ -396,18 +398,18 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
             </div>
 
           </div>
-          <div className="py-10">
+          <div className="p-4 lg:py-10">
             <Image src={hse} alt="image"></Image>
           </div>
         </div>
       </section>
       <div className="py-12">
         <div className="font-serif text-red-600 text-5xl text-bold p-2 flex justify-center ">{pageContent?.our_affiliations}</div>
-        <div className="flex flex-wrap gap-16 justify-center">
+        <div className="flex flex-wrap px-4 lg:gap-16 justify-center">
           {affilations.map((value) => {
             return (
               <>
-                <Image src={value?.post_image} alt="image" width={180} height={180} className="object-scale-down" />
+                <Image src={value?.post_image} alt="image" width={size && size<1024?120 :180} height={size && size<1024?120 :180} className="object-scale-down p-2" />
               </>
             )
           })
