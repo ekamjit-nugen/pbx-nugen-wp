@@ -6,13 +6,14 @@ import { Button } from "../../components/ui";
 import { Tween } from "react-gsap";
 import gsap from "gsap";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
-import useBreakpoint from "../../hooks/useBreakpoint";
 import ComputerIcon from "../../components/icons/png/computer-icon.png";
 import HashIcon from "../../components/icons/png/hash-icon.png";
 import MobileIcon from "../../components/icons/png/mobile-icon.png";
 import ToolIcon from "../../components/icons/png/tool-icon.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import tower from '../icons/png/tower-svg.svg'
+import settings from '../icons/png/setting-icon.webp'
 
 import useSize from "../windowSize";
 interface PageContent {
@@ -157,17 +158,17 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
         </div>
         <div className="absolute top-[65%] left-[2%] md:top-[56%]">
           <Image
-            src={HashIcon}
+            src={tower}
             alt="hash"
             height={120}
             width={120}
-            ref={hashRef}
+            ref={computerRef}
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
         <div className="absolute top-[0%] left-[65%] md:left-[57%] md:top-[0%] lg:left-[40%] ">
           <Image
-            src={MobileIcon}
+            src={settings}
             alt="mobile"
             height={150}
             width={150}
@@ -221,13 +222,13 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
               <BackgroundSVG />
             </div>
             <div className="absolute -top-44">
-              <HeroImageSVG width={size && size < 800 ? "370" : "450"} />
+              <HeroImageSVG width={size && size < 800 ? "355" : "450"} />
             </div>
           </div>
 
-          <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex hidden lg:visible">
+          {size && size>1024 && <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex">
             <HeroImageSVGRight width={size && size < 1024 ? "380" : "520"}/>
-          </div>
+          </div>}
         </div>
       </section>
     </div>

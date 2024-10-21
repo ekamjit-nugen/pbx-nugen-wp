@@ -98,7 +98,7 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({ className, props,page
   return (
     <section
       id="section-featured-ref"
-      className="trigger w-[100%] lg:h-screen h-full section-featured-ref lg:overflow-hidden relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background pb-12"
+      className="trigger w-[100%] lg:h-screen h-full section-featured-ref overflow-y-auto overflow-x-hidden relative md:my-0 lg:fixed top-0 left-0 z-10 bg-background pb-12"
     >
       <div
         className={`lg:grid lg:grid-cols-12 relative items-start w-full lg:h-screen h-full ${className}`}

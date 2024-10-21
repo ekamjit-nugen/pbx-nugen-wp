@@ -10,7 +10,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
     return (
         <section
             id="featured-work-section"
-            className="trigger w-screen lg:h-screen h-full section-featured-ref overflow-hidden lg:p-8 relative lg:fixed top-0 left-0 z-10 bg-background shadow-2xl"
+            className="trigger w-screen lg:h-screen h-screen section-featured-ref overflow-hidden lg:p-8 relative lg:fixed top-0 left-0 z-10 bg-background shadow-2xl"
         >
             <div
                 className={` flex flex-col justify-center lg:grid  relative items-start w-full lg:h-screen h-full`}
