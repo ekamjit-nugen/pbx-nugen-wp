@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Marquee from "../ui/Marquee";
 import Image from "next/image";
@@ -9,27 +9,32 @@ import gsap from "gsap";
 import { Button } from "../ui";
 
 interface ImageContentType {
-  post_title: any,
-  post_image: any,
-  post_description: any
-  url: any
+  post_title: any;
+  post_image: any;
+  post_description: any;
+  url: any;
 }
 interface PageContent {
-  header_title?: string,
-  header_description?: string,
-  animated_title?: string,
-  number_of_clients?: number,
-  world_wide_clients?: string,
-  number_of_company?: number,
-  trusted_company?: string
+  header_title?: string;
+  header_description?: string;
+  animated_title?: string;
+  number_of_clients?: number;
+  world_wide_clients?: string;
+  number_of_company?: number;
+  trusted_company?: string;
 }
 interface FeaturedWorkSectionProps {
-  pbxContent: ImageContentType[],
-  nugenData: PageContent
-  pbxData: PageContent
-  nugenContent: ImageContentType[]
+  pbxContent: ImageContentType[];
+  nugenData: PageContent;
+  pbxData: PageContent;
+  nugenContent: ImageContentType[];
 }
-const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, nugenContent, nugenData, pbxData }) => {
+const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
+  pbxContent,
+  nugenContent,
+  nugenData,
+  pbxData,
+}) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
   const timeline = gsap.timeline({
@@ -38,13 +43,13 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
 
   let matchMediaToggler = gsap.matchMedia();
 
-  const [Data, setData] = useState<any>([])
-  const [pageContent, setPageContent] = useState<any>({})
+  const [Data, setData] = useState<any>([]);
+  const [pageContent, setPageContent] = useState<any>({});
   const params = new URLSearchParams(window.location.search);
-  const value = params.get('data')?.trim();
-  
+  const value = params.get("data")?.trim();
+
   useEffect(() => {
-    if (value===`"pbx"`) {
+    if (value === `"pbx"`) {
       setData(pbxContent);
       setPageContent(pbxData);
     } else {
@@ -52,7 +57,6 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
       setPageContent(nugenData);
     }
   }, [value]);
-
 
   useLayoutEffect(() => {
     matchMediaToggler.add("(max-width: 1023px)", () => {
@@ -126,10 +130,14 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
             <h3 className="uppercase text-2xl font-bold text-primary w-10/12">
               {pageContent?.header_title}
             </h3>
-            {pageContent?.header_description && <div className="w-12 border-b border-foreground hidden " />}
-            {pageContent?.header_description && <p className="text-foreground/80">
-              {pageContent?.header_description}
-            </p>}
+            {pageContent?.header_description && (
+              <div className="w-12 border-b border-foreground hidden " />
+            )}
+            {pageContent?.header_description && (
+              <p className="text-foreground/80">
+                {pageContent?.header_description}
+              </p>
+            )}
           </div>
           <div
             ref={ServiceCardsRef}
@@ -148,7 +156,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({ pbxContent, n
 export default FeaturedWorkSection;
 
 type ImageCardPropType = {
-  card: ImageContentType
+  card: ImageContentType;
 };
 
 const ImageCard = ({ card }: ImageCardPropType) => {
@@ -178,15 +186,19 @@ const ImageCard = ({ card }: ImageCardPropType) => {
         >
           <div className="text-white flex justify-between h-1/2 w-full">
             <div className="text-xl font-semibold ">{post_title}</div>
-            {url && <Link
-              href={url || ""}
-              target="_blank"
-              className="w-fit h-fit p-2 transform duration-500 rounded-full border border-white hover:bg-white hover:text-slate-950 cursor-pointer"
-            >
-              <ArrowTopRightIcon className="text-white hover:text-slate-950" />
-            </Link>}
+            {url && (
+              <Link
+                href={url || ""}
+                target="_blank"
+                className="w-fit h-fit p-2 transform duration-500 rounded-full border border-white hover:bg-white hover:text-slate-950 cursor-pointer"
+              >
+                <ArrowTopRightIcon className="text-white hover:text-slate-950" />
+              </Link>
+            )}
           </div>
-          <div className="text-xs text-white w-full pb-2">{post_description}</div>
+          <div className="text-xs text-white w-full pb-2">
+            {post_description}
+          </div>
         </motion.div>
       </div>
     </motion.div>

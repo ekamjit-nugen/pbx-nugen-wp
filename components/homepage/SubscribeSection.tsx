@@ -7,34 +7,44 @@ import { QueryForm } from "../QueryForms";
 import Footer from "../Layout/Footer";
 import gsap from "gsap";
 interface ContactUsType {
-  header_title: string,
-  header_description: string,
-  animated_title: string,
-  contact_title: string,
-  contact_description: string,
-  contact_location_title: string,
-  contact_location: string,
-  contact_us_title: string,
-  mobile_number: string,
-  email_title: string,
-  email_id: string,
-  map_view: any,
-  contact_image: string,
-  footer_logo: string,
-  footer_description: string,
-  follow_us: string,
-  'facebook-url': string,
-  'instagram-url': string,
-  'linkedin-url': string,
-  twitter_url: string,
-  email_url: string,
-  upwork_url: string
+  header_title: string;
+  header_description: string;
+  animated_title: string;
+  contact_title: string;
+  contact_description: string;
+  contact_location_title: string;
+  contact_location: string;
+  contact_us_title: string;
+  mobile_number: string;
+  email_title: string;
+  email_id: string;
+  map_view: any;
+  contact_image: string;
+  footer_logo: string;
+  footer_description: string;
+  follow_us: string;
+  "facebook-url": string;
+  "instagram-url": string;
+  "linkedin-url": string;
+  twitter_url: string;
+  email_url: string;
+  upwork_url: string;
 }
 interface ContactUsPropsType {
-  props: ContactUsType
+  props: ContactUsType;
 }
 const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
-  const { header_title, header_description, animated_title, contact_location_title, contact_location, mobile_number, email_id, email_title, contact_us_title } = props
+  const {
+    header_title,
+    header_description,
+    animated_title,
+    contact_location_title,
+    contact_location,
+    mobile_number,
+    email_id,
+    email_title,
+    contact_us_title,
+  } = props;
   const followHeadingRef = useRef(null);
   const sectionBody = useRef(null);
   let matchMediaToggler = gsap.matchMedia();
@@ -51,11 +61,11 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
       linkedin: props["linkedin-url"],
       email: props?.email_id,
       upwork: props?.upwork_url,
-      phone: props?.mobile_number
+      phone: props?.mobile_number,
     },
     description: props?.footer_description,
-    mediaTitle: props?.follow_us
-  }
+    mediaTitle: props?.follow_us,
+  };
   useLayoutEffect(() => {
     matchMediaToggler.add("(min-width: 1040px)", () => {
       timeline.fromTo(

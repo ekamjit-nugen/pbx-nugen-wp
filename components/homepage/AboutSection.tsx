@@ -68,7 +68,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
             <div>
               <div className="w-full lg:pl-24"></div>
               <div className="w-full lg:pl-24">
-                <div className="text-primary text-2xl">
+                <div  className="text-primary text-2xl">
                   {pageContent?.header_title}
                 </div>
                 <div className="pt-8 w-[90%]">
