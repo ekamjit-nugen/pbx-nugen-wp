@@ -172,7 +172,7 @@ const ImageCard = ({ card }: ImageCardPropType) => {
           />
         </div>
         <motion.div
-          className="flex flex-col h-[40%]  md:h-1/3 z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
+          className="flex flex-col h-[40%] lg:h-1/2 z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
           initial={false}
           animate={{ y: isHovered ? 0 : 90 }}
         >

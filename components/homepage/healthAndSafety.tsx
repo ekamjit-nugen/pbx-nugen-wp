@@ -353,7 +353,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
           <div
             className={` text-black relative `}>
 
-            <div className={`mx-auto flex flex-col justify-center max-lg:text-center py-10 rounded-2xl `}>
+            <div className={`mx-auto flex flex-col justify-center max-lg:text-center lg:py-10 rounded-2xl `}>
               <div className="">
                 <div
                   className={`text-[22px] md:text-[26px] lg:text-3xl xl:text-[35px]`}>
@@ -367,7 +367,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
                     className={`block xl:text-xl lg:text-lg text-sm px-2 py-4 text-white lg:w-[70%]`}>
                     {pageContent?.header_description}
                   </p>
-                  <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start my-10">
+                  <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start lg:my-10">
                     {workData?.map((value, ind) => (
                       <div
                         className="relative text-center flex flex-col justify-center items-center "
@@ -399,7 +399,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
 
           </div>
           <div className="p-4 lg:py-10">
-            <Image src={hse} alt="image"></Image>
+            <Image src={hse} alt="image" className="w-[250px] lg:w-full h-[250px] lg:h-full"></Image>
           </div>
         </div>
       </section>

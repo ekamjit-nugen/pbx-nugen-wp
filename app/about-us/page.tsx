@@ -2,6 +2,7 @@ import AboutSection from "@/components/homepage/AboutSection"
 import { getPageBySlug } from "@/lib/wordpress"
 import { PagesData } from "../apiCall"
 import { imageLink } from "../featured-client/page"
+import ScreenAnimation from "../../components/ui/ThreeDMenu"
 
 const AboutUs = async () => {
     const pagedata = await getPageBySlug("about")
@@ -11,7 +12,8 @@ const AboutUs = async () => {
     const data1 = await PagesData("about-first")
     const data2 = await PagesData("about-2nd")
     return (
-        <>
+        <>  
+            <ScreenAnimation/>
             <AboutSection Data1={data1} Data2={data2} pageContent={pageContent} />
         </>
     )

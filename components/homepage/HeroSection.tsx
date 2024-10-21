@@ -225,7 +225,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             </div>
           </div>
 
-          <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-40 lg:flex hidden lg:visible">
+          <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex hidden lg:visible">
             <HeroImageSVGRight width={size && size < 1024 ? "380" : "520"}/>
           </div>
         </div>
