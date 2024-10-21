@@ -38,8 +38,6 @@
 //       duration: duration,
 //     })
 
-
-
 //     pathTL.fromTo("#path6", {
 //       strokeDashoffset: 500,
 //       strokeDasharray: 500,
@@ -170,7 +168,7 @@ import UserIcon from "./UserIcon";
 import VscodeIcon from "./VsCode";
 import CubeIcon from "./Cube";
 
-const HeroImageSVGRight = ({width}:any) => {
+const HeroImageSVGRight = ({ width }: any) => {
   useLayoutEffect((): any => {
     const iconsTimeline = gsap.timeline({});
     gsap.fromTo(
@@ -187,7 +185,7 @@ const HeroImageSVGRight = ({width}:any) => {
         "#cubeDraw",
         "#uploadDraw",
         "#ampersendDraw",
-        "#userDraw"
+        "#userDraw",
       ],
       { svgDraw: 0, opacity: 0 },
       {
@@ -195,7 +193,7 @@ const HeroImageSVGRight = ({width}:any) => {
         opacity: 1,
         duration: 0.6,
         stagger: 0.1,
-        delay: 2
+        delay: 2,
       }
     );
     iconsTimeline
@@ -220,16 +218,16 @@ const HeroImageSVGRight = ({width}:any) => {
           "#browser",
           "#userScale",
           "#chrome_icon",
-          "#analyticalScale"
+          "#analyticalScale",
         ],
         {
           scale: 0,
-          transformOrigin: "center center"
+          transformOrigin: "center center",
         },
         {
           scale: 1,
           duration: 1.4,
-          ease: "expo.inOut"
+          ease: "expo.inOut",
         }
       )
       .fromTo(
@@ -239,12 +237,12 @@ const HeroImageSVGRight = ({width}:any) => {
           "#health_inner_circle",
           "#loadingpOpacity",
           "#health_rotation",
-          "#chrome_path"
+          "#chrome_path",
         ],
         {
           rotate: 0,
           scale: 0,
-          transformOrigin: "center center"
+          transformOrigin: "center center",
         },
         {
           scale: 1,
@@ -252,7 +250,7 @@ const HeroImageSVGRight = ({width}:any) => {
           transformOrigin: "center center",
           duration: 1,
 
-          ease: "expo.inOut"
+          ease: "expo.inOut",
         }
       )
       .fromTo(
@@ -262,7 +260,7 @@ const HeroImageSVGRight = ({width}:any) => {
           fill: 0,
           scaleY: 0,
           transformOrigin: "center bottom",
-          ease: "elastic"
+          ease: "elastic",
         },
         {
           svgDraw: 1,
@@ -272,7 +270,7 @@ const HeroImageSVGRight = ({width}:any) => {
           scaleY: 1,
           yoyo: true,
           repeat: 2,
-          stagger: 0.2
+          stagger: 0.2,
         }
       );
     gsap.fromTo(
@@ -284,7 +282,7 @@ const HeroImageSVGRight = ({width}:any) => {
         duration: 4,
         repeat: Infinity,
         ease: "none",
-        transformOrigin: "center center"
+        transformOrigin: "center center",
       }
     );
     gsap.fromTo(
@@ -296,7 +294,7 @@ const HeroImageSVGRight = ({width}:any) => {
         duration: 1,
         repeat: Infinity,
         ease: "none",
-        yoyo: true
+        yoyo: true,
       }
     );
     gsap.fromTo(
@@ -310,7 +308,7 @@ const HeroImageSVGRight = ({width}:any) => {
         duration: 0.5,
         stagger: 0.2,
         repeat: Infinity,
-        ease: "expo.inOut"
+        ease: "expo.inOut",
       }
     );
     gsap.fromTo(
@@ -322,7 +320,7 @@ const HeroImageSVGRight = ({width}:any) => {
         delay: 12,
         duration: 0.8,
         stagger: 0.2,
-        ease: "expo.inOut"
+        ease: "expo.inOut",
       }
     );
   }, []);

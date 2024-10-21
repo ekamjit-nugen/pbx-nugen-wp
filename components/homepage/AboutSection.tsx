@@ -60,7 +60,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
             className="w-full text-6xl uppercase font-serif flex justify-center font-bold gap-10"
           >
             <p className="text-primary">{pageContent?.animated_title}</p>
-            <MarqueStarIcon />
+            {/* <MarqueStarIcon />   //star icon  */}
           </div>
         </div>
         <div className="p-4 pt-16 flex flex-col lg:flex-row justify-center items-center">
