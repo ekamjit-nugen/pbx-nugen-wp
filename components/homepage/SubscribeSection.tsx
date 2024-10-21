@@ -84,46 +84,44 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
 
   return (
     <>
-      <section
-        id=""
-        className="w-full h-full"
-      >
-        <div
-        >
+      <section id="" className="w-full h-full">
+        <div>
           <div className="w-full py-4 text-primary text-6xl uppercase font-serif flex justify-center font-bold">
             <p>{animated_title}</p>
           </div>
           <div className="">
-            <div
-              className="md:flex w-full items-center gap-4 px-8  py-4 "
-            >
+            <div className="md:flex w-full items-center gap-4 px-8  py-4 ">
               <p className="text-2xl lg:text-4xl text-primary font-bold">
                 {header_title}
               </p>
               <div className="w-10 border-2 border-black hidden md:flex md:visible"></div>
-              <p className="">
-                {header_description}
-              </p>
+              <p className="">{header_description}</p>
             </div>
 
             <div className="px-4 flex flex-col lg:flex-row pb-2">
               <div className="flex flex-col lg:flex-row w-full px-8 ">
                 <div className="w-full">
                   <div className="pt-4">
-                    <div className="text-primary text-2xl font-semibold">{contact_location_title}</div>
+                    <div className="text-primary text-2xl font-semibold">
+                      {contact_location_title}
+                    </div>
                     <p className="font-medium text-sm md:text-lg">
                       {contact_location}
                     </p>
                   </div>
                   <div className="flex gap-8 pt-4">
                     <div className="flex flex-col">
-                      <div className="text-primary text-2xl font-semibold">{contact_us_title}</div>
+                      <div className="text-primary text-2xl font-semibold">
+                        {contact_us_title}
+                      </div>
                       <p className="font-medium text-sm md:text-lg">
                         {mobile_number}
                       </p>
                     </div>
                     <div className="">
-                      <div className="text-primary text-2xl font-semibold">{email_title}</div>
+                      <div className="text-primary text-2xl font-semibold">
+                        {email_title}
+                      </div>
                       <p className="font-medium text-sm md:text-lg">
                         {email_id}
                       </p>
