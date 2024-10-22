@@ -7,6 +7,7 @@ import UpWorkIcon from "../icons/UpWork";
 import PhoneIcon from "../icons/Phone";
 import useSize from "../windowSize";
 import React from "react";
+import logo from '../icons/png/pbx_made-removebg-preview.png'
 interface FooterPropsType {
   logo: string,
   socialMedia: {
@@ -32,7 +33,7 @@ const Footer: React.FC<footerType> = ({ props }) => {
       <div className={`container mx-auto flex flex-col md:flex-row justify-between items-center text-center border-b border-white/25 lg:pb-20`}>
         <div className="w-full flex flex-col items-start">
           <div className="text-center md:text-left flex flex-col md:items-start items-center justify-center  text-white">
-            <Image src={props?.logo||""} alt="" height={80} width={200} />
+            <Image src={logo||""} alt="" height={80} width={200} />
             <div className="w-full">
               <p className="text-base md:text-normal font-light text-center md:text-left">
                 {props?.description}

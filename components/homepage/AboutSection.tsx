@@ -68,7 +68,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
             <div>
               <div className="w-full lg:pl-24"></div>
               <div className="w-full lg:pl-24">
-                <div  className="text-primary text-2xl">
+                <div className="text-primary text-2xl">
                   {pageContent?.header_title}
                 </div>
                 <div className="pt-8 w-[90%]">
@@ -89,7 +89,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
               })}
             </div>
           </div>
-          <div className="h-full w-[45%] flex justify-start items-center p-2">
+          <div className="h-full w-full lg:w-[45%] flex justify-center items-center p-2">
             <Image
               src={pageContent?.["img-1"]}
               alt="image"
@@ -101,38 +101,27 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
         </div>
       </div>
 
-      <div className="relative">
-        <div className="p-4 pt-16 flex flex-col lg:flex-row justify-center items-center">
-          <div className="hidden lg:flex h-full w-[45%] justify-start items-center p-2">
-            <Image
-              src={pageContent?.["img-2"]}
-              alt="image"
-              height={500}
-              width={500}
-              className="object-scale-down"
-            />
-          </div>
-          <div className="lg:flex-col w-full">
-            {Data2?.map((value) => {
-              return (
-                <div key={value?.post_title} className="w-full lg:pl-24">
-                  <div className="text-primary text-2xl">
-                    {value?.post_title}
-                  </div>
-                  <div className="pt-8 w-[90%]">{value?.post_description}</div>
+      <div className="p-4 pt-16 flex flex-col lg:flex-row-reverse justify-center items-center">
+        <div className="lg:flex-col w-full">
+          {Data2?.map((value) => {
+            return (
+              <div key={value?.post_title} className="w-full lg:pl-24">
+                <div className="text-primary text-2xl">
+                  {value?.post_title}
                 </div>
-              );
-            })}
-          </div>
-          <div className="lg:hidden h-full w-[45%] justify-start items-center p-2">
-            <Image
-              src={pageContent?.["img-2"]}
-              alt="image"
-              height={500}
-              width={500}
-              className="object-scale-down"
-            />
-          </div>
+                <div className="pt-8 w-[90%]">{value?.post_description}</div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="h-full w-full lg:w-[45%] flex justify-center items-center p-2">
+          <Image
+            src={pageContent?.["img-2"]}
+            alt="image"
+            height={500}
+            width={500}
+            className="object-scale-down"
+          />
         </div>
       </div>
     </>
