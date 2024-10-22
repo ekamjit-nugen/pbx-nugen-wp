@@ -45,39 +45,39 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
   const size = useSize();
 
   useLayoutEffect(() => {
-    const movedAnimation = gsap.timeline();
+    // const movedAnimation = gsap.timeline();
     const movedAnimation1 = gsap.timeline();
-    gsap.fromTo(
-      [splitTextLines.current, getStartedButton.current, rightSvg.current],
-      {
-        y: 10,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.05,
-        duration: 0.8,
-        delay: 1,
-        ease: "elastic",
-      }
-    );
-    movedAnimation.fromTo(
-      [computerRef.current, toolRef.current],
-      {
-        x: 0,
-        y: 0,
-      },
-      {
-        x: -12,
-        y: 20,
-        rotate: "+=10",
-        duration: 5,
-        ease: "none",
-        repeat: 99,
-        yoyoEase: true,
-      }
-    );
+    // gsap.fromTo(
+    //   [splitTextLines.current, getStartedButton.current, rightSvg.current],
+    //   {
+    //     y: 10,
+    //     opacity: 0,
+    //   },
+    //   {
+    //     y: 0,
+    //     opacity: 1,
+    //     stagger: 0.05,
+    //     duration: 0.8,
+    //     delay: 1,
+    //     ease: "elastic",
+    //   }
+    // );
+    // movedAnimation.fromTo(
+    //   [computerRef.current, toolRef.current],
+    //   {
+    //     x: 0,
+    //     y: 0,
+    //   },
+    //   {
+    //     x: -12,
+    //     y: 20,
+    //     rotate: "+=10",
+    //     duration: 5,
+    //     ease: "none",
+    //     repeat: 99,
+    //     yoyoEase: true,
+    //   }
+    // );
     movedAnimation1.fromTo(
       [iconRef.current, hashRef.current],
       {
@@ -114,7 +114,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
       );
     });
 
-    movedAnimation.play();
+    // movedAnimation.play();
     movedAnimation1.play();
 
     setSvgWidth(window.innerWidth - 0.4);
@@ -189,19 +189,10 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
         <div className="w-full px-4 md:px-32 flex flex-col lg:flex-row ">
           <div className="w-full relative h-[600px] ">
             <div className="absolute top-32 w-[75%] md:w-[60%] lg:w-3/4 z-50 ml-12">
-              <div className="text-2xl md:text-3xl lg:text-4xl xl:5xl font-serif font-black current-heading flex flex-wrap">
-                {header_title
-                  .split("-")
-                  .map((letter, index) => (
-                    <AnimatedHeading
-                      key={`${letter}-${index}`}
-                      index={index + 1}
-                    >
-                      {letter}
-                    </AnimatedHeading>
-                  ))}
+              <div className="text-2xl md:text-3xl lg:text-5xl xl:6xl font-serif font-medium current-heading flex flex-wrap">
+                {header_title}
               </div>
-              <p ref={splitTextLines}>
+              <p>
                 {header_description}
               </p>
               <div
@@ -221,7 +212,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             <div className="absolute top-90">
               <BackgroundSVG />
             </div>
-            <div className="absolute -top-44">
+            <div className="absolute -top-56">
               <HeroImageSVG width={size && size < 800 ? "355" : "450"} />
             </div>
           </div>
@@ -236,28 +227,6 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
 };
 
 export default HeroSection;
-
-const AnimatedHeading = ({ index, children }: any) => {
-  const delay = (index + (index + 1)) * 0.04;
-  const contentHeading = useRef(null);
-
-  useLayoutEffect(() => {
-    gsap.fromTo(
-      contentHeading.current,
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.9,
-        duration: 1,
-        delay: delay,
-        ease: "elastic",
-      }
-    );
-  }, []);
-
-  return <div ref={contentHeading}>{children}</div>;
-};
 
 const BackgroundSVG = () => (
   <svg

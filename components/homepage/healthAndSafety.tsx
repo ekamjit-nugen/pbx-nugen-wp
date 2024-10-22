@@ -358,16 +358,16 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
                 <div
                   className={`text-[22px] md:text-[26px] lg:text-3xl xl:text-[35px]`}>
                   <div className={`block`}>
-                    <h1 className="xl:text-xl lg:text-lg text-lg py-4 text-white">
+                    <h1 className="xl:text-xl lg:text-lg text-lg py-4 lg:pl-32 text-white">
                       {pageContent?.animated_title}
                     </h1>
-                    <div className="font-serif text-[#ff366b] text-3xl lg:text-5xl">{pageContent?.header_title}</div>
+                    <div className="font-serif text-[#ff366b] text-3xl lg:pl-32 lg:text-4xl">{pageContent?.header_title}</div>
                   </div>
                   <p
-                    className={`block xl:text-xl lg:text-lg text-sm px-2 py-4 text-white lg:w-[70%]`}>
+                    className={`block xl:text-xl lg:text-lg text-sm lg:pl-32 px-2 py-4 text-white lg:w-[70%]`}>
                     {pageContent?.header_description}
                   </p>
-                  <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start lg:my-10">
+                  <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start lg:my-10 lg:pl-8">
                     {workData?.map((value, ind) => (
                       <div
                         className="relative text-center flex flex-col justify-center items-center "
@@ -386,7 +386,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
                           </div>
                         </div>
                         <div>
-                          <h1 className="xl:text-xl lg:text-lg text-sm font-medium mb-[20px] text-white">
+                          <h1 className="w-[100px] xl:text-xl lg:text-lg text-sm font-medium mb-[20px] text-white">
                             {value.title}
                           </h1>
                         </div>
@@ -404,7 +404,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
         </div>
       </section>
       <div className="py-12">
-        <div className="font-serif text-red-600 text-5xl text-bold p-2 flex justify-center ">{pageContent?.our_affiliations}</div>
+        <div className="font-serif text-red-600 text-4xl text-bold p-2 flex justify-center ">{pageContent?.our_affiliations}</div>
         <div className="flex flex-wrap px-4 lg:gap-16 justify-center">
           {affilations.map((value) => {
             return (

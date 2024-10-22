@@ -43,34 +43,34 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
   return (
     <>
       <section
-        id="section-Interested-ref"
-        className=" w-screen bg-[#080c3c] h-fit overflow-auto lg:p-8 relative top-0 left-0 z-10 lg:shadow-2xl"
+        id=""
+        className=" w-full h-full overflow-x-hidden lg:shadow-2xl top-diagonal"
       >
         <div className={` relative items-start w-full h-full ${className}`}>
-          <div className="w-screen p-8 flex flex-col md:flex-row">
-            <div className="w-full">
-              <div className="font-serif text-[#ff366b] text-3xl lg:text-5xl">
+          <div className="w-full p-8 flex flex-col md:flex-row">
+            <div className="w-full lg:pl-32">
+              <div className="font-serif text-red-600 text-3xl lg:text-4xl">
                 {pageContent?.header_title}
               </div>
-              <div className="pt-8 w-[60%] text-white">
+              <div className="pt-8 w-[80%] text-black">
                 {pageContent?.header_description}
               </div>
               <div className="flex justify-start" id="">
                 <Button
                   onClick={handleClick}
                   variant="outline"
-                  className="transform duration-500 lg:mt-20 my-20 p-6 text-white border-[#ff366b]"
+                  className="transform duration-500 lg:mt-20 my-20 p-6 border-[#ff366b]"
                 >
-                  {pageContent?.hr_email}
+                  Join Now
                 </Button>
               </div>
             </div>
-            <div className="h-full w-full flex justify-start md:-mt-8 md:-ml-32 items-center p-2">
+            <div className="h-full w-full lg:-mt-12 flex justify-start ">
               <Image
                 src={pageContent?.image}
                 alt="image"
-                height={500}
-                width={500}
+                height={400}
+                width={400}
                 className="object-scale-down"
               />
             </div>
