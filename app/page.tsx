@@ -8,6 +8,7 @@ import { imageLink } from "./featured-client/page";
 import HealthSafetyHome from "@/components/homepage/healthAndSafety";
 import { PagesData } from "./apiCall";
 import InterestedSection from "@/components/homepage/ServiceSection";
+import CustomizeProject from "@/components/homepage/CustomizeProject";
 const Home = async () => {
   const PageContent = await getPageBySlug('home')
   const logoLink = await getFeaturedMediaById(PageContent?.acf?.logo)
@@ -32,6 +33,7 @@ const Home = async () => {
         <Topbar props={pageContents} />
         <HeroSection props={PageContent?.acf} svg={svgValue} />
         <HealthSafetyHome pageContent={pageContent?.acf} affilations={Affilations} />
+        <CustomizeProject pageContent={ServicepageContent}/>
         <InterestedSection pageContent={ServicepageContent}/>
         <NavBar menu={data} />
 
