@@ -1,12 +1,10 @@
 "use client";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Marquee from "../ui/Marquee";
 import Image from "next/image";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import gsap from "gsap";
-import { Button } from "../ui";
 
 interface ImageContentType {
   post_title: any;
