@@ -115,7 +115,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
       <div
         className={`flex flex-col justify-center p-2 relative items-start w-full h-full`}
       >
-        <div className="w-full pt-8 pb-4 text-primary text-7xl uppercase font-serif flex justify-center font-bold">
+        <div className="w-full pt-8 pb-4 text-primary text-7xl capitalize font-serif flex justify-center font-bold">
           {/* <Marquee title={pageContent?.animated_title || ""} /> */}
           <p>{pageContent?.animated_title}</p>
         </div>
@@ -125,7 +125,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
             ref={followHeadingRef}
             className="w-full md:w-4/5 flex flex-col  gap-2 items-start "
           >
-            <h3 className="uppercase text-2xl font-bold text-primary w-10/12">
+            <h3 className="capitalize text-2xl font-bold text-primary w-10/12">
               {pageContent?.header_title}
             </h3>
             {pageContent?.header_description && (

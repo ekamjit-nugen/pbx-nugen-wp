@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Marquee from "@/components/ui/Marquee";
 interface OurProjectsType {
   buttonData: any;
 }
@@ -16,7 +15,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
       <div
         className={` flex flex-col justify-center lg:grid  relative items-start w-full lg:h-screen h-full`}
       >
-        <div className="w-full text-6xl uppercase font-serif flex justify-center font-bold gap-10 text-primary">
+        <div className="w-full text-6xl capitalize font-serif flex justify-center font-bold gap-10 text-primary">
           Our Projects
         </div>
         <div />

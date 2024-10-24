@@ -15,7 +15,7 @@ const OurServices: React.FC<OurServicesType> = ({ buttonData }) => {
       <div
         className={` flex flex-col justify-center lg:grid  relative items-start w-full lg:h-screen h-full`}
       >
-        <div className="w-full text-6xl uppercase font-serif flex justify-center font-bold gap-10 text-primary">
+        <div className="w-full text-6xl capitapize font-serif flex justify-center font-bold gap-10 text-primary">
           Our Services
         </div>
         <div />
@@ -28,7 +28,7 @@ const OurServices: React.FC<OurServicesType> = ({ buttonData }) => {
                     <Link
                       href={{
                         pathname: "/services-section",
-                        query: { data: JSON.stringify(value?.button_value) },
+                        query: { data: JSON?.stringify(value?.button_value) },
                       }}
                     >
                       <div className="flex flex-col justify-center items-center drop-shadow-2xl transition duration-400 ease-in-out hover:scale-110">

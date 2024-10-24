@@ -19,11 +19,16 @@ const Home = async () => {
   const data = posts.map((data) => { return data.acf })
   const svgValue = await imageLink(PageContent?.acf?.svg)
   const pageContent = await getPageBySlug("health-safety")
+  console.log(pageContent?.acf,"this is content.....")
   const Affilations = await PagesData("our-affilations")
 
   const pageCont = await getPageBySlug("work-with-us")
   const images=await imageLink(pageCont?.acf?.image)
   const ServicepageContent={...pageCont?.acf,image:images}
+
+  const customPro = await getPageBySlug("customize-project")
+  const Customimages=await imageLink(customPro?.acf?.image)
+  const CustomProject={...customPro?.acf,image:Customimages}
   return (
     <Layout>
       <div
@@ -33,7 +38,7 @@ const Home = async () => {
         <Topbar props={pageContents} />
         <HeroSection props={PageContent?.acf} svg={svgValue} />
         <HealthSafetyHome pageContent={pageContent?.acf} affilations={Affilations} />
-        <CustomizeProject pageContent={ServicepageContent}/>
+        <CustomizeProject pageContent={CustomProject }/>
         <InterestedSection pageContent={ServicepageContent}/>
         <NavBar menu={data} />
 
