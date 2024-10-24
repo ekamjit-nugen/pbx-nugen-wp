@@ -158,8 +158,8 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
               <Image
                 src={pageContent?.image}
                 alt="image"
-                height={400}
-                width={400}
+                height={700}
+                width={700}
                 className="object-scale-down"
               />
             </div>

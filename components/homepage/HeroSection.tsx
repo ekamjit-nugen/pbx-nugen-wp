@@ -45,39 +45,39 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
   const size = useSize();
 
   useLayoutEffect(() => {
-    // const movedAnimation = gsap.timeline();
+    const movedAnimation = gsap.timeline();
     const movedAnimation1 = gsap.timeline();
-    // gsap.fromTo(
-    //   [splitTextLines.current, getStartedButton.current, rightSvg.current],
-    //   {
-    //     y: 10,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     y: 0,
-    //     opacity: 1,
-    //     stagger: 0.05,
-    //     duration: 0.8,
-    //     delay: 1,
-    //     ease: "elastic",
-    //   }
-    // );
-    // movedAnimation.fromTo(
-    //   [computerRef.current, toolRef.current],
-    //   {
-    //     x: 0,
-    //     y: 0,
-    //   },
-    //   {
-    //     x: -12,
-    //     y: 20,
-    //     rotate: "+=10",
-    //     duration: 5,
-    //     ease: "none",
-    //     repeat: 99,
-    //     yoyoEase: true,
-    //   }
-    // );
+    gsap.fromTo(
+      [splitTextLines.current, getStartedButton.current, rightSvg.current],
+      {
+        y: 10,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        duration: 0.8,
+        delay: 1,
+        ease: "elastic",
+      }
+    );
+    movedAnimation.fromTo(
+      [computerRef.current, toolRef.current],
+      {
+        x: 0,
+        y: 0,
+      },
+      {
+        x: -12,
+        y: 20,
+        rotate: "+=10",
+        duration: 5,
+        ease: "none",
+        repeat: 99,
+        yoyoEase: true,
+      }
+    );
     movedAnimation1.fromTo(
       [iconRef.current, hashRef.current],
       {
@@ -114,7 +114,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
       );
     });
 
-    // movedAnimation.play();
+    movedAnimation.play();
     movedAnimation1.play();
 
     setSvgWidth(window.innerWidth - 0.4);
@@ -192,7 +192,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
               <div className="text-2xl md:text-3xl lg:text-5xl xl:6xl font-serif font-medium current-heading flex flex-wrap">
                 {header_title}
               </div>
-              <p>
+              <p ref={splitTextLines}>
                 {header_description}
               </p>
               <div
@@ -217,8 +217,8 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             </div>
           </div>
 
-          {size && size>1024 && <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex">
-            <HeroImageSVGRight width={size && size < 1024 ? "380" : "520"}/>
+          {size && size > 1024 && <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex">
+            <HeroImageSVGRight width={size && size < 1024 ? "380" : "520"} />
           </div>}
         </div>
       </section>
