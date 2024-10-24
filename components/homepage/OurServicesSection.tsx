@@ -54,7 +54,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
       <div
         className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
       >
-        <div className="w-full pt-8 pb-4 text-primary text-7xl font-serif flex uppercase justify-center font-bold">
+        <div className="w-full pt-8 pb-4 text-primary text-7xl font-serif flex capitalize justify-center font-bold">
           {/* <CustomMarquee title={pageContent?.animated_title} /> */}
           <p>{pageContent?.animated_title}</p>
         </div>
@@ -63,7 +63,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
             className=" flex flex-col gap-2"
             ref={followHeadingRef}
           >
-            <h3 className="uppercase text-2xl font-bold text-primary w-10/12">
+            <h3 className="capitalize text-2xl font-bold text-primary w-10/12">
               {pageContent?.header_title}
             </h3>
             <div className=" border-b border-foreground hidden" />

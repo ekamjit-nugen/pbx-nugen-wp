@@ -119,7 +119,7 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({
     >
       <div
         ref={followHeadingRef}
-        className="w-full text-6xl uppercase font-serif flex justify-center font-bold gap-10"
+        className="w-full text-6xl capitalize font-serif flex justify-center font-bold gap-10"
       >
         <p className="text-primary">{pageContent?.animated_title}</p>
         {/* <MarqueStarIcon />   //star icon  */}
@@ -130,7 +130,7 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({
           ref={followHeadingRef}
           className="w-full md:w-3/4 px-10  pb-0 flex flex-col lg:flex-row gap-2 lg:gap-8 items-start lg:items-center"
         >
-          <h3 className="uppercase text-lg lg:text-2xl font-bold text-primary">
+          <h3 className="capitalize text-lg lg:text-2xl font-bold text-primary">
             {pageContent?.header_title}
           </h3>
           <div className="w-12 border-b border-foreground hidden lg:block" />

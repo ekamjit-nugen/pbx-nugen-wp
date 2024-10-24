@@ -208,7 +208,7 @@ interface pageContentType {
   header_description: string,
   animated_title: string,
   button_value: string,
-  our_affiliations: string,
+  "our-affilations": string,
   health_img: number
 }
 interface HealthAndSafetyType {
@@ -404,7 +404,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
         </div>
       </section>
       <div className="py-12">
-        <div className="font-serif text-red-600 text-4xl text-bold p-2 flex justify-center ">{pageContent?.our_affiliations}</div>
+        <div className="font-serif text-red-600 text-4xl text-bold p-2 flex justify-center ">{pageContent?.["our-affilations"]}</div>
         <div className="flex flex-wrap px-4 lg:gap-16 justify-center">
           {affilations.map((value) => {
             return (

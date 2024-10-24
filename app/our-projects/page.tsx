@@ -3,7 +3,7 @@ import React from 'react'
 import { ButtonData } from '../apiCall'
 import ScreenAnimation from '../../components/ui/ThreeDMenu'
 export default async function Projects() {
-  const buttonData=await ButtonData("buttons")
+  const buttonData=await ButtonData("buttons-projects")
   return (
     <div>
       <ScreenAnimation/>

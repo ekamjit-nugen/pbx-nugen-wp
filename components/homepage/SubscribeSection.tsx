@@ -86,12 +86,12 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
     <>
       <section id="" className="w-full h-full">
         <div>
-          <div className="w-full py-4 text-primary text-6xl uppercase font-serif flex justify-center font-bold">
+          <div className="w-full py-4 text-primary text-6xl capitalize font-serif flex justify-center font-bold">
             <p>{animated_title}</p>
           </div>
           <div className="">
             <div className="md:flex w-full items-center gap-4 px-8  py-4 ">
-              <p className="text-2xl lg:text-4xl text-primary font-bold">
+              <p className="text-2xl lg:text-3xl text-primary font-medium">
                 {header_title}
               </p>
               <div className="w-10 border-2 border-black hidden md:flex md:visible"></div>
