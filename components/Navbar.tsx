@@ -59,7 +59,7 @@ const NavBar: React.FC<NavBarPropsType> = ({ menu }) => {
       );
       setTimeout(() => {
         router.push(path);
-      }, 1500);
+      },850);
 
       setTimeout(() => {
         setbtnStatus(false);
