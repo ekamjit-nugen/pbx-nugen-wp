@@ -2,53 +2,60 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 interface OurProjectsType {
   buttonData: any;
 }
 
 const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
   return (
-    <section
+    <motion.section
+    {...staggerParent} 
       id="featured-work-section"
-      className="trigger w-screen lg:h-screen h-screen section-featured-ref overflow-hidden lg:p-8 relative lg:fixed top-0 left-0 z-10 bg-background shadow-2xl"
+      className="w-screen lg:h-screen h-screen section-featured-ref overflow-hidden lg:p-8 relative lg:fixed top-0 left-0 z-10 bg-background shadow-2xl"
     >
-      <div
-        className={` flex flex-col justify-center lg:grid  relative items-start w-full lg:h-screen h-full`}
-      >
-        <div className="w-full text-6xl capitalize font-serif flex justify-center font-bold gap-10 text-primary">
+      <div className="flex flex-col justify-center lg:grid relative items-start w-full lg:h-screen h-full">
+        <motion.div variants={topToBottomAnimation} className="w-full text-center text-4xl md:text-6xl capitalize font-serif font-bold text-primary">
           Our Projects
-        </div>
-        <div />
-        <div className=" w-full h-full flex flex-col justify-center items-center lg:-mt-32 ">
+        </motion.div>
+        <div className="flex flex-col justify-center items-center lg:-mt-12 ">
           {buttonData?.length >= 2 && (
-            <div className="flex gap-8 justify-center items-center flex flex-col lg:flex-row">
-              {buttonData?.map((value: any) => {
-                return (
-                  <>
-                    <Link
-                      href={{
-                        pathname: "/work-service-section",
-                        query: { data: JSON.stringify(value?.button_value) },
-                      }}
-                    >
-                      <div className="flex flex-col justify-center items-center drop-shadow-2xl transition duration-400 ease-in-out hover:scale-110">
-                        <Image
-                          src={value?.button_image}
-                          alt="image"
-                          height={430}
-                          width={430}
-                          className="object-fit"
-                        />
-                      </div>
-                    </Link>
-                  </>
-                );
-              })}
+            <div className="gap-12 justify-center items-center flex flex-col lg:flex-row ">
+              {buttonData?.map((value: any, index: number) => (
+                <motion.div
+                variants={blurAnimation}
+                  key={value.button_title + index}
+                  className="lg:h-[350px] bg-white md:w-full w-full lg:w-[400px] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out min-w-[280px] text-black rounded-[22px] border-none md:mx-2 my-6 relative lg:flex lg:flex-col lg:items-center lg:justify-center card group"
+                >
+                  <div className="relative flex flex-col items-center p-6">
+                    <motion.h2 variants={leftToRightAnimation} className="font-extrabold text-2xl text-center group-hover:text-[#ff366b] transition-colors duration-300 capitalize font-serif text-primary">
+                      {value?.button_title || ""}
+                    </motion.h2>
+                    <motion.div variants={leftToRightAnimation} className="justify-center mb-16">
+                      <img
+                        src={value?.button_image}
+                        alt={value?.button_title}
+                        className="w-[150px] lg:w-[200px] transition-transform duration-500 transform group-hover:scale-110"
+                      />
+                    </motion.div>
+                  </div>
+                  <Link
+                    href={{
+                      pathname: "/services-section",
+                      query: { data: JSON?.stringify(value?.button_value) },
+                    }}
+                    className="absolute bottom-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-6 transition-all duration-500 bg-[#ff366b] text-white font-bold py-2 px-4 rounded-full"
+                  >
+                    Show More
+                  </Link>
+                </motion.div>
+              ))}
             </div>
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

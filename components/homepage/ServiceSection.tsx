@@ -6,6 +6,11 @@ import Marquee from "../ui/Marquee";
 import Image from "next/image";
 import MacGirl from "../../image/macgirl.png";
 import Contact from "../../image/contact.png";
+import circle from "../../image/images/shape-circle.png";
+import square from "../../image/images/shape-square.png";
+import tri from "../../image/images/shape-triangle.png";
+import { motion } from "framer-motion";
+import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 interface ServiceContentType {
   header_title: string;
   header_description: string;
@@ -41,21 +46,147 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
     }
   };
   return (
-    <>
-      <section
+    <div className="relative">
+      {/* Circle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "0%",
+          left: "0%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ y: 300, rotate: 0, opacity: 0 }}
+        animate={{ x: 100, rotate: 360, opacity: 1 }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={circle} alt="circle" />
+      </motion.div>
+
+      {/* Square Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "40%",
+          left: "20%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-100%", y: "-100%", rotate: 0 }}
+        animate={{ x: "50%", rotate: 45 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={square} alt="square" />
+      </motion.div>
+
+      {/* Triangle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "10%",
+          left: "30%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-150%", y: "-100%", rotate: 0, opacity: 0 }}
+        animate={{ x: "150%", rotate: 180, opacity: 1 }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={tri} alt="triangle" />
+      </motion.div>
+
+      {/* Another Circle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "0%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ y: 200, x: -100, scale: 0.5 }}
+        animate={{ y: 140, x: 50, scale: 1.2, opacity: 0.8 }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={circle} alt="circle" />
+      </motion.div>
+
+      {/* Another Triangle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "10%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-150%", y: "-150%", rotate: 0 }}
+        animate={{ y: "150%", rotate: 120 }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={tri} alt="triangle" />
+      </motion.div>
+
+      {/* Another Square Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "40%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-100%", y: "-100%", rotate: 0, opacity: 0 }}
+        animate={{ x: "50%", rotate: 360, opacity: 0.7 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={square} alt="square" />
+      </motion.div>
+      <motion.section
+        {...staggerParent}
         id=""
         className=" w-full h-full overflow-x-hidden lg:shadow-2xl top-diagonal"
       >
         <div className={` relative items-start w-full h-full ${className}`}>
           <div className="w-full p-8 flex flex-col md:flex-row">
             <div className="w-full lg:pl-32">
-              <div className="font-serif text-red-600 text-3xl lg:text-4xl">
+              <motion.div variants={topToBottomAnimation} className="font-serif text-red-600 text-3xl lg:text-4xl">
                 {pageContent?.header_title}
-              </div>
-              <div className="pt-8 w-[80%] text-black">
+              </motion.div>
+              <motion.div variants={leftToRightAnimation} className="pt-8 w-[80%] text-black">
                 {pageContent?.header_description}
-              </div>
-              <div className="flex justify-start" id="">
+              </motion.div>
+              <motion.div variants={leftToRightAnimation} className="flex justify-start" id="">
                 <Button
                   onClick={handleClick}
                   variant="outline"
@@ -63,9 +194,9 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
                 >
                   Join Now
                 </Button>
-              </div>
+              </motion.div>
             </div>
-            <div className="h-full w-full lg:-mt-12 flex justify-start ">
+            <motion.div variants={rightToLeftAnimation} className="h-full w-full lg:-mt-12 flex justify-start ">
               <Image
                 src={pageContent?.image}
                 alt="image"
@@ -73,11 +204,12 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
                 width={400}
                 className="object-scale-down"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
-    </>
+      </motion.section>
+    </div>
+
   );
 };
 

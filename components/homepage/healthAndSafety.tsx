@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import hse from '../../image/images/hse.png'
 import useSize from "../windowSize";
+import { leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 const workData = [
   {
     color: "#FF366B",
@@ -220,10 +221,10 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
     window.scrollTo(0, 0);
   }, [HealthSafetyHome]);
 
-  const size=useSize()
+  const size = useSize()
   return (
     <>
-      <section
+      <motion.section {...staggerParent}
         className={`bg-[#080c3c] md:px-12  relative overflow-x-hidden`}>
         <motion.div
           className="absolute"
@@ -349,7 +350,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
           }}
         ><Image src={square} alt="image" />
         </motion.div>
-        <div className="flex flex-col lg:flex-row justify-center items-center">
+        <motion.div className="flex flex-col lg:flex-row justify-center items-center">
           <div
             className={` text-black relative `}>
 
@@ -358,15 +359,15 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
                 <div
                   className={`text-[22px] md:text-[26px] lg:text-3xl xl:text-[35px]`}>
                   <div className={`block`}>
-                    <h1 className="xl:text-xl lg:text-lg text-lg py-4 lg:pl-32 text-white">
+                    <motion.h1 variants={leftToRightAnimation} className="xl:text-xl lg:text-lg text-lg py-4 lg:pl-32 text-white">
                       {pageContent?.animated_title}
-                    </h1>
+                    </motion.h1>
                     <div className="font-serif text-[#ff366b] text-3xl lg:pl-32 lg:text-4xl">{pageContent?.header_title}</div>
                   </div>
-                  <p
-                    className={`block xl:text-xl lg:text-lg text-sm lg:pl-32 px-2 py-4 text-white lg:w-[70%]`}>
+                  <motion.p
+                    variants={leftToRightAnimation} className={`block xl:text-xl lg:text-lg text-sm lg:pl-32 px-2 py-4 text-white lg:w-[70%]`}>
                     {pageContent?.header_description}
-                  </p>
+                  </motion.p>
                   <div className="grid  sm:grid-cols-2 lg:grid-cols-4 justify-center items-start lg:my-10 lg:pl-8">
                     {workData?.map((value, ind) => (
                       <div
@@ -398,18 +399,18 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
             </div>
 
           </div>
-          <div className="p-4 lg:py-10">
+          <motion.div variants={rightToLeftAnimation} className="p-4 lg:py-10">
             <Image src={hse} alt="image" className="w-[250px] lg:w-full h-[250px] lg:h-full"></Image>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
+      </motion.section>
       <div className="py-12">
         <div className="font-serif text-red-600 text-4xl text-bold p-2 flex justify-center ">{pageContent?.["our-affilations"]}</div>
         <div className="flex flex-wrap px-4 lg:gap-16 justify-center">
           {affilations.map((value) => {
             return (
               <>
-                <Image src={value?.post_image} alt="image" width={size && size<1024?120 :180} height={size && size<1024?120 :180} className="object-scale-down p-2" />
+                <Image src={value?.post_image} alt="image" width={size && size < 1024 ? 120 : 180} height={size && size < 1024 ? 120 : 180} className="object-scale-down p-2" />
               </>
             )
           })
