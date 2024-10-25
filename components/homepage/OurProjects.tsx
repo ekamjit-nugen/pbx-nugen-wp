@@ -42,7 +42,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                   </div>
                   <Link
                     href={{
-                      pathname: "/services-section",
+                      pathname: "/work-service-section",
                       query: { data: JSON?.stringify(value?.button_value) },
                     }}
                     className="absolute bottom-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-6 transition-all duration-500 bg-[#ff366b] text-white font-bold py-2 px-4 rounded-full"
