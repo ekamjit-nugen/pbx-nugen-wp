@@ -405,8 +405,8 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
         </motion.div>
       </motion.section>
       <div className="py-12">
-        <div className="font-serif text-red-600 text-4xl text-bold p-2 flex justify-center ">{pageContent?.["our-affilations"]}</div>
-        <div className="flex flex-wrap px-4 lg:gap-16 justify-center">
+        <motion.div variants={topToBottomAnimation} className="font-serif text-red-600 text-4xl text-bold p-2 flex justify-center ">{pageContent?.["our-affilations"]}</motion.div>
+        <motion.div variants={rightToLeftAnimation} className="flex flex-wrap px-4 lg:gap-16 justify-center">
           {affilations.map((value) => {
             return (
               <>
@@ -415,7 +415,7 @@ const HealthSafetyHome: React.FC<HealthAndSafetyType> = ({ pageContent, affilati
             )
           })
           }
-        </div>
+        </motion.div>
       </div>
     </>
   );

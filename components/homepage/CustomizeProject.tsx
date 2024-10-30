@@ -4,6 +4,7 @@ import { Button } from "../ui";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 import circle from "../../image/images/shape-circle.png";
 import square from "../../image/images/shape-square.png";
 import tri from "../../image/images/shape-triangle.png";
@@ -24,7 +25,7 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
   pageContent,
 }) => {
   return (
-    <section
+    <motion.section
       id=""
       className=" relative w-full bg-[#080c3c] h-fit bottom-diagonal overflow-x-hidden lg:shadow-2xl lg:py-12"
     >
@@ -151,9 +152,10 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
         }}
       ><Image src={square} alt="image" />
       </motion.div>
-      <div className={` relative w-full h-full ${className}`}>
+      <motion.div       {...staggerParent}
+        className={` relative w-full h-full ${className}`}>
         <div className="w-full flex flex-col justify-center md:flex-row pt-4">
-          <div className="h-full w-full lg:-mt-12 flex justify-center items-center">
+          <motion.div variants={leftToRightAnimation} className="h-full w-full lg:-mt-12 flex justify-center items-center">
             <Image
               src={pageContent?.image}
               alt="image"
@@ -161,18 +163,18 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
               width={700}
               className="object-scale-down"
             />
-          </div>
+          </motion.div>
           <div className="w-full flex flex-col p-4">
-            <div className="font-serif text-[#ff366b] w-[75%] text-3xl lg:text-4xl ">
+            <motion.div variants={rightToLeftAnimation} className="font-serif text-[#ff366b] w-[75%] text-3xl lg:text-4xl ">
               {pageContent?.animated_title}
-            </div>
-            <div className="pt-8 w-[75%] text-white">
+            </motion.div>
+            <motion.div variants={rightToLeftAnimation} className="pt-8 w-[75%] text-white">
               {pageContent?.header_title}
-            </div>
-            <div className="pt-8 w-[75%] text-white">
+            </motion.div>
+            <motion.div variants={rightToLeftAnimation} className="pt-8 w-[75%] text-white">
               {pageContent?.header_description}
-            </div>
-            <div className="flex justify-start" id="">
+            </motion.div>
+            <motion.div variants={topToBottomAnimation} className="flex justify-start" id="">
               <Link href={pageContent?.url}>
                 <Button
                   variant="outline"
@@ -181,11 +183,11 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
                   {pageContent?.button_value}
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

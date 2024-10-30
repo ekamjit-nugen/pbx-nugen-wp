@@ -59,129 +59,244 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
 
   return (
     <div className="relative">
+      {/* Circle Animation */}
       <motion.div
         className="absolute"
         style={{
-          position: "absolute",
           top: "0%",
           left: "0%",
           transform: "translate(-50%, -50%)",
           zIndex: 5,
         }}
-        initial={{ y: 300 }}
-        animate={{ x: 100, opacity: 1 }}
+        initial={{ y: 300, rotate: 0, opacity: 0 }}
+        animate={{ x: 100, rotate: 360, opacity: 1 }}
         transition={{
           duration: 8,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
+          repeatType: "mirror",
+          ease: "easeInOut",
         }}
       >
-        <Image src={circle} alt="image" />
+        <Image src={circle} alt="circle" />
       </motion.div>
-
       <motion.div
         className="absolute"
         style={{
-          position: "absolute",
-          top: "40%",
+          bottom: "10%",
           left: "20%",
-
           transform: "translate(-50%, -50%)",
           zIndex: 5,
         }}
-        animate={{ x: "50%" }}
-        initial={{ x: "-100%", y: "-100%" }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
-        }}
-      ><Image src={square} alt="image" />
-      </motion.div>
-      <motion.div
-        className="absolute"
-        style={{
-          position: "absolute",
-          top: "10%",
-          left: "30%",
-
-          transform: "translate(-50%, -50%)",
-          zIndex: 5,
-        }}
-        animate={{ x: "150%" }}
-        initial={{ x: "-150%", y: "-100%" }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
-        }}
-      ><Image src={tri} alt="image" />
-      </motion.div>
-
-      <motion.div
-        className="absolute"
-        style={{
-          position: "absolute",
-          top: "0%",
-          left: "70%",
-          right: "0%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 5,
-        }}
-        initial={{ y: 200, x: -100 }}
-        animate={{ y: 140, opacity: 1 }}
+        initial={{ y: 300, rotate: 0, opacity: 0 }}
+        animate={{ x: 100, rotate: 360, opacity: 1 }}
         transition={{
           duration: 8,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
+          repeatType: "mirror",
+          ease: "easeInOut",
         }}
-      ><Image src={circle} alt="image" />
+      >
+        <Image src={circle} alt="circle" />
       </motion.div>
 
+      {/* Square Animation */}
       <motion.div
         className="absolute"
         style={{
-          position: "absolute",
-          top: "10%",
-          left: "70%",
-          right: "0%",
+          top: "40%",
+          left: "20%",
           transform: "translate(-50%, -50%)",
           zIndex: 5,
         }}
-        animate={{ y: "150%" }}
-        initial={{ x: "-150%", y: "-150%" }}
+        initial={{ x: "-100%", y: "-100%", rotate: 0 }}
+        animate={{ x: "50%", rotate: 45 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={square} alt="square" />
+      </motion.div>
+      <motion.div
+        className="absolute"
+        style={{
+          bottom: "40%",
+          left: "20%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-100%", y: "-100%", rotate: 0 }}
+        animate={{ x: "50%", rotate: 45 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={square} alt="square" />
+      </motion.div>
+
+      {/* Triangle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "10%",
+          left: "30%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-150%", y: "-100%", rotate: 0, opacity: 0 }}
+        animate={{ x: "150%", rotate: 180, opacity: 1 }}
         transition={{
           duration: 6,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
+          repeatType: "mirror",
+          ease: "easeInOut",
         }}
-      ><Image src={tri} alt="image" />
+      >
+        <Image src={tri} alt="triangle" />
       </motion.div>
-
       <motion.div
         className="absolute"
         style={{
-          position: "absolute",
-          top: "40%",
-          left: "70%",
-          right: "0%",
+          bottom: "20%",
+          left: "50%",
           transform: "translate(-50%, -50%)",
           zIndex: 5,
         }}
-        animate={{ x: "50%" }}
-        initial={{ x: "-100%", y: "-100%" }}
+        initial={{ x: "-150%", y: "-100%", rotate: 0, opacity: 0 }}
+        animate={{ x: "150%", rotate: 180, opacity: 1 }}
         transition={{
-          duration: 4,
+          duration: 6,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
+          repeatType: "mirror",
+          ease: "easeInOut",
         }}
-      ><Image src={square} alt="image" />
+      >
+        <Image src={tri} alt="triangle" />
+      </motion.div>
+
+      {/* Another Circle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "0%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ y: 200, x: -100, scale: 0.5 }}
+        animate={{ y: 140, x: 50, scale: 1.2, opacity: 0.8 }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={circle} alt="circle" />
+      </motion.div>
+      <motion.div
+        className="absolute"
+        style={{
+          bottom: "20%",
+          left: "40%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ y: 200, x: -100, scale: 0.5 }}
+        animate={{ y: 140, x: 50, scale: 1.2, opacity: 0.8 }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={circle} alt="circle" />
+      </motion.div>
+
+      {/* Another Triangle Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          bottom: "10%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-150%", y: "-150%", rotate: 0 }}
+        animate={{ y: "150%", rotate: 120 }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={tri} alt="triangle" />
+      </motion.div>
+      <motion.div
+        className="absolute"
+        style={{
+          top: "10%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-150%", y: "-150%", rotate: 0 }}
+        animate={{ y: "150%", rotate: 120 }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={tri} alt="triangle" />
+      </motion.div>
+
+      {/* Another Square Animation */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "60%",
+          left: "70%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-100%", y: "-100%", rotate: 0, opacity: 0 }}
+        animate={{ x: "50%", rotate: 360, opacity: 0.7 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={square} alt="square" />
+      </motion.div>
+      <motion.div
+        className="absolute"
+        style={{
+          bottom: "60%",
+          left: "30%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 5,
+        }}
+        initial={{ x: "-100%", y: "-100%", rotate: 0, opacity: 0 }}
+        animate={{ x: "50%", rotate: 360, opacity: 0.7 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={square} alt="square" />
       </motion.div>
       <motion.div {...staggerParent} className="relative">
         <div className="py-4">
