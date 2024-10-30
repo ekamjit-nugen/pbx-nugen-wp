@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { blurAnimation, leftToRightAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import Image from "next/image";
 
 interface OurProjectsType {
   buttonData: any;
@@ -37,11 +38,15 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                       <motion.h2 variants={leftToRightAnimation} className="font-extrabold text-xl text-center group-hover:text-[#ff366b] transition-colors duration-300 capitalize font-serif text-primary">
                         {value?.button_title || ""}
                       </motion.h2>
-                      <motion.div variants={leftToRightAnimation} className="">
-                        <img
+                      <motion.div className="transition-transform duration-500 transform group-hover:scale-110"
+                        variants={leftToRightAnimation} >
+                        <Image
+                          width={200}
+                          height={200}
                           src={value?.button_image}
                           alt={value?.button_title}
-                          className="w-[120px] lg:w-[180px] transition-transform duration-500 transform group-hover:scale-110"
+                          className="transition-transform group-hover:scale-110"
+
                         />
                       </motion.div>
                     </div>

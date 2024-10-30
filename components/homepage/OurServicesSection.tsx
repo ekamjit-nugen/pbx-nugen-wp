@@ -1,9 +1,9 @@
 'use client'
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import CustomMarquee from "../ui/Marquee";
 import ServiceCard from "../services/ServiceCard";
-import { Button } from "../ui";
+import { motion } from "framer-motion";
+import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 interface ServicePropsType {
   header_title: string,
   header_description: string,
@@ -47,45 +47,45 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
     }
   }, [value])
   return (
-    <section
+    <motion.section
+      {...staggerParent}
       id=""
       className=" w-screen h-full section-featured-ref p-2 relative flex top-0 left-0 z-10 bg-background"
     >
       <div
-        className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
+        className={` relative items-center flex flex-col justify-center w-full h-screen ${className}`}
       >
         <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
           {/* <CustomMarquee title={pageContent?.animated_title} /> */}
-          <p>{pageContent?.animated_title}</p>
+          <motion.p variants={topToBottomAnimation}>{pageContent?.animated_title}</motion.p>
         </div>
         <div className="flex w-full flex-col gap-2 h-full col-span-11 lg:pl-32">
           <div
-            className=" flex flex-col gap-2"
-            ref={followHeadingRef}
+            className=" flex flex-col gap-2 pl-16"
           >
-            <h3 className="capitalize text-2xl font-bold text-primary w-10/12">
+            <motion.h3 variants={rightToLeftAnimation} className="capitalize text-2xl font-bold text-primary w-10/12">
               {pageContent?.header_title}
-            </h3>
+            </motion.h3>
             <div className=" border-b border-foreground hidden" />
-            <p className="text-foreground/80">
+            <motion.p variants={rightToLeftAnimation} className="text-foreground/80">
               {pageContent?.header_description}
-            </p>
+            </motion.p>
           </div>
         </div>
-        <div className="w-[90%] flex justify-center">
+        <div className="w-full flex justify-center">
           <div
-            className="flex flex-wrap justify-center lg:justify-center lg:flex-nowrap gap-6 relative my-16 lg:pl-56  items-center justify-center lg:overflow-auto pt-12"
-            ref={ServiceCardsRef}
+            className="flex flex-wrap justify-center lg:justify-center lg:flex-nowrap gap-6 relative my-16 lg:pl-56  items-center justify-center lg:overflow-y-auto pt-8 "
+          // ref={ServiceCardsRef}
           >
             {data?.map((value: any, index: any) => (
-              <div key={index}>
+              <motion.div variants={leftToRightAnimation} key={index}>
                 <ServiceCard index={index} {...value} />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 export default OurServicesSection;
