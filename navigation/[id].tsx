@@ -13,7 +13,6 @@ const Cubic = dynamic(
 
 const Navigation = () => {
   const router = useRouter();
-  // console.log("router", router);
   return <p>Post: {search}</p>; 
 };
 
