@@ -54,7 +54,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
       <div
         className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
       >
-        <div className="w-full pt-8 pb-4 text-primary text-7xl font-serif flex capitalize justify-center font-bold">
+        <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
           {/* <CustomMarquee title={pageContent?.animated_title} /> */}
           <p>{pageContent?.animated_title}</p>
         </div>

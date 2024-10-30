@@ -115,7 +115,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
       <div
         className={`flex flex-col justify-center p-2 relative items-start w-full h-full`}
       >
-        <div className="w-full pt-8 pb-4 text-primary text-7xl capitalize font-serif flex justify-center font-bold">
+        <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
           {/* <Marquee title={pageContent?.animated_title || ""} /> */}
           <p>{pageContent?.animated_title}</p>
         </div>
