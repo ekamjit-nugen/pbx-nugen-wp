@@ -50,10 +50,10 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
     <motion.section
       {...staggerParent}
       id=""
-      className=" w-screen h-full section-featured-ref p-2 relative flex top-0 left-0 z-10 bg-background"
+      className="w-screen h-full section-featured-ref p-2 relative flex top-0 left-0 z-10 bg-background"
     >
       <div
-        className={` relative items-center flex flex-col justify-center w-full h-screen ${className}`}
+        className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
       >
         <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
           {/* <CustomMarquee title={pageContent?.animated_title} /> */}
@@ -74,7 +74,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
         </div>
         <div className="w-full flex justify-center">
           <div
-            className="flex flex-wrap justify-center lg:justify-center lg:flex-nowrap gap-6 relative my-16 lg:pl-56  items-center justify-center lg:overflow-y-auto pt-8 "
+            className="flex flex-wrap justify-center lg:justify-center lg:flex-nowrap gap-6 relative my-16 lg:pl-56  items-center justify-center lg:overflow-auto pt-8 "
           // ref={ServiceCardsRef}
           >
             {data?.map((value: any, index: any) => (
