@@ -1,26 +1,57 @@
 import Image from 'next/image'
 import React from 'react'
-import image from '../icons/png/safetyimage.png'
 import { Button } from '../ui'
-
-export default function HealthAndSafetyContent() {
+interface buttonDataType {
+    header_title: string,
+    header_description: string,
+    animated_title: string,
+    button_value: string,
+    post_title: string,
+    post_image: undefined,
+    post_description: string,
+    description: string,
+    'button-label': string,
+    'button-value': string
+}
+interface HealthAndSafetyContentType {
+    header_title: string,
+    header_description: string,
+    animated_title: string,
+    button_value: string,
+    url: string,
+    image: string,
+    'our-affilations': string,
+    description1: string,
+    description2: string
+}
+interface PropsType {
+    buttonData: buttonDataType[],
+    contentData: HealthAndSafetyContentType
+}
+const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
     return (
         <div className='p-4'>
-            <div className="w-full h-full flex justify-center text-primary font-serif text-5xl py-6">Health and safety</div>
+            <div className="w-full h-full flex justify-center text-primary font-serif text-5xl py-6">{props?.contentData?.animated_title}</div>
             <div className="w-full h-full flex">
                 <div className="w-full h-full pl-8 pt-8">
-                    <p className='p-4'>At PBX Technologies safety is put at the forefront of our operations. We are committed to each and every one of our employees offering training and support for comfortability and confidence while remaining aware of the work environment. Our team receives knowledge and training to a wide range of safety standards and proper practices.</p>
-                    <p className='p-4'>Every job site is different, therefore crews are trained in identifying potential job site hazards that are documented and discussed in daily tailgate talks. Job Site analyses as well as proper work procedures are documented and discussed daily. Our trucks and crews remain fully stocked and equipped with industry leading PPE as well as full kits and equipment for high angle rescue if ever required. We continuously review and revise our health and safety program and make sure our policies and procedures are understood and adhered to. Our dedication for safety not only allows confidence to our employees, but to our customers as well.</p>
+                    <p className='p-4'>{props?.contentData?.description1}</p>
+                    <p className='p-4'>{props?.contentData?.description2}</p>
                 </div>
                 <div className="w-full h-full flex justify-center">
-                    <Image src={image} alt='image' className='object-scale-down' height={250} width={250} />
+                    <Image src={props?.contentData?.image || ""} alt='image' className='object-scale-down' height={250} width={250} />
                 </div>
             </div>
             <div className="flex justify-center pb-24 gap-8">
-                <Button className='py-6'>PBX Enviromental Health & Safety Manual</Button>
-                <Button className='py-6'>PBX Environmental Health & Safety Policy Statement</Button>
-                <Button className='py-6'>Quality Management System Manual</Button>
+                {props?.buttonData?.map((value) => {
+                    return (
+                        <>
+                            <Button className='py-6'>{value?.['button-label']}</Button>
+                        </>
+                    )
+                })}
             </div>
         </div>
     )
 }
+
+export default HealthAndSafetyContent
