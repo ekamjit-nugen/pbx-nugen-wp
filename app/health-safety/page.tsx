@@ -11,7 +11,7 @@ const FeaturedClientPage = async () => {
   const contentData={...healthData?.acf,image:image}
   return (
     <div>
-      {/* <ScreenAnimation /> */}
+      <ScreenAnimation />
       <HealthAndSafetyContent buttonData={buttonData} contentData={contentData}/>
     </div>
   );

@@ -200,8 +200,8 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
               <Image
                 src={pageContent?.image}
                 alt="image"
-                height={400}
-                width={400}
+                height={600}
+                width={600}
                 className="object-scale-down"
               />
             </motion.div>

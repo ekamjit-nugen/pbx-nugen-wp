@@ -19,7 +19,6 @@ const Home = async () => {
   const data = posts.map((data) => { return data.acf })
   const svgValue = await imageLink(PageContent?.acf?.svg)
   const pageContent = await getPageBySlug("health-safety")
-  console.log(pageContent?.acf,"this is content.....")
   const Affilations = await PagesData("our-affilations")
 
   const pageCont = await getPageBySlug("work-with-us")

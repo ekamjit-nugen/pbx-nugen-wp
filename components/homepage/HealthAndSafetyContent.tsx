@@ -1,5 +1,8 @@
+"use client";
 import Image from 'next/image'
 import React from 'react'
+import { motion } from "framer-motion";
+import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 import { Button } from '../ui'
 interface buttonDataType {
     header_title: string,
@@ -30,27 +33,27 @@ interface PropsType {
 }
 const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
     return (
-        <div className='p-4'>
-            <div className="w-full h-full flex justify-center text-primary font-serif text-5xl py-6">{props?.contentData?.animated_title}</div>
+        <motion.div
+            {...staggerParent}
+            className='p-4'>
+            <motion.div variants={topToBottomAnimation} className="w-full h-full flex justify-center text-primary font-serif text-5xl py-6">{props?.contentData?.animated_title}</motion.div>
             <div className="w-full h-full flex">
                 <div className="w-full h-full pl-8 pt-8">
-                    <p className='p-4'>{props?.contentData?.description1}</p>
-                    <p className='p-4'>{props?.contentData?.description2}</p>
+                    <motion.p variants={leftToRightAnimation} className='p-4'>{props?.contentData?.description1}</motion.p>
+                    <motion.p variants={leftToRightAnimation} className='p-4'>{props?.contentData?.description2}</motion.p>
                 </div>
-                <div className="w-full h-full flex justify-center">
+                <motion.div variants={rightToLeftAnimation} className="w-full h-full flex justify-center">
                     <Image src={props?.contentData?.image || ""} alt='image' className='object-scale-down' height={250} width={250} />
-                </div>
+                </motion.div>
             </div>
-            <div className="flex justify-center pb-24 gap-8">
+            <motion.div variants={blurAnimation} className="flex justify-center pb-24 gap-8">
                 {props?.buttonData?.map((value) => {
                     return (
-                        <>
-                            <Button className='py-6'>{value?.['button-label']}</Button>
-                        </>
+                        <Button className='py-6'>{value?.['button-label']}</Button>
                     )
                 })}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
 
