@@ -7,9 +7,7 @@ import { Tween } from "react-gsap";
 import gsap from "gsap";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import ComputerIcon from "../../components/icons/png/computer-icon.png";
-import HashIcon from "../../components/icons/png/hash-icon.png";
-import MobileIcon from "../../components/icons/png/mobile-icon.png";
-import ToolIcon from "../../components/icons/png/tool-icon.png";
+import ToolIcon from "../../components/icons/png/111232323.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import tower from '../icons/png/tower-svg.svg'
@@ -183,7 +181,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             height={120}
             width={160}
             ref={toolRef}
-            className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
+            className="h-[80px] w-[80px] sm:h-[170px] sm:w-[170px]"
           />
         </div>
         <div className="w-full px-4 md:px-32 flex flex-col lg:flex-row ">

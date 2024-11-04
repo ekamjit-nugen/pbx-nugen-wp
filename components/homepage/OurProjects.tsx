@@ -28,11 +28,12 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                   href={{
                     pathname: "/work-service-section",
                     query: { data: JSON?.stringify(value?.button_value) },
-                  }}>
+                  }} 
+                  style={{ textDecoration: 'none' }}>
                   <motion.div
                     variants={blurAnimation}
                     key={value.button_title + index}
-                    className="lg:h-[350px] bg-white w-full lg:w-[350px] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out min-w-[280px] text-black rounded-[22px] border-none my-4 relative lg:flex lg:flex-col lg:items-center lg:justify-center card group"
+                    className="lg:h-[450px] bg-white w-full lg:w-[450px] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out min-w-[280px] text-black rounded-[22px] border-none my-4 relative lg:flex lg:flex-col lg:items-center lg:justify-center card group"
                   >
                     <div className="relative flex flex-col items-center">
                       <motion.h2 variants={leftToRightAnimation} className="font-extrabold text-xl text-center group-hover:text-[#ff366b] transition-colors duration-300 capitalize font-serif text-primary">
@@ -45,7 +46,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
                           height={200}
                           src={value?.button_image}
                           alt={value?.button_title}
-                          className="transition-transform group-hover:scale-110"
+                          className="transition-transform group-hover:scale-125"
 
                         />
                       </motion.div>

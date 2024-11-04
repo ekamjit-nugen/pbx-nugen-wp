@@ -118,12 +118,14 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
                     {mobile_number}
                   </motion.p>
                 </div>
+                <div className="">
                 <motion.div variants={leftToRightAnimation} className="text-primary text-2xl font-semibold">
                   {email_title}
                 </motion.div>
                 <motion.p variants={leftToRightAnimation} className="font-medium text-sm md:text-lg">
                   {email_id}
                 </motion.p>
+                </div>
               </div>
               <motion.div variants={leftToRightAnimation} className="my-12">
                 <QueryForm buttonTitle="Send Query" />
@@ -138,16 +140,6 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
               ></iframe>
             </motion.div>
           </div>
-          <motion.div variants={rightToLeftAnimation} className=" w-[40%] hidden lg:flex lg:visible ">
-            <Image
-              height={400}
-              width={400}
-              src={HeroImage3}
-              alt="bg image hero section"
-              quality={100}
-              className="lg:-mt-16"
-            />
-          </motion.div>
         </div>
       </div>
       <Footer props={footerProps} />

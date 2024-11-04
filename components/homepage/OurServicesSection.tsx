@@ -1,9 +1,8 @@
 'use client'
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useState } from "react";
 import ServiceCard from "../services/ServiceCard";
 import { motion } from "framer-motion";
-import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import { leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 interface ServicePropsType {
   header_title: string,
   header_description: string,
@@ -27,12 +26,6 @@ interface ServiceClientsProps {
   nugenContent: pageContentType,
 }
 const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData, pbxContent, nugenContent, nugenData }) => {
-  const followHeadingRef = useRef(null);
-  const ServiceCardsRef = useRef(null);
-  const timeline = gsap.timeline({
-    delay: 1.2,
-  });
-  let matchMediaToggler = gsap.matchMedia();
   const [data, setData] = useState<any>([])
   const [pageContent, setPageContent] = useState<any>({})
   const params = new URLSearchParams(window.location.search);
@@ -56,7 +49,6 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
         className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
       >
         <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
-          {/* <CustomMarquee title={pageContent?.animated_title} /> */}
           <motion.p variants={topToBottomAnimation}>{pageContent?.animated_title}</motion.p>
         </div>
         <div className="flex w-full flex-col gap-2 h-full col-span-11 lg:pl-32">
@@ -74,13 +66,12 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
         </div>
         <div className="w-full flex justify-center">
           <div
-            className="flex flex-wrap justify-center lg:justify-center lg:flex-nowrap gap-6 relative my-16 lg:pl-56  items-center justify-center lg:overflow-auto pt-8 "
-          // ref={ServiceCardsRef}
+            className="flex h-full flex-wrap justify-center lg:flex-nowrap gap-6 relative my-16 overflow-x-auto overflow-y-hidden pt-8 "
           >
             {data?.map((value: any, index: any) => (
               <motion.div variants={leftToRightAnimation} key={index}>
                 <ServiceCard index={index} {...value} />
-              </motion.div>
+              </motion.div> 
             ))}
           </div>
         </div>

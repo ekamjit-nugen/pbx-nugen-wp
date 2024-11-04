@@ -57,26 +57,6 @@ const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
             >
                 <Image src={circle} alt="circle" />
             </motion.div>
-            <motion.div
-                className="absolute"
-                style={{
-                    bottom: "10%",
-                    left: "20%",
-                    transform: "translate(-50%, -50%)",
-                    zIndex: 5,
-                }}
-                initial={{ y: 300, rotate: 0, opacity: 0 }}
-                animate={{ x: 100, rotate: 360, opacity: 1 }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                    ease: "easeInOut",
-                }}
-            >
-                <Image src={circle} alt="circle" />
-            </motion.div>
-
             {/* Square Animation */}
             <motion.div
                 className="absolute"
