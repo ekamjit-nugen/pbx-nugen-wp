@@ -5,14 +5,15 @@ import { PagesData } from "../apiCall";
 import { getPageBySlug } from "@/lib/wordpress";
 import { imageLink } from "../featured-client/page";
 const FeaturedClientPage = async () => {
-  const buttonData=await PagesData("health-safety")
+  const buttonData=await PagesData("health-safety-button")
   const healthData=await getPageBySlug("health-safety")
+  const description=await PagesData("health-safety")
   const image=await imageLink(healthData?.acf?.image)
   const contentData={...healthData?.acf,image:image}
   return (
     <div>
       <ScreenAnimation />
-      <HealthAndSafetyContent buttonData={buttonData} contentData={contentData}/>
+      <HealthAndSafetyContent buttonData={buttonData} contentData={contentData} descriptionData={description}/>
     </div>
   );
 };

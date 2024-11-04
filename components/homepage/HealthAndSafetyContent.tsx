@@ -15,9 +15,9 @@ interface buttonDataType {
     post_title: string,
     post_image: undefined,
     post_description: string,
-    description: string,
-    'button-label': string,
-    'button-value': string
+    description?: string,
+    'button-label'?: string,
+    'button-value'?: string
 }
 interface HealthAndSafetyContentType {
     header_title: string,
@@ -33,6 +33,7 @@ interface HealthAndSafetyContentType {
 interface PropsType {
     buttonData: buttonDataType[],
     contentData: HealthAndSafetyContentType
+    descriptionData: buttonDataType[]
 }
 const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
     return (
@@ -206,8 +207,14 @@ const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
                 <motion.div variants={topToBottomAnimation} className="w-full h-full flex justify-center text-primary font-serif text-5xl py-6">{props?.contentData?.animated_title}</motion.div>
                 <div className="w-full h-full flex flex-col lg:flex-row">
                     <div className="w-full h-full pl-8 pt-8">
-                        <motion.p variants={leftToRightAnimation} className='p-4'>{props?.contentData?.description1}</motion.p>
-                        <motion.p variants={leftToRightAnimation} className='p-4'>{props?.contentData?.description2}</motion.p>
+                        {props?.descriptionData?.map((value) => {
+                            return (
+                                <>
+                                    <motion.p variants={leftToRightAnimation} className='p-4 text-primary'>{value?.post_title}</motion.p>
+                                    <motion.p variants={leftToRightAnimation} className='p-4'>{value?.post_description}</motion.p>
+                                </>
+                            )
+                        })}
                     </div>
                     <motion.div variants={rightToLeftAnimation} className="w-full h-full flex justify-center">
                         <Image src={props?.contentData?.image || ""} alt='image' className='object-scale-down' height={250} width={250} />
