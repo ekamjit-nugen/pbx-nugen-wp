@@ -7,6 +7,7 @@ import tri from "../../image/images/shape-triangle.png";
 import { motion } from "framer-motion";
 import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 import { Button } from '../ui'
+import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 interface buttonDataType {
     header_title: string,
     header_description: string,
@@ -210,8 +211,23 @@ const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
                         {props?.descriptionData?.map((value) => {
                             return (
                                 <>
-                                    <motion.p variants={leftToRightAnimation} className='p-4 text-primary'>{value?.post_title}</motion.p>
-                                    <motion.p variants={leftToRightAnimation} className='p-4'>{value?.post_description}</motion.p>
+                                    <div className="w-full lg:pl-8 ">
+                                        <motion.div variants={leftToRightAnimation} className="text-primary text-2xl flex items-center">
+                                            <div
+                                                className="origin-center rotate-45 sm:h-[50px] sm:w-[50px] h-[40px] w-[40px]"
+                                            >
+                                                <MdKeyboardDoubleArrowRight
+                                                    className="absolute z-10 rotate-[315deg] top-[10%] sm:left-[25%] left-[20%]"
+                                                    size={30}
+                                                    color="#8DDC2E"
+                                                />
+                                            </div>
+                                            <span className="ml-4">{value?.post_title}</span>
+                                        </motion.div>
+                                        <motion.div variants={leftToRightAnimation} className="p-4 pt-8 w-[90%] lg:pl-16">
+                                            {value?.post_description}
+                                        </motion.div>
+                                    </div>
                                 </>
                             )
                         })}
