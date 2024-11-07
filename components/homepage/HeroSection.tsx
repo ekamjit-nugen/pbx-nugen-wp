@@ -7,10 +7,10 @@ import { Tween } from "react-gsap";
 import gsap from "gsap";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import ComputerIcon from "../../components/icons/png/computer-icon.png";
-import ToolIcon from "../../components/icons/png/111232323.png";
+import ToolIcon from "../../components/icons/png/mobile.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import tower from '../icons/png/tower-svg.svg'
+import hash from '../icons/png/hash-icon.png'
 import settings from '../icons/png/setting-icon.webp'
 
 import useSize from "../windowSize";
@@ -156,7 +156,7 @@ const HeroSection: React.FC<PageProps> = ({ props }) => {
         </div>
         <div className="absolute top-[65%] left-[2%] md:top-[56%]">
           <Image
-            src={tower}
+            src={hash}
             alt="hash"
             height={120}
             width={120}
@@ -164,23 +164,23 @@ const HeroSection: React.FC<PageProps> = ({ props }) => {
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[0%] left-[65%] md:left-[57%] md:top-[0%] lg:left-[40%] ">
+        <div className="absolute -top-[5%] left-[65%] md:left-[57%] md:-top-[5%] lg:left-[40%] ">
           <Image
-            src={settings}
+            src={ToolIcon}
             alt="mobile"
             height={150}
             width={150}
-            ref={iconRef}
+            ref={toolRef}
             className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px]"
           />
         </div>
-        <div className="absolute top-[65%] left-[57%] md:top-[57%] lg:left-[40%]">
+        <div className="absolute top-[65%] left-[57%] md:top-[50%] lg:left-[40%]">
           <Image
-            src={ToolIcon}
+            src={settings}
             alt="tool"
             height={120}
             width={160}
-            ref={toolRef}
+            ref={iconRef}
             className="h-[80px] w-[80px] sm:h-[170px] sm:w-[170px]"
           />
         </div>

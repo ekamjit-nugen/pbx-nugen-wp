@@ -1,4 +1,4 @@
-import { CircleIcon, MiniCircle, String, String2 } from "../../components/icons";
+import { CircleIcon, MiniCircle, String, String2 } from "@/components/icons";
 
 const SvgContainer = () => {
   return (
