@@ -5,7 +5,7 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import gsap from "gsap";
-import { leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 
 interface ImageContentType {
   post_title: any;
@@ -40,6 +40,8 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
 
   const [Data, setData] = useState<any>([]);
   const [pageContent, setPageContent] = useState<any>({});
+  const params = new URLSearchParams(window.location.search);
+  const value = params.get("data")?.trim();
 
   useEffect(() => {
       setData(nugenContent);
@@ -101,38 +103,33 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
     <motion.section
       {...staggerParent}
       id="featured-work-section"
-      className="trigger w-screen h-full section-featured-ref overflow-auto  relative top-0 left-0 z-10 bg-background shadow-2xl"
+      className="trigger w-full h-full section-featured-ref overflow-auto relative top-0 left-0 z-10 bg-background shadow-2xl"
     >
-      <div
-        className={`flex flex-col justify-center p-2 relative items-start w-full h-screen`}
-      >
-        <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
-          {/* <Marquee title={pageContent?.animated_title || ""} /> */}
-          <motion.p variants={topToBottomAnimation} >{pageContent?.animated_title}</motion.p>
+      <div className="flex flex-col justify-center p-2 relative items-start w-full min-h-screen">
+        <div className="w-full text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-primary flex justify-center">
+          <motion.p variants={topToBottomAnimation}>{pageContent?.animated_title}</motion.p>
         </div>
-        <div />
         <div className="flex w-full flex-col justify-center h-[85%] col-span-11 mb-full">
-          <div
-            className="w-full md:w-4/5 flex flex-col  gap-2 items-start pl-16 "
-          >
-            <motion.h3 variants={rightToLeftAnimation} className="capitalize text-2xl font-bold text-primary w-10/12">
+          <div className="w-full md:w-4/5 flex flex-col gap-2 items-start pl-8 md:pl-16">
+            <motion.h3
+              variants={rightToLeftAnimation}
+              className="capitalize text-2xl md:text-3xl font-bold text-primary w-10/12"
+            >
               {pageContent?.header_title}
             </motion.h3>
             {pageContent?.header_description && (
               <div className="w-12 border-b border-foreground hidden " />
             )}
             {pageContent?.header_description && (
-              <motion.p variants={rightToLeftAnimation} className="text-foreground/80">
+              <motion.p variants={rightToLeftAnimation} className="text-foreground/80 text-sm md:text-base">
                 {pageContent?.header_description}
               </motion.p>
             )}
           </div>
-          <div
-            className="px-4 md:px-20 lg:px-12 w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "
-          >
+          <div className="px-4 md:px-20 lg:px-12 w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll">
             {Data?.map((value: any, index: any) => (
-              <motion.div variants={leftToRightAnimation}>
-                <ImageCard card={value} key={`${value?.post_title}-${index}`} />
+              <motion.div variants={leftToRightAnimation} key={index} className="lg:w-1/3">
+                <ImageCard card={value} />
               </motion.div>
             ))}
           </div>
