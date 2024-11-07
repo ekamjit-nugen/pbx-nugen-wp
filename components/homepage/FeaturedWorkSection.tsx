@@ -40,8 +40,6 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
 
   const [Data, setData] = useState<any>([]);
   const [pageContent, setPageContent] = useState<any>({});
-  const params = new URLSearchParams(window.location.search);
-  const value = params.get("data")?.trim();
 
   useEffect(() => {
       setData(nugenContent);
@@ -128,7 +126,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
           </div>
           <div className="px-4 md:px-20 lg:px-12 w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll">
             {Data?.map((value: any, index: any) => (
-              <motion.div variants={leftToRightAnimation} key={index} className="lg:w-1/3">
+              <motion.div variants={leftToRightAnimation} key={index} className="lg:w-full h-fit">
                 <ImageCard card={value} />
               </motion.div>
             ))}
@@ -151,11 +149,11 @@ const ImageCard = ({ card }: ImageCardPropType) => {
 
   return (
     <motion.div
-      className="h-[60dvh] md:h-[30dvh] lg:h-[50dvh] w-full p-4 flex justify-center"
+      className="h-[40dvh]  lg:h-[50dvh] w-full p-4 flex justify-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="group w-[400px] bg-white rounded-xl h-3/4 md:h-full relative bottom-0 left-0 flex justify-end flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all p-4 hover:scale-105 duration-500 border">
+      <div className="group md:w-[350px] bg-white rounded-xl md:h-[350px] lg:h-3/4 border-4 border-red-500  relative bottom-0 left-0 flex justify-end flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all p-4 hover:scale-105 duration-500 border">
         <div className="absolute top-0 left-0 scale-100 group-hover:scale-100 transition-all duration-700 object-fill hover:object-contain h-full">
           <Image
             alt=""
