@@ -4,9 +4,6 @@ import { useTheme } from "next-themes";
 import { MobileIcon } from "@radix-ui/react-icons";
 import { ModeToggle } from "../../components/ui/ThemeToggler";
 import { QueryForm } from "../QueryForms";
-import NugenLogoBlack from "../icons/png/nugen-logo-black.png";
-import NugenLogoWhite from "../icons/png/nugen-logo-white.png";
-import { PageProps } from "../homepage/HeroSection";
 const Topbar :React.FC<any>= ({props}) => {
   const {logo}=props
   const { resolvedTheme } = useTheme();

@@ -21,11 +21,13 @@ interface ServiceContentType {
 }
 interface ServiceClientsProps {
   className?: string;
+  image?:string;
   pageContent: ServiceContentType;
 }
 const InterestedSection: React.FC<ServiceClientsProps> = ({
   className,
   pageContent,
+  image
 }) => {
   const handleClick = () => {
     const emailAddress = "hr@nugeninfo.com";
@@ -46,7 +48,7 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
     }
   };
   return (
-    <div className="relative">
+    <div className="relative h-screen">
       {/* Circle Animation */}
       <motion.div
         className="absolute"
@@ -175,11 +177,11 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
       <motion.section
         {...staggerParent}
         id=""
-        className=" w-full h-full overflow-x-hidden lg:shadow-2xl top-diagonal"
+        className=" w-full h-full overflow-x-hidden lg:shadow-2xl top-diagonal lg:py-16"
       >
         <div className={` relative items-start w-full h-full ${className}`}>
           <div className="w-full p-8 flex flex-col md:flex-row">
-            <div className="w-full lg:pl-32">
+            <div className="w-full lg:pl-32 flex flex-col justify-center">
               <motion.div variants={topToBottomAnimation} className="font-serif text-red-600 text-3xl lg:text-4xl">
                 {pageContent?.header_title}
               </motion.div>
@@ -198,7 +200,7 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
             </div>
             <motion.div variants={rightToLeftAnimation} className="h-full w-full lg:-mt-12 flex justify-start ">
               <Image
-                src={pageContent?.image}
+                src={image||""}
                 alt="image"
                 height={600}
                 width={600}

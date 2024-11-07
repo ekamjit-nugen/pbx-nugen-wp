@@ -148,12 +148,12 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({
         </div>
         <div
           ref={bottomCounterSectionRef}
-          className="flex gap-10 w-auto origin-left md:ml-32 px-10 lg:px-4 pb-12"
+          className="flex gap-10 w-auto origin-left md:ml-32 px-10 lg:px-4 pb-12 pt-16"
         >
           <div className="text-center flex flex-col">
             <div className="font-bold text-2xl md:text-3xl text-start">
               <span id="clientCounter">{pageContent?.number_of_clients}</span>
-              {/* <span>+</span> */}
+              <span>+</span>
             </div>
             <span className="capitalize font-light text-start">
               {pageContent?.world_wide_clients}
@@ -162,7 +162,7 @@ const FeaturedClients: React.FC<FeaturedClientsProps> = ({
           <div className="text-center flex flex-col">
             <div className="font-bold text-xl md:text-3xl text-start">
               <span id="companyCounter">{pageContent?.number_of_company}</span>
-              {/* <span>+</span> */}
+              <span>+</span>
             </div>
             <span className="capitalize font-light text-start">
               {pageContent?.trusted_company}

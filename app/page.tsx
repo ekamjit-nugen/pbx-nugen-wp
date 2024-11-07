@@ -5,10 +5,6 @@ import Topbar from "../components/Layout/Topbar";
 import NavBar from "../components/Navbar";
 import { getAllCategories, getAllPosts, getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
 import { imageLink } from "./featured-client/page";
-import HealthSafetyHome from "@/components/homepage/healthAndSafety";
-import { PagesData } from "./apiCall";
-import InterestedSection from "@/components/homepage/ServiceSection";
-import CustomizeProject from "@/components/homepage/CustomizeProject";
 const Home = async () => {
   const PageContent = await getPageBySlug('home')
   const logoLink = await getFeaturedMediaById(PageContent?.acf?.logo)
@@ -18,16 +14,6 @@ const Home = async () => {
   const posts = await getAllPosts({ category: navBarCategory?.id.toString() });
   const data = posts.map((data) => { return data.acf })
   const svgValue = await imageLink(PageContent?.acf?.svg)
-  const pageContent = await getPageBySlug("health-safety")
-  const Affilations = await PagesData("our-affilations")
-
-  const pageCont = await getPageBySlug("work-with-us")
-  const images=await imageLink(pageCont?.acf?.image)
-  const ServicepageContent={...pageCont?.acf,image:images}
-
-  const customPro = await getPageBySlug("customize-project")
-  const Customimages=await imageLink(customPro?.acf?.image)
-  const CustomProject={...customPro?.acf,image:Customimages}
   return (
     <Layout>
       <div
@@ -36,11 +22,7 @@ const Home = async () => {
       > <ScreenAnimation/>
         <Topbar props={pageContents} />
         <HeroSection props={PageContent?.acf} svg={svgValue} />
-        <HealthSafetyHome pageContent={pageContent?.acf} affilations={Affilations} />
-        <CustomizeProject pageContent={CustomProject }/>
-        <InterestedSection pageContent={ServicepageContent}/>
         <NavBar menu={data} />
-
       </div>
     </Layout>
   );

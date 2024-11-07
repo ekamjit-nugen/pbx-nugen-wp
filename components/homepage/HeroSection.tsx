@@ -26,8 +26,8 @@ export interface PageProps {
   props: PageContent
   svg: any
 }
-const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
-  const { header_title, header_description, url, url_text, logo } = props
+const HeroSection: React.FC<PageProps> = ({ props }) => {
+  const { header_title, header_description, url, url_text } = props
   const router = useRouter();
   let matchMediaToggler = gsap.matchMedia();
   let splitTextLines = useRef(null);
@@ -139,7 +139,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
   }
 
   return (
-    <div className="relative bg-background">
+    <div className="relative bg-background h-full">
       <section
         className="flex justify-center items-center hero-section-ref relative z-0"
         id="hero-section-ref"
@@ -210,8 +210,8 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
             <div className="absolute top-90">
               <BackgroundSVG />
             </div>
-            <div className="absolute -top-56">
-              <HeroImageSVG width={size && size < 800 ? "355" : "450"} />
+            <div className="absolute top-10">
+              <HeroImageSVG width={size && size < 800 ? "355" : "450"} height="450"/>
             </div>
           </div>
 

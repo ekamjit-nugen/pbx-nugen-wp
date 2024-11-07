@@ -5,7 +5,7 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import gsap from "gsap";
-import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import { leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 
 interface ImageContentType {
   post_title: any;
@@ -23,16 +23,12 @@ interface PageContent {
   trusted_company?: string;
 }
 interface FeaturedWorkSectionProps {
-  pbxContent: ImageContentType[];
   nugenData: PageContent;
-  pbxData: PageContent;
   nugenContent: ImageContentType[];
 }
 const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
-  pbxContent,
   nugenContent,
   nugenData,
-  pbxData,
 }) => {
   const followHeadingRef = useRef(null);
   const ServiceCardsRef = useRef(null);
@@ -44,18 +40,11 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
 
   const [Data, setData] = useState<any>([]);
   const [pageContent, setPageContent] = useState<any>({});
-  const params = new URLSearchParams(window.location.search);
-  const value = params.get("data")?.trim();
 
   useEffect(() => {
-    if (value === `"pbx"`) {
-      setData(pbxContent);
-      setPageContent(pbxData);
-    } else {
       setData(nugenContent);
       setPageContent(nugenData);
-    }
-  }, [value]);
+  }, []);
 
   useLayoutEffect(() => {
     matchMediaToggler.add("(max-width: 1023px)", () => {

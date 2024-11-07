@@ -9,7 +9,26 @@ import gsap from "gsap";
 import Marquee from "../ui/Marquee";
 import useBreakpoint from "../../hooks/useBreakpoint";
 
-const TestimonialSection = () => {
+export interface TestimonialData {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  button_value: string,
+  post_title: string,
+  post_image: string,
+  post_description: string,
+  rating: string,
+  icon: { type: string, value: string },
+  source: string
+}
+
+interface TestimonialSectionType {
+  testimonialData: TestimonialData[],
+  testimonialData2: TestimonialData[]
+
+}
+const TestimonialSection: React.FC<TestimonialSectionType> = ({ testimonialData, testimonialData2 }) => {
+  const testimonialData3 = testimonialData.concat(testimonialData2)
   const followHeadingRef = useRef(null);
   const breakpoints = useBreakpoint();
   const triggerFollowHeadingSmallSize = useRef(null);
@@ -175,39 +194,39 @@ const TestimonialSection = () => {
               ref={sectionBodyOne}
               className="w-auto flex lg:flex-col justify-start items-start gap-y-12 gap-x-6 h-full"
             >
-              {TESTIMONOAL_DATA_ONE.reverse().map((testimonial, index) => (
-                <SwiperCard index={index} {...testimonial} key={index} />
+              {testimonialData.reverse().map((testimonial, index) => (
+                <SwiperCard {...testimonial} key={index} />
               ))}
             </div>
             <div
               ref={sectionBodyTwo}
               className="w-auto flex lg:flex-col justify-start items-start gap-y-12 gap-x-6 h-full"
             >
-              {TESTIMONOAL_DATA_ONE.map((testimonial, index) => (
-                <SwiperCard index={index} {...testimonial} key={index} />
+              {testimonialData.map((testimonial, index) => (
+                <SwiperCard {...testimonial} key={index} />
               ))}
             </div>
             <div
               ref={sectionBodyThree}
               className="w-auto flex lg:flex-col justify-start items-start gap-y-12 gap-x-6 h-full"
             >
-              {TESTIMONOAL_DATA_TWO.reverse().map((testimonial, index) => (
-                <SwiperCard index={index} {...testimonial} key={index} />
+              {testimonialData2.reverse().map((testimonial, index) => (
+                <SwiperCard {...testimonial} key={index} />
               ))}
             </div>
             <div
               ref={sectionBodyFour}
               className="w-auto flex lg:flex-col justify-start items-start gap-y-12 gap-x-6 h-full"
             >
-              {TESTIMONOAL_DATA_TWO.map((testimonial, index) => (
-                <SwiperCard index={index} {...testimonial} key={index} />
+              {testimonialData2.map((testimonial, index) => (
+                <SwiperCard {...testimonial} key={index} />
               ))}
             </div>
           </div>
         ) : (
-          <div className="col-span-10 w-full lg:w-screen 2xl:w-full 3xl:justify-between grid lg:grid-cols-4 justify-start h-fit lg:h-screen py-4 md:py-24 px-6 gap-4 lg:gap-8">
-            {TESTIMONOAL_DATA_TWO.map((testimonial, index) => (
-              <SwiperCard index={index} {...testimonial} key={index} />
+          <div className="flex flex-col gap-4 justify-center items-center">
+            {testimonialData3.map((testimonial, index) => (
+              <SwiperCard {...testimonial} key={index} />
             ))}
           </div>
         )}

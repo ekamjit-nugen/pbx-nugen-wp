@@ -11,7 +11,7 @@ const ServiceSectionPage = async() => {
   return (
     <>
       <ScreenAnimation />
-      <ServiceSection pageContent={pageContent?.acf}/>
+      <ServiceSection pageContent={pageContent?.acf} image={images}/>
     </>
   );
 };

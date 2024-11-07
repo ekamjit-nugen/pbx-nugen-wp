@@ -20,25 +20,16 @@ interface pageContentType {
 }
 interface ServiceClientsProps {
   className?: string;
-  pbxData: ServicePropsType[],
-  pbxContent: pageContentType,
   nugenData: ServicePropsType[],
   nugenContent: pageContentType,
 }
-const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData, pbxContent, nugenContent, nugenData }) => {
+const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, nugenContent, nugenData }) => {
   const [data, setData] = useState<any>([])
   const [pageContent, setPageContent] = useState<any>({})
-  const params = new URLSearchParams(window.location.search);
-  const value = params.get('data')?.trim();
   useEffect(() => {
-    if (value === `"pbx"`) {
-      setData(pbxData)
-      setPageContent(pbxContent)
-    } else {
       setData(nugenData)
       setPageContent(nugenContent)
-    }
-  }, [value])
+  },[])
   return (
     <motion.section
       {...staggerParent}

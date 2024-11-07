@@ -133,7 +133,7 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
             </div>
             <motion.div variants={blurAnimation} className=" w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5405304634405!2d-79.64870652392167!3d43.65772697110182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b38d3b8f6b079%3A0x9e8e053772c38d13!2s1585%20Britannia%20Rd%20E%2C%20Mississauga%2C%20ON%20L4W%202M4%2C%20Canada!5e0!3m2!1sen!2sin!4v1689567123621!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13721.617732154162!2d76.6870944!3d30.7070288!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5a5dbe6c39f7%3A0x631f8a56ded3b61d!2sNugen%20I.T.%20Services!5e0!3m2!1sen!2sin!4v1700118553232!5m2!1sen!2sin"
                 style={{ border: "0", height: "300px", width: "100%" }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
