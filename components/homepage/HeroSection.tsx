@@ -210,12 +210,12 @@ const HeroSection: React.FC<PageProps> = ({ props }) => {
             <div className="absolute top-90">
               <BackgroundSVG />
             </div>
-            <div className="absolute top-10">
+            <div className="absolute top-0">
               <HeroImageSVG width={size && size < 800 ? "355" : "450"} height="450"/>
             </div>
           </div>
 
-          {size && size > 1024 && <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex">
+          {size && size > 1290 && <div className="w-min h-full scale-y-100 md:scale-150 md:py-8 lg:-mr-8 lg:scale-125 py-8 lg:pt-16 lg:flex">
             <HeroImageSVGRight width={size && size < 1024 ? "380" : "520"} />
           </div>}
         </div>

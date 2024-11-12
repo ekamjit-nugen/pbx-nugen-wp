@@ -5,13 +5,13 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import gsap from "gsap";
-import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import { leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
 
 interface ImageContentType {
-  post_title: any;
-  post_image: any;
-  post_description: any;
-  url: any;
+  post_title?: any;
+  post_image?: any;
+  post_description?: any;
+  url?: any;
 }
 interface PageContent {
   header_title?: string;
@@ -103,7 +103,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
       id="featured-work-section"
       className="trigger w-full h-full section-featured-ref overflow-auto relative top-0 left-0 z-10 bg-background shadow-2xl"
     >
-      <div className="flex flex-col justify-center p-2 relative items-start w-full min-h-screen">
+      <div className="flex flex-col p-2 relative items-start w-full min-h-screen">
         <div className="w-full text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-primary flex justify-center">
           <motion.p variants={topToBottomAnimation}>{pageContent?.animated_title}</motion.p>
         </div>
@@ -149,11 +149,11 @@ const ImageCard = ({ card }: ImageCardPropType) => {
 
   return (
     <motion.div
-      className="h-[40dvh]  lg:h-[50dvh] w-full p-4 flex justify-center"
+      className="h-[350px] lg:h-[430px] w-full p-4 flex justify-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="group md:w-[350px] bg-white rounded-xl md:h-[350px] lg:h-3/4 border-4 border-red-500  relative bottom-0 left-0 flex justify-end flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all p-4 hover:scale-105 duration-500 border">
+      <div className="group md:w-[350px] bg-white rounded-xl md:h-[350px] lg:h-3/4 relative bottom-0 left-0 flex justify-end flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all p-4 hover:scale-105 duration-500 border">
         <div className="absolute top-0 left-0 scale-100 group-hover:scale-100 transition-all duration-700 object-fill hover:object-contain h-full">
           <Image
             alt=""
@@ -164,7 +164,7 @@ const ImageCard = ({ card }: ImageCardPropType) => {
           />
         </div>
         <motion.div
-          className="flex flex-col h-[40%] lg:h-1/2 z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
+          className="flex flex-col h-[45%] lg:h-1/2 z-10 bg-slate-600 p-4 rounded-xl shadow-2xl"
           initial={false}
           animate={{ y: isHovered ? 0 : 90 }}
         >

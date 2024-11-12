@@ -22,6 +22,20 @@ export const PagesData = async (category: string) => {
   return imagessss;
 };
 
+export const NugenPage=async (category: string) => {
+  const workSection = await getAllCategories();
+  const clientCategory = workSection.find((cat) => cat.name === category) || {
+    id: "1",
+  };
+  const posts = await getAllPosts({
+    category: clientCategory?.id.toString(),
+    limit: 100,
+  });
+  const data = posts.map((data) => {
+    return data?.content?.rendered;
+  });
+  return data
+};
 export const ServicesData = async (category: string) => {
   const servicesSection = await getAllCategories();
   const clientCategory = servicesSection.find(

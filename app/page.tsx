@@ -18,7 +18,7 @@ const Home = async () => {
     <Layout>
       <div
         id="content-id"
-        className="bg-background dark:bg-slate-950 relative h-screen w-screen"
+        className="bg-background dark:bg-slate-950 relative h-screen w-screen overflow-y-hidden"
       > <ScreenAnimation/>
         <Topbar props={pageContents} />
         <HeroSection props={PageContent?.acf} svg={svgValue} />

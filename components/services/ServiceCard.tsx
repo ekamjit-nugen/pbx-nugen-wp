@@ -56,7 +56,7 @@ const ServiceCard = (props: any) => {
                 <ArrowIcon />
               </div>
               <div
-                className="md:text-9xl text-7xl font-extrabold uppercase w-full flex items-center justify-center grayscale group-hover:grayscale-0 mx-[auto]"
+                className="md:text-9xl text-7xl font-extrabold uppercase w-full flex items-center justify-center lg:grayscale group-hover:grayscale-0 mx-[auto]"
                 ref={iconRef}
               >
                 {props?.url ?
