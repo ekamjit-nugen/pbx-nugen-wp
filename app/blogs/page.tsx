@@ -1,13 +1,12 @@
 import React from "react";
-import { NugenPage } from "../apiCall";
+import { NugenPage, PagesData } from "../apiCall";
 import BlogPage from "@/components/homepage/BlogPage";
 
 export default async function NugenBlog() {
-  const nugendata = await NugenPage("blog");
-  console.log(nugendata, "nugenData");
+  const BlogData = await PagesData("blog");
   return (
     <>
-      <BlogPage />
+      <BlogPage BlogData={BlogData}/>
     </>
   );
 }

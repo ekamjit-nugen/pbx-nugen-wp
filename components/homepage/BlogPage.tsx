@@ -1,7 +1,21 @@
 "use client";
+import Link from "next/link";
 import React from "react";
-
-const BlogPage = () => {
+interface BlogDataType {
+  header_title: string,
+  header_description: string,
+  animated_title: string,
+  button_value: string,
+  post_title: string,
+  post_image: string,
+  post_description: string,
+  date: string,
+  button_title: string
+}
+interface BlogPageType {
+  BlogData: BlogDataType[]
+}
+const BlogPage: React.FC<BlogPageType> = ({ BlogData }) => {
   const blogs = [
     {
       date: "02 Nov 2024",
@@ -53,34 +67,39 @@ const BlogPage = () => {
       {/* Blog Cards */}
       <div className="container mx-auto md:px-0 items-center mb-32 rounded-md">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mx-auto rounded-lg">
-          {blogs.map((blog, index) => (
+          {BlogData.map((blog, index) => (
             <div
               key={index}
-              className="flex bg-white shadow-2xl rounded-2xl hover:shadow-lg transition group "
+              className="flex bg-white shadow-2xl rounded-2xl hover:shadow-lg transition group h-[350px]"
             >
               {/* Image Section */}
               <div className="w-2/3 rounded-2xl">
                 <img
-                  src={blog.image}
-                  alt={blog.title}
+                  src={blog?.post_image}
+                  alt={"image"}
                   className="!m-0 w-full h-full object-cover rounded-l-2xl"
                 />
               </div>
 
               {/* Text Section */}
-              <div className="p-6 w-2/3 flex flex-col">
+              <div className="container mx-auto p-6 w-2/3 flex flex-col">
                 <p className="text-gray-500 text-sm mb-3 flex items-center">
                   <span className="mr-2">📅</span>
                   {blog.date}
                 </p>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  {blog.title}
-                </h3>
-                <p className="text-gray-600 mb-6">{blog.description}</p>
-                <a href="#" className="text-blue-500 font-medium relative group">
-                  Read more...
+                <div className="text-md font-semibold text-gray-800  pt-4 pb-2">
+                  {blog.post_title}
+                </div>
+                <p className="text-gray-600 mb-6 text-base overflow-hidden">{blog.post_description}</p>
+                <Link href={{
+                  pathname: "/blog-nugen",
+                  query: {
+                    blog: blog?.button_value,
+                  }
+                }} className="text-blue-500 font-medium relative group">
+                  {blog?.button_title}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all"></span>
-                </a>
+                </Link>
               </div>
             </div>
           ))}
