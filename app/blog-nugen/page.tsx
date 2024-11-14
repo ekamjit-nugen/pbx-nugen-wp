@@ -7,19 +7,22 @@ import RelaedPosts from "@/components/blog-nugen/RelaedPosts";
 
 export default async function NugenBlog() {
   const data = await PagesData("access-to-expert-knowledge")
-  console.log(data, "this is another data...")
+  const datalength=data?.length
+  const RelatedPost = await PagesData("blog")
+  const socialData=await PagesData("social-media")
+
   return (
     <>
-      <HeroSection/>
+      <HeroSection data={data[datalength-1]}/>
       <div className="w-full flex flex-col mx-[auto] lg:flex-row">
         <div className="w-full p-8">
-          <BlogDescription />
+          <BlogDescription data={data}/>
         </div>
         <div className="w-full p-2 lg:w-[60%]">
-          <BlogSideBar />
+          <BlogSideBar socialData={socialData}/>
         </div>
       </div>
-      <RelaedPosts />
+      <RelaedPosts BlogData={RelatedPost}/>
     </>
   );
 }

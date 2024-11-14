@@ -18,7 +18,7 @@ interface AboutContentType {
   "img-1": string;
   "img-2": string;
 }
-interface DataProps {
+export interface DataProps {
   header_title: string;
   header_description: string;
   animated_title: string;

@@ -3,7 +3,12 @@ import { Dna, Mail } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import dummyImage from '../../components/icons/png/Waterfall-landscape.jpg'
-export default function BlogSideBar() {
+import { DataProps } from '../homepage/AboutSection'
+import Link from 'next/link'
+interface BlogSideBarType {
+    socialData: DataProps[]
+}
+const BlogSideBar: React.FC<BlogSideBarType> = ({ socialData }) => {
     return (
         <div className='pt-8 px-2 sm:px-8 md:px-32 lg:px-16 flex flex-col gap-8'>
             <div className="border-2 border-white-700 rounded-3xl p-4 flex flex-col gap-4">
@@ -28,20 +33,19 @@ export default function BlogSideBar() {
                     <div className="text-base font-bold">We are on socials</div>
                 </div>
                 <div className="grid grid-cols-2">
-                    <div className="flex items-center gap-4">
-                        <div className=""><FacebookIcon /></div>
-                        <div className="">
-                            <div className="text-base">Facebook</div>
-                            <div className="text-base">follow us on </div>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <div className=""><FacebookIcon /></div>
-                        <div className="">
-                            <div className="text-base">Facebook</div>
-                            <div className="text-base">follow us on </div>
-                        </div>
-                    </div>
+                    {socialData?.map((value) => {
+                        return <>
+                            <Link href={value?.button_value} style={{textDecoration:"none"}}>
+                                <div className="flex items-center gap-4 py-1">
+                                    <Image src={value?.post_image} height={40} width={40} alt='image' className='!m-0' />
+                                    <div className="">
+                                        <div className="text-base">{value?.post_title}</div>
+                                        {/* <div className="text-sm">{value?.post_description}</div> */}
+                                    </div>
+                                </div>
+                            </Link>
+                        </>
+                    })}
                 </div>
             </div>
 
@@ -57,7 +61,7 @@ export default function BlogSideBar() {
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="w-12 h-12 flex items-center">
-                        <Image src={dummyImage} alt='image' className='!m-0 rounded-xl  h-full w-full'/>
+                        <Image src={dummyImage} alt='image' className='!m-0 rounded-xl  h-full w-full' />
                     </div>
                     <div className="">
                         <div className="text-base font-bold">video</div>
@@ -70,3 +74,5 @@ export default function BlogSideBar() {
         </div>
     )
 }
+
+export default BlogSideBar

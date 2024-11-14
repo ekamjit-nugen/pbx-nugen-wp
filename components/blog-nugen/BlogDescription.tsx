@@ -1,11 +1,26 @@
 import React from 'react'
-
-export default function BlogDescription() {
+import { HeroSectionType } from './HeroSection'
+interface BlogDescriptionType {
+  data: HeroSectionType[]
+}
+const BlogDescription: React.FC<BlogDescriptionType> = ({ data }) => {
   return (
-    <div>
-      <div className="">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate rem nihil distinctio delectus soluta adipisci doloremque velit autem inventore fuga, id minima. Rem, nemo praesentium aut quis sequi eligendi nisi incidunt ipsam. Vitae dolorum eveniet illum blanditiis numquam? Modi, similique minima! Ipsum similique maxime sunt dolorum soluta quos debitis, assumenda incidunt excepturi dignissimos animi provident at quia quisquam perferendis dicta sed sit doloribus maiores architecto ea perspiciatis numquam est nam. Ea quae qui voluptatum magnam esse cum molestiae. Aliquid voluptates pariatur illo dignissimos dolores! Delectus minima accusantium hic natus nobis?
-      </div>
+    <div className='flex flex-col gap-4'>
+      {
+        data?.map((value) => {
+          return <>
+            {value?.post_image === undefined &&
+              <>
+                <div className="">
+                  <div className=" text-2xl lg:text-3xl  font-bold pb-2">{value?.post_title}</div>
+                  <div className="text-base">{value?.post_description}</div>
+                </div>
+              </>
+            }
+          </>
+        })
+      }
     </div>
   )
 }
+export default BlogDescription
