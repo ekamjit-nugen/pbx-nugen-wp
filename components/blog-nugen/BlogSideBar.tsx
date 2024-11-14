@@ -21,7 +21,7 @@ const BlogSideBar: React.FC<BlogSideBarType> = ({ socialData }) => {
   return (
     <motion.div
       {...staggerParent}
-      className="pt-8 px-2 sm:px-8 md:px-32 lg:px-16 flex flex-col gap-8"
+      className="pt-8 px-2 sm:px-8 md:px-32 lg:px-16 flex flex-col gap-8 sticky top-0 z-40"
     >
       <motion.div variants={leftToRightAnimation} className="border-2 border-white-700 rounded-3xl p-4 flex flex-col gap-4">
         <div className="flex gap-4 items-center">

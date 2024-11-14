@@ -20,7 +20,7 @@ export default async function NugenBlog() {
         <div className="w-full p-8">
           <BlogDescription data={data} />
         </div>
-        <div className="w-full p-2 lg:w-[60%]">
+        <div className="w-full p-2 lg:w-[60%] relative">
           <BlogSideBar socialData={socialData} />
         </div>
       </div>
