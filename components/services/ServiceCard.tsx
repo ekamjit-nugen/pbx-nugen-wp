@@ -45,11 +45,11 @@ const ServiceCard = (props: any) => {
         <div
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}
-          className={`cursor-pointer w-[300px] md:w-[360px] border-2 bg-background rounded-2xl p-2 group hover:shadow-xl ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 group transition-all`}
+          className={`cursor-pointer w-[300px] border-2 bg-background rounded-2xl p-2 group hover:shadow-xl ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 group transition-all`}
           id={`card-${props.index + 1}`}
         >
           <div
-            className={`h-[420px] w-[300px] md:w-[360px]  grid grid-rows-2 relative`}
+            className={`h-[420px] w-[300px] grid grid-rows-2 relative`}
           >
             <div className="flex justify-between">
               <div className="p-2 text-black dark:text-white">
