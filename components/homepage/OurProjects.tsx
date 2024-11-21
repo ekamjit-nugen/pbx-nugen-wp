@@ -25,6 +25,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
             <div className="gap-8 flex flex-col lg:flex-row justify-center items-center">
               {buttonData?.map((value: any, index: number) => (
                 <Link
+                key={value.button_title + index}
                   href={{
                     pathname: "/work-service-section",
                     query: { data: JSON?.stringify(value?.button_value) },

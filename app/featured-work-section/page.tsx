@@ -2,7 +2,7 @@ import React from "react";
 import FeaturedWorkSection from "../../components/homepage/FeaturedWorkSection";
 import ScreenAnimation from "../../components/ui/ThreeDMenu";
 import { getPageBySlug } from "@/lib/wordpress";
-import { ButtonData, PagesData } from "../apiCall";
+import { PagesData } from "../apiCall";
 const FeaturedWorkSectionPage = async() => {
   const imagessss = await PagesData("work-section")
   const pbxContent=await  getPageBySlug("work-section")

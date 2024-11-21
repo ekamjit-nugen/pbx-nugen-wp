@@ -239,7 +239,7 @@ const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
                 <motion.div variants={blurAnimation} className="flex flex-col w-fit lg:flex-row justify-center pb-24 gap-8">
                     {props?.buttonData?.map((value) => {
                         return (
-                            <Button className='py-6'>{value?.['button-label']}</Button>
+                            <Button key={value?.['button-label']} className='py-6'>{value?.['button-label']}</Button>
                         )
                     })}
                 </motion.div>

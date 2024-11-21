@@ -1,7 +1,6 @@
 import AboutSection from "@/components/homepage/AboutSection"
 import { getPageBySlug } from "@/lib/wordpress"
-import { PagesData } from "../apiCall"
-import { imageLink } from "../featured-client/page"
+import { imageLink, PagesData } from "../apiCall"
 import ScreenAnimation from "../../components/ui/ThreeDMenu"
 
 const AboutUs = async () => {

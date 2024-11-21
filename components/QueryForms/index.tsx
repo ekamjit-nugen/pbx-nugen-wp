@@ -48,8 +48,8 @@ export const QueryForm = ({
       setLoading(false);
       toast({
         variant: "destructive",
-        title: error.response.data.error.title,
-        description: error.response.data.error.message,
+        title: error?.response?.data?.error?.title,
+        description: error?.response?.data?.error?.message,
       });
     }
     setToggleModal((prev) => !prev);
@@ -61,7 +61,8 @@ export const QueryForm = ({
 
   return (
     <Sheet open={toggleModal}>
-      <SheetTrigger className="md:block mr-auto">
+      {/* <SheetTrigger className="md:block mr-auto"> */}
+      <div className="md:block mr-auto">
         <Button
           variant="outline"
           size="sm"
@@ -70,7 +71,8 @@ export const QueryForm = ({
         >
           {buttonTitle}
         </Button>
-      </SheetTrigger>
+        </div>
+      {/* </SheetTrigger> */}
       <SheetContent
         hideCloseButton
         className="!max-w-[50rem] z-[80] overflow-y-scroll"

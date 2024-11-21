@@ -175,14 +175,14 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
               {pageContent?.header_description}
             </motion.div>
             <motion.div variants={topToBottomAnimation} className="flex justify-start" id="">
-              <Link href={pageContent?.url}>
+              {/* <Link href={pageContent?.url}>
                 <Button
                   variant="outline"
                   className="transform duration-500 lg:mt-20 my-20 p-6 text-white border-[#ff366b]"
                 >
                   {pageContent?.button_value}
                 </Button>
-              </Link>
+              </Link> */}
             </motion.div>
           </div>
         </div>

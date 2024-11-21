@@ -2,7 +2,7 @@ import React from "react";
 import SubscribeSection from "../../components/homepage/SubscribeSection";
 import ScreenAnimation from "../../components/ui/ThreeDMenu";
 import { getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
-import { imageLink } from "../featured-client/page";
+import { imageLink } from "../apiCall";
 
 const SubscribeSectionPage = async() => {
   const PageContent= await getPageBySlug('contact-us')

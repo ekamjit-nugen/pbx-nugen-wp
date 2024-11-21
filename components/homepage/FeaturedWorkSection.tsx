@@ -5,7 +5,13 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import gsap from "gsap";
-import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import {
+  blurAnimation,
+  leftToRightAnimation,
+  rightToLeftAnimation,
+  staggerParent,
+  topToBottomAnimation,
+} from "@/lib/animation/animationUtils";
 
 interface ImageContentType {
   post_title: any;
@@ -44,16 +50,16 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
 
   const [Data, setData] = useState<any>([]);
   const [pageContent, setPageContent] = useState<any>({});
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window?.location?.search);
   const value = params.get("data")?.trim();
 
   useEffect(() => {
-    if (value === `"pbx"`) {
-      setData(pbxContent);
-      setPageContent(pbxData);
-    } else {
-      setData(nugenContent);
-      setPageContent(nugenData);
+      if (value === `"pbx"`) {
+        setData(pbxContent);
+        setPageContent(pbxData);
+      } else {
+        setData(nugenContent);
+        setPageContent(nugenData);
     }
   }, [value]);
 
@@ -119,30 +125,37 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
       >
         <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
           {/* <Marquee title={pageContent?.animated_title || ""} /> */}
-          <motion.p variants={topToBottomAnimation} >{pageContent?.animated_title}</motion.p>
+          <motion.p variants={topToBottomAnimation}>
+            {pageContent?.animated_title}
+          </motion.p>
         </div>
         <div />
         <div className="flex w-full flex-col justify-center h-[85%] col-span-11 mb-full">
-          <div
-            className="w-full md:w-4/5 flex flex-col  gap-2 items-start pl-16 "
-          >
-            <motion.h3 variants={rightToLeftAnimation} className="capitalize text-2xl font-bold text-primary w-10/12">
+          <div className="w-full md:w-4/5 flex flex-col  gap-2 items-start pl-16 ">
+            <motion.h3
+              variants={rightToLeftAnimation}
+              className="capitalize text-2xl font-bold text-primary w-10/12"
+            >
               {pageContent?.header_title}
             </motion.h3>
             {pageContent?.header_description && (
               <div className="w-12 border-b border-foreground hidden " />
             )}
             {pageContent?.header_description && (
-              <motion.p variants={rightToLeftAnimation} className="text-foreground/80">
+              <motion.p
+                variants={rightToLeftAnimation}
+                className="text-foreground/80"
+              >
                 {pageContent?.header_description}
               </motion.p>
             )}
           </div>
-          <div
-            className="px-4 md:px-20 lg:px-12 w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll "
-          >
+          <div className="px-4 md:px-20 lg:px-12 w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll ">
             {Data?.map((value: any, index: any) => (
-              <motion.div variants={leftToRightAnimation}>
+              <motion.div
+                key={`${value?.post_title}-${index}`}
+                variants={leftToRightAnimation}
+              >
                 <ImageCard card={value} key={`${value?.post_title}-${index}`} />
               </motion.div>
             ))}

@@ -2,11 +2,8 @@ import React from "react";
 import FeaturedClients from "../../components/homepage/FeaturedClients";
 import ScreenAnimation from "../../components/ui/ThreeDMenu";
 import { getAllCategories, getAllPosts, getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
+import { imageLink } from "../apiCall";
 
-export const imageLink = async (id: number) => {
-  const imagevalue = await getFeaturedMediaById(id)
-  return imagevalue?.source_url
-}
 const FeaturedClientPage = async () => {
   const categories = await getAllCategories();
   const clientCategory = categories.find((cat) => cat.name === "client-section") || { id: "1" };

@@ -32,11 +32,11 @@ export function ModeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant="outline" className="p-2 transform duration-500">
+      {/* <DropdownMenuTrigger> */}
+        {/* <Button variant="outline" className="p-2 transform duration-500">
           <LightBulbIcon className="h-4 w-5" />
-        </Button>
-      </DropdownMenuTrigger>
+        </Button> */}
+      {/* </DropdownMenuTrigger> */}
       <DropdownMenuContent className="rounded-xl">
         <DropdownMenuItem
           className="rounded-xl"

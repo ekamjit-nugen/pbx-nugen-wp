@@ -85,14 +85,16 @@ const NavBar: React.FC<NavBarPropsType> = ({ menu }) => {
       ) : (
         <div className="fixed right-0 bottom-5 flex justify-end px-3 z-50 h-12 w-12">
           <Drawer open={toggle} onClose={() => setToggle(false)}>
-            <DrawerTrigger>
+            {/* <DrawerTrigger> */}
+            <div className="flex justify-center items-center text-center">
               <button
                 onClick={() => setToggle(true)}
                 className="ml-auto bg-foreground/60 backdrop-blur-xl border border-background p-4 rounded-2xl text-white active:bg-foreground active:text-primary transition-all"
               >
                 <HamburgerMenuIcon width={20} height={20} />
               </button>
-            </DrawerTrigger>
+              </div>
+            {/* </DrawerTrigger> */}
             <DrawerContent>
               <DrawerHeader>
                 <DrawerTitle className="text-left border-b-2 pb-4 px-4 flex justify-between items-center">
