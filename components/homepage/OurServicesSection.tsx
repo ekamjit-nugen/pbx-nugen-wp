@@ -43,7 +43,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
     <motion.section
       {...staggerParent}
       id=""
-      className="w-screen h-full section-featured-ref p-2 relative flex top-0 left-0 z-10 bg-background"
+      className="w-screen h-screen p-2  bg-background"
     >
       <div
         className={` relative items-center flex flex-col justify-center w-full h-full ${className}`}
@@ -66,7 +66,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
         </div>
         <div className="w-full flex justify-center">
           <div
-            className="flex h-full flex-wrap justify-center lg:flex-nowrap gap-6 relative my-6 overflow-x-auto overflow-y-hidden pt-8 pb-16"
+            className="flex flex-wrap gap-4 justify-center"
           >
             {data?.map((value: any, index: any) => (
               <motion.div variants={leftToRightAnimation} key={index}>
