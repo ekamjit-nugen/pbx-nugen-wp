@@ -59,13 +59,23 @@ const ServiceCard = (props: any) => {
                 className="md:text-9xl text-7xl font-extrabold uppercase w-full flex items-center justify-center grayscale group-hover:grayscale-0 mx-[auto]"
                 ref={iconRef}
               >
-                {props?.url ?
-                <Link href={props?.url}>
-                <Image src={props.post_image} alt="" height={200} width={200} />
-                </Link>
-                :
-                <Image src={props.post_image} alt="" height={200} width={200} />
-                }
+                {props?.url ? (
+                  <Link href={props?.url}>
+                    <Image
+                      src={props.post_image}
+                      alt=""
+                      height={200}
+                      width={200}
+                    />
+                  </Link>
+                ) : (
+                  <Image
+                    src={props.post_image}
+                    alt=""
+                    height={200}
+                    width={200}
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col justify-end gap-3 p-4">
@@ -96,9 +106,13 @@ const ServiceCard = (props: any) => {
               />
             </div>
             <div className="flex flex-col pt-8 lg:pt-40  px-0 items-start md:my-3 gap-4">
-               {props.innerContent.map(
+              {props.innerContent.map(
                 (
-                  modal: { title: string; subTitle: string; description: string },
+                  modal: {
+                    title: string;
+                    subTitle: string;
+                    description: string;
+                  },
                   index: number
                 ) => (
                   <div key={index} className="flex flex-col gap-y-2">
@@ -113,7 +127,7 @@ const ServiceCard = (props: any) => {
                     </div>
                   </div>
                 )
-              )} 
+              )}
             </div>
             <div className="grid grid-cols-3 gap-4 items-center justify-start mt-5 h-12">
               {/* {props?.icons?.map((val: any, i: number) => (

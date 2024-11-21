@@ -66,7 +66,7 @@ const OurServicesSection: React.FC<ServiceClientsProps> = ({ className, pbxData,
         </div>
         <div className="w-full flex justify-center">
           <div
-            className="flex h-full flex-wrap justify-center lg:flex-nowrap gap-6 relative my-16 overflow-x-auto overflow-y-hidden pt-8 "
+            className="flex h-full flex-wrap justify-center lg:flex-nowrap gap-6 relative my-6 overflow-x-auto overflow-y-hidden pt-8 pb-16"
           >
             {data?.map((value: any, index: any) => (
               <motion.div variants={leftToRightAnimation} key={index}>
