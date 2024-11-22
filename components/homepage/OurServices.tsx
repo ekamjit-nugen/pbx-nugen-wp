@@ -18,7 +18,7 @@ const OurServices: React.FC<OurServicesType> = ({ buttonData }) => {
     <motion.section
       {...staggerParent}
       id="featured-work-section"
-      className="w-screen h-screen section-featured-ref overflow-hidden lg:p-8 relative bg-background shadow-2xl"
+      className="w-screen h-screen section-featured-ref overflow-y-auto lg:p-8 relative bg-background shadow-2xl"
     >
       <div className="flex flex-col items-center relative w-full h-full">
         <motion.div

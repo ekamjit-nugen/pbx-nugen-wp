@@ -196,12 +196,13 @@ body {
     height: 100% !important;
   }
 }
-
-.top-diagonal{
-  clip-path: polygon(0 35%, 100% 0, 100% 100% 0,100%);
-}
-.bottom-diagonal{
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+.Diagonal {
+  @media (min-width: 1023px) {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  @media (min-width: 768px) {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+  }
 }
 .shadow-top-xl {
   @media (min-width: 1023px) {

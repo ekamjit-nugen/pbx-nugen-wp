@@ -27,7 +27,7 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
   return (
     <motion.section
       id=""
-      className=" relative w-full bg-[#080c3c] h-fit bottom-diagonal overflow-x-hidden lg:shadow-2xl lg:py-12"
+      className="relative w-full bg-[#080c3c] h-fit Diagonal overflow-x-hidden lg:shadow-2xl lg:py-12"
     >
       <motion.div
         className="absolute"
