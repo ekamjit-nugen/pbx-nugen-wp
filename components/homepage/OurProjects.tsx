@@ -14,7 +14,7 @@ const OurProjects: React.FC<OurProjectsType> = ({ buttonData }) => {
     <motion.section
       {...staggerParent}
       id="featured-work-section"
-      className="w-screen h-screen section-featured-ref overflow-hidden lg:p-8 relative bg-background shadow-2xl  lg:fixed top-0 left-0 z-10"
+      className="w-screen h-screen section-featured-ref overflow-y-auto lg:p-8 relative bg-background shadow-2xl  lg:fixed top-0 left-0 z-10"
     >
       <div className="flex flex-col items-center lg:flex  relative w-full h-full">
         <motion.div variants={topToBottomAnimation} className="w-full text-center text-4xl md:text-6xl capitalize font-serif font-bold text-primary mb-4">
