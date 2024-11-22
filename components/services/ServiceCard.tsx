@@ -45,7 +45,7 @@ const ServiceCard = (props: any) => {
         <div
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}
-          className={`cursor-pointer w-[300px] md:w-[360px] border-2 bg-background rounded-2xl p-2 group hover:shadow-xl ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 group transition-all`}
+          className={`cursor-pointer w-[280px] md:w-[330px] border-2 bg-background rounded-2xl p-2 group hover:shadow-xl ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 group transition-all`}
           id={`card-${props.index + 1}`}
         >
           <div
@@ -79,14 +79,15 @@ const ServiceCard = (props: any) => {
               </div>
             </div>
             <div className="flex flex-col justify-end gap-3 p-4">
-              <h2 className="md:text-lg text-md font-bold uppercase text-foreground/80 text-left ">
+              <h2 className="md:text-lg text-base font-bold uppercase text-foreground/80 text-left ">
                 {props.top_title}
               </h2>
-              <p className=" text-left text-foreground md:text-3xl text-2xl font-extrabold uppercase group-hover:underline group-hover:underline-offset-8">
+              <p className=" text-left text-foreground md:text-2xl text-xl font-extrabold uppercase group-hover:underline group-hover:underline-offset-8">
                 {props.post_title}
               </p>
-              <p className="text-foreground/30 line-clamp-3 text-left ">
-                {props.post_description}
+              <p className="text-foreground/30 text-sm line-clamp-3 text-left pr-8">
+                {props.post_description?.split(" ").slice(0, 30).join(" ") +
+                  (props.post_description?.split(" ").length > 50 ? "..." : "")}
               </p>
             </div>
           </div>
