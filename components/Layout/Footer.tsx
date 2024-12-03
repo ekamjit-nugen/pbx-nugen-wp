@@ -1,88 +1,119 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "../../components/icons";
-import NugenLogoWhite from "../icons/png/nugen-logo-white.png";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TwitterIcon,
+} from "../../components/icons";
 import EmailIcon from "../icons/Email";
 import UpWorkIcon from "../icons/UpWork";
 import PhoneIcon from "../icons/Phone";
-import useSize from "../windowSize";
-import React from "react";
-import logo from '../icons/png/pbx_made-removebg-preview.png'
-interface FooterPropsType {
-  logo: string,
-  socialMedia: {
-    facebook: string,
-    instagram: string,
-    twitter: string,
-    linkedin: string,
-    email: string,
-    upwork: string,
-    phone: string
-  },
-  description: string,
-  mediaTitle: string,
-}
-interface footerType {
-  props: FooterPropsType
-}
-const Footer: React.FC<footerType> = ({ props }) => {
-  const size = useSize();
 
+interface FooterPropsType {
+  logo: string;
+  socialMedia: {
+    facebook: string;
+    instagram: string;
+    twitter: string;
+    linkedin: string;
+    email: string;
+    upwork: string;
+    phone: string;
+  };
+  description: string;
+  mediaTitle: string;
+}
+
+interface FooterType {
+  props: FooterPropsType;
+}
+
+const Footer: React.FC<FooterType> = ({ props }) => {
   return (
-    <div className={`bg-black h-auto w-screen pb-20 lg:pb-2 lg:fixed bottom-0 left-0 z-10`}>
-      <div className={`container mx-auto flex flex-col md:flex-row justify-between items-center text-center border-b border-white/25 lg:pb-20`}>
-        <div className="w-full flex flex-col items-start">
-          <div className="text-center md:text-left flex flex-col md:items-start items-center justify-center  text-white">
-            <Image src={props?.logo||""} alt="" height={80} width={200} />
-            <div className="w-full">
-              <p className="text-base md:text-normal font-light text-center md:text-left">
-                {props?.description}
-              </p>
-            </div>
-          </div>
+    <footer className="bg-black text-white py-10 pb-26  ">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 px-6">
+        {/* Logo and Description */}
+        <div className="flex flex-col items-center md:items-start w-full md:w-1/3 text-center md:text-left">
+          <Image
+            src={props?.logo || ""}
+            alt="Logo"
+            width={200}
+            height={80}
+            className="mb-4"
+          />
+          <p className="text-gray-300">
+            {props?.description || "Your company description goes here."}
+          </p>
         </div>
-        <div className="md:w-1/4 w-full md:text-center text-left md:capitalize text-white  flex flex-col items-center justify-center">
-          <p className="font-semibold">{props?.mediaTitle}</p>
-          <div className="flex justify-center items-center gap-4">
-            <Link href={props?.socialMedia?.facebook||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <FacebookIcon className="fill-[#3b5998]" />
-              </div>
-            </Link>
-            <Link href={props?.socialMedia?.instagram||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <InstagramIcon className="!h-6 !w-6" />
-              </div>
-            </Link>
-            <Link href={props?.socialMedia?.twitter||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <TwitterIcon className="fill-[#26a7de]" />
-              </div>
-            </Link>
-            <Link href={props?.socialMedia?.email||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <EmailIcon className="fill-[#26a7de]" />
-              </div>
-            </Link>
-            <Link href={props?.socialMedia?.upwork||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <UpWorkIcon className="fill-[#26a7de]" />
-              </div>
-            </Link>
-            <Link href={props?.socialMedia?.linkedin||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <LinkedInIcon className="fill-[#0077b5]" />
-              </div>
-            </Link>
-            <Link href={props?.socialMedia?.phone||""}>
-              <div className="cursor-pointer hover:scale-125 transition-all">
-                <PhoneIcon className="fill-[#26a7de]" />
-              </div>
-            </Link>
+
+        {/* Social Media Links */}
+        <div className="w-full md:w-1/3 flex flex-col items-center">
+          <h3 className="font-semibold mb-4 text-white">
+            {props?.mediaTitle || "Connect with us"}
+          </h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            <SocialMediaLink
+              href={props?.socialMedia?.facebook}
+              Icon={FacebookIcon}
+              color="#3b5998"
+            />
+            <SocialMediaLink
+              href={props?.socialMedia?.instagram}
+              Icon={InstagramIcon}
+            />
+            <SocialMediaLink
+              href={props?.socialMedia?.twitter}
+              Icon={TwitterIcon}
+              color="#26a7de"
+            />
+            <SocialMediaLink
+              href={props?.socialMedia?.email}
+              Icon={EmailIcon}
+              color="#26a7de"
+            />
+            <SocialMediaLink
+              href={props?.socialMedia?.upwork}
+              Icon={UpWorkIcon}
+              color="#26a7de"
+            />
+            <SocialMediaLink
+              href={props?.socialMedia?.linkedin}
+              Icon={LinkedInIcon}
+              color="#0077b5"
+            />
+            <SocialMediaLink
+              href={props?.socialMedia?.phone}
+              Icon={PhoneIcon}
+              color="#26a7de"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </footer>
+  );
+};
+
+const SocialMediaLink = ({
+  href,
+  Icon,
+  color = "#ffffff",
+}: {
+  href: string | undefined;
+  Icon: React.ComponentType<{ className?: string }>;
+  color?: string;
+}) => {
+  if (!href) return null;
+  return (
+    <Link href={href}>
+      <div
+        className="cursor-pointer p-2 rounded-full transition-transform hover:scale-125"
+        style={{ color }}
+      >
+        <Icon className="w-6 h-6" />
+      </div>
+    </Link>
   );
 };
 
