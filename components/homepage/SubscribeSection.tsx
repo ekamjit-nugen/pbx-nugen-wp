@@ -3,7 +3,13 @@ import React, { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import HeroImage3 from "../../image/hero3.png";
 import { motion } from "framer-motion";
-import { blurAnimation, leftToRightAnimation, rightToLeftAnimation, staggerParent, topToBottomAnimation } from "@/lib/animation/animationUtils";
+import {
+  blurAnimation,
+  leftToRightAnimation,
+  rightToLeftAnimation,
+  staggerParent,
+  topToBottomAnimation,
+} from "@/lib/animation/animationUtils";
 import Marquee from "../ui/Marquee";
 import { QueryForm } from "../QueryForms";
 import Footer from "../Layout/Footer";
@@ -87,44 +93,74 @@ const SubscribeSection: React.FC<ContactUsPropsType> = ({ props }) => {
   return (
     <motion.section {...staggerParent} id="" className="w-full h-full">
       <div>
-        <motion.div variants={topToBottomAnimation} className="w-full py-4 text-primary text-6xl capitalize font-serif flex justify-center font-bold">
+        <motion.div
+          variants={topToBottomAnimation}
+          className="w-full py-4 text-primary text-6xl capitalize font-serif flex justify-center font-bold"
+        >
           <p>{animated_title}</p>
         </motion.div>
         <div className="md:flex w-full items-center gap-4 px-8  py-4 ">
-          <motion.p variants={leftToRightAnimation} className="text-2xl lg:text-3xl text-primary font-medium">
+          <motion.p
+            variants={leftToRightAnimation}
+            className="text-2xl lg:text-3xl text-primary font-medium"
+          >
             {header_title}
           </motion.p>
-          <motion.div variants={blurAnimation} className="w-10 border-2 border-black hidden md:flex md:visible"></motion.div>
-          <motion.p variants={leftToRightAnimation} className="">{header_description}</motion.p>
+          <motion.div
+            variants={blurAnimation}
+            className="w-10 border-2 border-black hidden md:flex md:visible"
+          ></motion.div>
+          <motion.p variants={leftToRightAnimation} className="">
+            {header_description}
+          </motion.p>
         </div>
 
         <div className="px-4 flex flex-col lg:flex-row pb-2">
           <div className="flex flex-col lg:flex-row w-full px-8 ">
             <div className="w-full">
               <div className="pt-4">
-                <motion.div variants={leftToRightAnimation} className="text-primary text-2xl font-semibold">
+                <motion.div
+                  variants={leftToRightAnimation}
+                  className="text-primary text-2xl font-semibold"
+                >
                   {contact_location_title}
                 </motion.div>
-                <motion.p variants={leftToRightAnimation} className="font-medium text-sm md:text-lg">
+                <motion.p
+                  variants={leftToRightAnimation}
+                  className="font-medium text-sm md:text-lg"
+                >
                   {contact_location}
                 </motion.p>
               </div>
               <div className="flex gap-8 pt-4">
-                <div className="flex flex-col">
-                  <motion.div variants={leftToRightAnimation} className="text-primary text-2xl font-semibold">
+                <div className="flex flex-col gap-4">
+                  <motion.div
+                    variants={leftToRightAnimation}
+                    className="text-primary text-2xl font-semibold"
+                  >
                     {contact_us_title}
                   </motion.div>
-                  <motion.p variants={leftToRightAnimation} className="font-medium text-sm md:text-lg">
+                  <motion.p
+                    variants={leftToRightAnimation}
+                    className="font-medium text-sm md:text-lg"
+                  >
                     {mobile_number}
                   </motion.p>
-                </div>
                 <div className="">
-                <motion.div variants={leftToRightAnimation} className="text-primary text-2xl font-semibold">
-                  {email_title}
-                </motion.div>
-                <motion.p variants={leftToRightAnimation} className="font-medium text-sm md:text-lg">
-                  {email_id}
-                </motion.p>
+                  <motion.div
+                    variants={leftToRightAnimation}
+                    className="text-primary text-2xl font-semibold"
+                  >
+                    {email_title}
+                  </motion.div>
+                  <motion.p
+                    variants={leftToRightAnimation}
+                    className="font-medium text-sm md:text-lg sm:text-base truncate md:w-full text-center"
+                  >
+                    {email_id}
+                  </motion.p>
+                  </div>
+
                 </div>
               </div>
               <motion.div variants={leftToRightAnimation} className="my-12">

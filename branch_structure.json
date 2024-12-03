@@ -1,0 +1,33 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "feat/health-page",
+    "feat/nugen",
+    "feat/pbx1",
+    "feat/services",
+    "main",
+    "origin",
+    "pbx-dev",
+    "pbx-new-dev"
+  ],
+  "parent": {
+    "feat/health-page": "main",
+    "feat/nugen": "main",
+    "feat/pbx1": "main",
+    "feat/services": "main",
+    "main": null,
+    "origin": "main",
+    "pbx-dev": "main",
+    "pbx-new-dev": "main"
+  },
+  "order": [
+    "main",
+    "feat/health-page",
+    "feat/nugen",
+    "feat/pbx1",
+    "feat/services",
+    "origin",
+    "pbx-dev",
+    "pbx-new-dev"
+  ]
+}

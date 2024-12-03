@@ -32,7 +32,7 @@ interface FooterType {
 
 const Footer: React.FC<FooterType> = ({ props }) => {
   return (
-    <footer className="bg-black text-white py-10 pb-26  ">
+    <footer className="bg-black text-white md:pb-28 pb-10  ">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 px-6">
         {/* Logo and Description */}
         <div className="flex flex-col items-center md:items-start w-full md:w-1/3 text-center md:text-left">
