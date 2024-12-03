@@ -92,7 +92,7 @@ const Nav = ({ className, children, id }: NavProps) => {
           <Image
             src={Logo}
             alt="Logo"
-            className="dark:invert"
+            className=""
             width={84}
             height={30.54}
           ></Image>
@@ -131,7 +131,7 @@ const Footer = () => {
                 alt="Logo"
                 width={120}
                 height={27.27}
-                className="dark:invert hover:opacity-75 transition-all"
+                className=" hover:opacity-75 transition-all"
               ></Image>
             </Link>
             <p>

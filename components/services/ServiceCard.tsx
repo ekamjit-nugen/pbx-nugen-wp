@@ -52,7 +52,7 @@ const ServiceCard = (props: any) => {
             className={`h-[420px] w-[300px] md:w-[360px]  grid grid-rows-2 relative`}
           >
             <div className="flex justify-between">
-              <div className="p-2 text-black dark:text-white">
+              <div className="p-2 text-black ">
                 <ArrowIcon />
               </div>
               <div
@@ -135,7 +135,7 @@ const ServiceCard = (props: any) => {
                 <div
                   key={i}
                   className={cn(
-                    "dark:bg-foreground rounded-xl border p-2 w-full flex justify-center items-center h-full"
+                    " rounded-xl border p-2 w-full flex justify-center items-center h-full"
                   )}
                 >
                   {val}

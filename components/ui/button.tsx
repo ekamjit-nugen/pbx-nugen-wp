@@ -10,12 +10,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gradient-to-tr from-foreground to-foreground/70 text-background dark:hover:text-background shadow-lg shadow-primary border-2 hover:scale-110",
+          "bg-gradient-to-tr from-foreground to-foreground/70 text-background  shadow-lg shadow-primary border-2 hover:scale-110",
         destructive: "bg-destructive text-destructive-foreground shadow-sm",
         outline:
-          "border border-foreground bg-transparent shadow-sm text-foreground hover:text-background dark:text-foreground dark:hover:text-background",
+          "border border-foreground bg-transparent shadow-sm text-foreground hover:text-background ",
         ghost:
-          "bg-transparent hover:shadow-xl text-background dark:text-foreground dark:hover:text-background",
+          "bg-transparent hover:shadow-xl text-background ",
         link: "text-background underline-offset-2 hover:underline hover:text-primary !p-0 w-fit",
       },
       size: {

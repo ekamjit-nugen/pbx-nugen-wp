@@ -54,12 +54,12 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
   const value = params.get("data")?.trim();
 
   useEffect(() => {
-      if (value === `"pbx"`) {
-        setData(pbxContent);
-        setPageContent(pbxData);
-      } else {
-        setData(nugenContent);
-        setPageContent(nugenData);
+    if (value === `"pbx"`) {
+      setData(pbxContent);
+      setPageContent(pbxData);
+    } else {
+      setData(nugenContent);
+      setPageContent(nugenData);
     }
   }, [value]);
 
@@ -118,10 +118,10 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
     <motion.section
       {...staggerParent}
       id="featured-work-section"
-      className="trigger w-screen h-full section-featured-ref overflow-auto  relative top-0 left-0 z-10 bg-background shadow-2xl"
+      className="trigger w-screen h-full section-featured-ref overflow-y-auto lg:overflow-hidden relative top-0 left-0 z-10 bg-background shadow-2xl"
     >
       <div
-        className={`flex flex-col justify-center p-2 relative items-start w-full h-screen`}
+        className={`flex flex-col justify-center p-2 relative items-start w-full h-auto lg:h-screen`}
       >
         <div className="w-full text-4xl md:text-6xl capitalize font-serif font-bold text-primary flex justify-center">
           {/* <Marquee title={pageContent?.animated_title || ""} /> */}
@@ -130,8 +130,8 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
           </motion.p>
         </div>
         <div />
-        <div className="flex w-full flex-col justify-center h-[85%] col-span-11 mb-full">
-          <div className="w-full md:w-4/5 flex flex-col  gap-2 items-start pl-16 ">
+        <div className="flex w-full flex-col justify-center lg:h-[85%] col-span-11 mb-full">
+          <div className="w-full md:w-4/5 flex flex-col gap-2 items-start md:pl-16 pl:0">
             <motion.h3
               variants={rightToLeftAnimation}
               className="capitalize text-2xl font-bold text-primary w-10/12"
@@ -150,7 +150,7 @@ const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
               </motion.p>
             )}
           </div>
-          <div className="px-4 md:px-20 lg:px-12 w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-16 lg:overflow-x-scroll ">
+          <div className="px-2 md:px-6 lg:px-12 w-full h-auto lg:h-full flex flex-col gap-4 lg:flex-row lg:gap-16 overflow-y-auto">
             {Data?.map((value: any, index: any) => (
               <motion.div
                 key={`${value?.post_title}-${index}`}
@@ -178,7 +178,7 @@ const ImageCard = ({ card }: ImageCardPropType) => {
 
   return (
     <motion.div
-      className="h-[60dvh] md:h-[30dvh] lg:h-[50dvh] w-full p-4 flex justify-center"
+      className="h-[90dvh] md:h-[60dvh] lg:h-[50dvh] w-full p-4 flex justify-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -198,7 +198,7 @@ const ImageCard = ({ card }: ImageCardPropType) => {
           animate={{ y: isHovered ? 0 : 90 }}
         >
           <div className="text-white flex justify-between h-1/2 w-full">
-            <div className="text-xl font-semibold ">{post_title}</div>
+            <div className="text-base font-semibold ">{post_title}</div>
             {url && (
               <Link
                 href={url || ""}

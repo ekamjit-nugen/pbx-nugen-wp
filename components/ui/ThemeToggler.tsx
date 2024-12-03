@@ -44,7 +44,7 @@ export function ModeToggle() {
         >
           <SunIcon className="h-[1.2rem] w-[1.2rem]" /> Light
         </DropdownMenuItem>
-        <DropdownMenuItem
+        {/* <DropdownMenuItem
           className="rounded-xl"
           onClick={() => setTheme("dark")}
         >
@@ -55,7 +55,7 @@ export function ModeToggle() {
           onClick={() => setTheme("system")}
         >
           <DesktopIcon className="h-[1.2rem] w-[1.2rem]" /> System
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

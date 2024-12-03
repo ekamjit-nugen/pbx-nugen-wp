@@ -9,7 +9,7 @@ const ReactIcon: FC<{ className?: string }> = ({ className }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={cn(
-      "text-sm me-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out",
+      "text-sm me-0 w-10 h-10 text-link  flex origin-center transition-all ease-in-out",
       className
     )}
   >

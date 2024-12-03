@@ -55,7 +55,7 @@ const Home = async () => {
     <Layout>
       <div
         id="content-id"
-        className="bg-background dark:bg-slate-950 relative h-full w-screen"
+        className="bg-background relative h-full w-screen"
       >
         <ScreenAnimation />
         <Topbar props={pageContents} />

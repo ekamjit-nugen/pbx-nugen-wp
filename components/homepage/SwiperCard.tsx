@@ -15,11 +15,11 @@ const SwiperCard: React.FC<TestimonialData> = (props) => {
 
   return (
     <>
-      <div className="swiper-card-gsap flex flex-col text-center gap-2 p-4 justify-between lg:justify-center items-center shadow-xl bg-white dark:bg-foreground h-[300px] w-[420px] lg:w-[280px] xl:w-full rounded-xl max-w-fit">
+      <div className="swiper-card-gsap flex flex-col text-center gap-2 p-4 justify-between lg:justify-center items-center shadow-xl bg-white h-[300px] w-[420px] lg:w-[280px] xl:w-full rounded-xl max-w-fit">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-2">
             <div
-              className={`w-12 h-12 rounded-full items-center text-center text-background dark:text-foreground flex justify-center uppercase`}
+              className={`w-12 h-12 rounded-full items-center text-center text-background flex justify-center uppercase`}
               style={{
                 background: randomColor,
               }}
@@ -27,7 +27,7 @@ const SwiperCard: React.FC<TestimonialData> = (props) => {
               {returnInitals()}
             </div>
             <div className="flex flex-col items-start">
-              <div className="text-foreground dark:text-background">{name}</div>
+              <div className="text-foreground">{name}</div>
               <div className="flex gap-2">
                 <Stars length={rating} />
               </div>
@@ -35,7 +35,7 @@ const SwiperCard: React.FC<TestimonialData> = (props) => {
           </div>
         </div>
         <div className="flex h-full">
-          <p className="text-left text-sm text-foreground dark:text-background my-2 w-[320px] lg:w-full h-fit leading-6 line-clamp-5 px-2">
+          <p className="text-left text-sm text-foreground my-2 w-[320px] lg:w-full h-fit leading-6 line-clamp-5 px-2">
             {text}
           </p>
         </div>
@@ -43,7 +43,7 @@ const SwiperCard: React.FC<TestimonialData> = (props) => {
           <div className="!h-6 !w-6 flex justify-center items-center">
             {icon}
           </div>
-          <div className="text-sm capitalize text-foreground dark:text-background font-semibold">
+          <div className="text-sm capitalize text-foreground font-semibold">
             {source}
           </div>
         </div>
