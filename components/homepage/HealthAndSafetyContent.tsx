@@ -224,7 +224,7 @@ const HealthAndSafetyContent: React.FC<PropsType> = (props) => {
                                             </div>
                                             <span className="ml-4">{value?.post_title}</span>
                                         </motion.div>
-                                        <motion.div variants={leftToRightAnimation} className="p-4 pt-8 w-[90%] lg:pl-16">
+                                        <motion.div variants={leftToRightAnimation} className="p-4 pt-8 md:w-[90%] w-full text-center md:text-left lg:pl-16">
                                             {value?.post_description}
                                         </motion.div>
                                     </div>

@@ -323,7 +323,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
                   </div>
                   <span className="ml-4">{pageContent?.header_title}</span>
                 </motion.div>
-                <motion.div variants={leftToRightAnimation} className="pt-8 w-[90%] lg:pl-16">
+                <motion.div variants={leftToRightAnimation} className="pt-8 md:w-[90%] w-full text-center md:text-left  lg:pl-16">
                   {pageContent?.header_description}
                 </motion.div>
               </div>
@@ -342,7 +342,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
                       </div>
                       <span className="ml-4">{value?.post_title}</span>
                     </motion.div>
-                    <motion.div variants={leftToRightAnimation} className="pt-4 w-[90%] lg:pl-16">
+                    <motion.div variants={leftToRightAnimation} className="pt-4 md:w-[90%] w-full text-center md:text-left lg:pl-16">
                       {value?.post_description}
                     </motion.div>
                   </div>
@@ -379,7 +379,7 @@ const AboutSection: React.FC<ServiceClientsProps> = ({
                   </div>
                   <span className="ml-4">{value?.post_title}</span>
                 </motion.div>
-                <motion.div variants={leftToRightAnimation} className="pt-8 w-[90%] lg:pl-16">{value?.post_description}</motion.div>
+                <motion.div variants={leftToRightAnimation} className="pt-8 md:w-[90%] w-full text-center md:text-left lg:pl-16">{value?.post_description}</motion.div>
               </div>
             );
           })}
