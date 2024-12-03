@@ -179,11 +179,11 @@ const InterestedSection: React.FC<ServiceClientsProps> = ({
       >
         <div className={` relative items-start w-full h-full ${className}`}>
           <div className="w-full p-8 flex flex-col md:flex-row">
-            <div className="w-full lg:pl-32">
+            <div className="w-full lg:pl-32  md:text-left text-center">
               <motion.div variants={topToBottomAnimation} className="font-serif text-red-600 text-3xl lg:text-4xl">
                 {pageContent?.header_title}
               </motion.div>
-              <motion.div variants={leftToRightAnimation} className="pt-8 w-[80%] text-black">
+              <motion.div variants={leftToRightAnimation} className="pt-8 md:w-[80%] w-full text-black">
                 {pageContent?.header_description}
               </motion.div>
               <motion.div variants={leftToRightAnimation} className="flex justify-start" id="">

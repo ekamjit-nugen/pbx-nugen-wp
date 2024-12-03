@@ -211,7 +211,7 @@ const HeroSection: React.FC<PageProps> = ({ props, svg }) => {
               <BackgroundSVG />
             </div>
             <div className="absolute -top-56">
-              <HeroImageSVG width={size && size < 800 ? "355" : "450"} />
+              <HeroImageSVG width={size && size < 800 ? "330" : "500"} />
             </div>
           </div>
 

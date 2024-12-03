@@ -164,14 +164,14 @@ const CustomizeProject: React.FC<ServiceClientsProps> = ({
               className="object-scale-down"
             />
           </motion.div>
-          <div className="w-full flex flex-col p-4">
-            <motion.div variants={rightToLeftAnimation} className="font-serif text-[#ff366b] w-[75%] text-3xl lg:text-4xl ">
+          <div className="w-full flex flex-col p-4 text-center">
+            <motion.div variants={rightToLeftAnimation} className="font-serif text-[#ff366b] md:w-[75%] w-full text-3xl lg:text-4xl ">
               {pageContent?.animated_title}
             </motion.div>
-            <motion.div variants={rightToLeftAnimation} className="pt-8 w-[75%] text-white">
+            <motion.div variants={rightToLeftAnimation} className="pt-8 md:w-[75%] w-full text-center text-white">
               {pageContent?.header_title}
             </motion.div>
-            <motion.div variants={rightToLeftAnimation} className="pt-8 w-[75%] text-white">
+            <motion.div variants={rightToLeftAnimation} className="pt-8 md:w-[75%] w-full text-center text-white">
               {pageContent?.header_description}
             </motion.div>
             <motion.div variants={topToBottomAnimation} className="flex justify-start" id="">
